@@ -4,7 +4,9 @@
   box-sizing: border-box;
   font-family: var(--baseFont);
 }
-
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --baseFont: "Libre Franklin", sans-serif;
   --dark: #181824;
@@ -13,8 +15,8 @@
 }
 
 /* universals */
-body{
-    background-color: #f0f1f6;
+body {
+  background-color: #f0f1f6;
 }
 a {
   text-decoration: none;
@@ -30,10 +32,10 @@ ul {
   list-style-type: none;
 }
 i {
-    color: #fff;
+  color: #fff;
 }
-label{
-    color: var(--lightColor);
+label {
+  color: var(--lightColor);
 }
 .magna {
   width: 150px;
@@ -43,10 +45,11 @@ label{
 /* navigation starts  */
 .topNav {
   display: flex;
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 1; */
 }
+
 .topNav * {
   font-family: var(--baseFont);
 }
@@ -59,9 +62,13 @@ label{
   width: 250px;
 }
 .name-logo-container i {
-    color: var(--lightColor);
+  position: fixed;
+  left: 2px;
+  background-color: #000000;
+  color: #fff;
   font-size: 28px;
   cursor: pointer;
+  padding: 5px;
 }
 .nav-right-container {
   padding: 10px 0;
@@ -95,47 +102,47 @@ label{
 }
 /* navigation ends */
 
-.dashboard-section{
-    padding: 0 20px;
+.dashboard-section {
+  padding: 0 20px;
 }
 .main-container {
   display: flex;
   background-color: #fff;
 }
-.main-left-section{
-    width: 20vw;
-    padding-left: 10px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+.main-left-section {
+  width: 20vw;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
-.main-left-section i{
-    color: #fff;
-    background-color: var(--lightColor);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 20px;
+.main-left-section i {
+  color: #fff;
+  background-color: var(--lightColor);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
 .total-users-container {
-    display: flex;
-    align-items: center;
-    height: 25%;
-    background-color: #d3d5db84;
-    border-radius: 4px;
+  display: flex;
+  align-items: center;
+  height: 25%;
+  background-color: #d3d5db84;
+  border-radius: 4px;
 }
-.total-users-container .total-count{
-    font-size: 20px;
+.total-users-container .total-count {
+  font-size: 20px;
 }
 
-.total-users-container .total-count-title{
-    font-size: 14px;
+.total-users-container .total-count-title {
+  font-size: 14px;
 }
 /* links section  */
 .left-section {
@@ -165,17 +172,19 @@ label{
 .links-container {
   padding: 30px 0;
 }
+.links-container ul li {
+  padding-left: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
 .links-container ul li a {
+  display: block;
+  width: 100%;
   color: #fff;
   font-family: var(--baseFont);
   line-height: 50px;
   font-size: 18px;
   transition: 0.1s;
-}
-.links-container ul li {
-  padding-left: 10px;
-  transition: 0.3s;
-  cursor: pointer;
 }
 .links-container ul li:hover {
   /* transform: translateX(10px); */
@@ -200,6 +209,12 @@ label{
 #settings:hover {
   color: var(--lightColor);
 }
+.logoutHam{
+  color: #fff;
+  margin-top: 50px;
+  padding-left: 10px;
+  cursor: pointer;
+}
 
 /* links section ends  */
 
@@ -209,8 +224,8 @@ label{
   padding: 20px 30px;
   /* background-color: #f0f1f6; */
 }
-.dashboard-navigation{
-    padding: 10px 20px;
+.dashboard-navigation {
+  padding: 10px 20px;
 }
 .dashboard-navigation nav {
   display: flex;
@@ -278,24 +293,33 @@ label{
 }
 
 span.value-container {
-    color: var(--lightColor);
+  color: var(--lightColor);
 }
-
 
 /* chart  */
-.chart-container{
-    margin-top: 50px;
-    background-color: #fff;
-    padding: 20px;
+.charts-section {
+  margin-top: 10px;
+  padding: 0 20px;
 }
-.tableChart{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 8px;
+.chart-container {
+  background-color: #fff;
+  display: flex;
+  padding: 20px;
 }
-.tableChart caption{
-    margin-bottom: 6px;
+table {
+  margin-right: 20px;
 }
- 
+.chart-container table:nth-child(2) .bar{
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(34, 255, 0) 100%
+  );
+}
+table caption {
+  margin-bottom: 6px;
+}
+
 .chart {
   width: 220px;
   height: 300px;
@@ -313,7 +337,7 @@ span.value-container {
   background: linear-gradient(
     0deg,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 255, 80, 1) 100%
+    rgb(255, 0, 0) 100%
   );
   display: flex;
   justify-content: center;
@@ -345,7 +369,7 @@ table {
 
 /* popup form add product  */
 .form-popup-section {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #181824ce;
@@ -387,4 +411,96 @@ table {
   color: #fff;
   padding: 8px;
   font-size: 18px;
+}
+
+/* users details list  */
+.users-section {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.users-details-container {
+  background-color: #fff;
+  padding: 20px;
+}
+.users-details-container .cards-title {
+  display: grid;
+  /* grid-template-columns: 1fr 2fr 2fr 3fr 2fr 2fr 2fr; */
+  grid-template-columns: 100px repeat(5, 1fr);
+  padding-bottom: 8px;
+  border-bottom: 1px solid;
+}
+.users-details-container .card {
+  margin: 6px 0;
+  display: grid;
+  grid-template-columns: 100px repeat(5, 1fr);
+  border-bottom: 1px solid #959595a2;
+  align-items: center;
+}
+.users-details-container .orders{
+  margin-left: 40px;
+}
+.users-details-container .card img {
+  width: 50px;
+}
+.users-details-container .card p {
+  font-size: 18px;
+}
+.gmail{
+  color: blue;
+}
+
+/* employees  */
+.employees-section{
+  padding: 20px;
+}
+.employees-container{
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ourTeam{
+  font-size: 40px;
+  text-align: center;
+  color: var(--lightColor);
+  background-color: #fff;
+  padding-top: 10px;
+}
+.employeeCard{
+  width: 350px;
+  padding: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 10px;
+  /* border: 1px solid var(--lightColor); */
+  border-radius: 20px;
+  background-color: var(--lightColor);
+}
+.employeeCard img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+.employeeCard p{
+  text-align: center;
+  color: #fff;
+}
+.employeeName{
+  font-size: 20px;
+  margin: 10px 0;
+}
+.employeeCard .postTitle{
+  font-size: 24px;
+  color: #fe5c0a;
+}
+.employeeCard .postSubtitle{
+  margin-bottom: 10px;
+  color: #ffa274;
+}
+.role{
+  margin: 15px 0;
+}
+.employeeCard .email{
+  color: rgb(0, 110, 201);
 }
