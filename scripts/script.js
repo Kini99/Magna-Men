@@ -1,5 +1,6 @@
 // --- do not touch  ↓↓↓↓↓↓↓↓↓↓↓↓ ----------
-const baseServerURL = `http://localhost:${
-  import.meta.env.REACT_APP_JSON_SERVER_PORT
-}`;
+const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 // --- do not touch  ↑↑↑↑↑↑↑↑↑↑↑↑ ----------
+
+// /products
+// /users

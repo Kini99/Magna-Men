@@ -1,0 +1,52 @@
+###GET request for products
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/products
+
+
+### add new product
+POST https://63f45eca3f99f5855dae29dc.mockapi.io/products
+Content-Type: application/json
+
+{
+    
+  }
+
+
+### DELETE product
+DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/products/91
+
+###GET request for users
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/users
+
+### add new user
+POST https://63f45eca3f99f5855dae29dc.mockapi.io/users
+Content-Type: application/json
+
+{
+      "id":2,
+      "username": "user1",
+      "fullname": "User 1",
+      "email": "user@mail.com",
+      "password": "1234",
+      "profile": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/762.jpg",
+      "role": "user",
+      "location":"Delhi",
+      "orders":[]
+  }
+
+### update user data
+PUT https://63f45eca3f99f5855dae29dc.mockapi.io/products/90
+Content-Type: application/json
+
+{
+    "special": "ONLY AT DXL",
+    "name": "Nautica Navtech 1/2-Zip Fleece Pullover",
+    "price": 8741,
+    "category": "hoodie",
+    "images": [
+      "https://images.dxl.com/is/image/CasualMale/pB9209?$splp$"
+    ],
+    "color": [
+      "https://images.dxl.com/is/image/CasualMale/pB9209dark_vintage_hthr_sw?$Swatch$"
+    ]
+  }
+
