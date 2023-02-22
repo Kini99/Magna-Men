@@ -5,19 +5,25 @@ font-family: 'Libre Franklin', sans-serif;
 }
 
 /* content */
+body{
+    width:90%;
+    margin:auto
+}
+
 
 h1{
     text-align: center;
 }
 
-#categories{
+.categories{
     display: flex;
     justify-content: space-around;
     margin-bottom: 40px;
 }
 
-#categories img{
+.categories img{
     width:100px;
+    cursor: pointer;
 }
 
 .functions{
@@ -28,7 +34,23 @@ h1{
     font-weight: bolder;
 }
 
-table{
+.searchFunc{
+    display: flex;
+    justify-content: space-around;
+}
+.searchFunc label, select{
+    height: 25px;
+    margin: 22px 40px 0 0;
+}
+#searchSub{
+    display:none;
+}
+#search_icon , #search{
+    height: 25px;
+    margin: 22px 40px 20px 0;
+}
+
+/* table{
     width:90%;
     margin: auto;
     border-spacing: 0;
@@ -48,12 +70,89 @@ table th,td{
 table td button{
     margin:0;
     font-size: 15px;
+} */
+
+.card-list{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:40px 20px;
+    margin-bottom: 40px;
+}
+.card-list h4,h5{
+margin-bottom: 0;
+margin-top: 0;
+}
+.card-list h5{
+  font-weight: lighter;
+    }
+.card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding:20px;
+}
+.card img{
+width:100%;
 }
 .paginationContainer{
 display: flex;
 justify-content: center;
 align-items: center;
+margin-bottom: 40px;
 }
 #pagination{
 display: inline;
 }
+#pagination button{
+cursor: pointer;
+}
+
+.editProduct-popup-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #181824ce;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    z-index: 1;
+    display: none;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+
+ #editPopup {
+    background-color: #181824ce;
+    width: 40vw;
+    padding: 20px;
+  }
+  #editPopup form {
+    display: flex;
+    flex-direction: column;
+  }
+  #editPopup form label{
+    color:#fff;
+  }
+  #editPopup form input {
+    padding: 5px 10px;
+    font-size: 18px;
+    /* border: 1px solid #eb0583; */
+    border-radius: 2px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  #close-popup-Editform {
+    position: absolute;
+    transform: translate(-30px, -30px);
+    cursor: pointer;
+    font-size: 30px;
+    color: red;
+  }
+  #editProduct {
+    width: 50%;
+    margin: auto;
+    background-color: #fff;
+    color: black;
+    padding: 8px;
+    font-size: 18px;
+    cursor: pointer;
+  }

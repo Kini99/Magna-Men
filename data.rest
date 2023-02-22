@@ -34,19 +34,29 @@ Content-Type: application/json
   }
 
 ### update user data
-PUT https://63f45eca3f99f5855dae29dc.mockapi.io/products/90
+PUT https://63f45eca3f99f5855dae29dc.mockapi.io/products/1
 Content-Type: application/json
 
 {
-    "special": "ONLY AT DXL",
-    "name": "Nautica Navtech 1/2-Zip Fleece Pullover",
-    "price": 8741,
-    "category": "hoodie",
-    "images": [
-      "https://images.dxl.com/is/image/CasualMale/pB9209?$splp$"
-    ],
-    "color": [
-      "https://images.dxl.com/is/image/CasualMale/pB9209dark_vintage_hthr_sw?$Swatch$"
-    ]
-  }
+    "id": 1,
+      "special": "BUY MORE SAVE MORE",
+      "name": "Harbor Bay Space Dye Pocket T-Shirt",
+      "category": "tshirt",
+      "price": 1122,
+      "minPrice": 1122,
+      "maxPrice": 2676,
+      "sale-message": "Save Up To 58%",
+      "images": [
+        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye?$splp$"
+      ],
+      "color": [
+        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye_sw?$Swatch$"
+      ]
+}
 
