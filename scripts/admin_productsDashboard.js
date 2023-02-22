@@ -10,11 +10,11 @@ fetch(`${baseServerURL}/products`)
   .then(res => res.json())
   .then(data => {
     totalProducts = data.length;
-    console.log(totalProducts)
+    // console.log(totalProducts)
     for (let i = 0; i < data.length; i++) {
       allProductsData.push(data[i]);
     }
-    console.log(allProductsData)
+    // console.log(allProductsData)
   })
 
 let productsData = []
@@ -28,7 +28,7 @@ async function fetchProductsData(pageNumber) {
     showPagination(totalProducts, 10);
 
     display_products(products_data);
-    console.log(products_data);
+    // console.log(products_data);
     productsData = [...products_data]
   } catch (error) {
     console.log(error);
@@ -41,69 +41,73 @@ async function fetchProductsData(pageNumber) {
 let displayel = document.querySelector("#displayContainer");
 
 function display_products(data) {
+  // console.log(data)
   displayel.innerHTML = null;
-  data.forEach((element, index) => {
-    let div = 
-    // div.setAttribute("class","card")
-    // div.innerHTML=
+  // data.forEach((element, index) => {
 
-    displayel.appendChild(div);
+      let list = `<div class="card-list">${data.map((item)=>{
+        if(item.category==undefined){
+          item.category = "NA";
+        }
+        return getCard(item.images[0],item.name,item.id,item.category,item.special,item.price)}).join("")}
+        </div>`
 
-    let id = document.createElement("td");
-    id.innerText = element.id;
+    displayel.innerHTML=list
 
-    let image = document.createElement("td");
-    let img = document.createElement("img");
-    img.setAttribute("src", `${element.images[0]}`)
-    image.append(img);
+    let editBtn = document.getElementsByClassName("editBtn");
+    // console.log(editBtn)
+    let editBtnArr=[]
+    editBtnArr=[...editBtn]
+    // console.log(editBtnArr)
+editBtnArr.forEach((e)=>{
+  e.addEventListener("click", (event) => {
+  //  console.log(event.target.dataset.editId)
+  let editID=event.target.dataset.editId
+  //   let product = data.editID
+    // console.log(editID)
 
-    let name = document.createElement("td");
-    name.innerText = element.name;
+    fetch(`${baseServerURL}/products/${editID}`)
+    .then(req=>req.json())
+    .then(res=>editPopup(res))
 
-    let category = document.createElement("td");
-    if (element.category == "tshirt") {
-      category.innerText = "T-Shirt"
-    } else if (element.category == "hoodie") {
-      category.innerText = "Hoodie"
-    } else {
-      category.innerText = "Pant/Shorts"
-    }
-
-    let tag = document.createElement("td");
-    if (element.special != undefined) {
-      tag.innerText = element.special;
-    } else {
-      tag.innerText = "NA"
-    }
-
-
-    let price = document.createElement("td");
-    price.innerText = "₹ " + element.price + " /-";
-
-    let editBtn = document.createElement("td");
-    editBtn.innerText = "Edit Item";
-    editBtn.style.cursor = "pointer";
-    editBtn.style.color = "green";
-
-    editBtn.addEventListener("click", () => {
-      let product = { ...element }
-      // console.log(product)
-      editPopup(product);
-    })
-
-    let removeBtn = document.createElement("td");
-    removeBtn.innerText = "Remove Item";
-    removeBtn.style.cursor = "pointer";
-    removeBtn.style.color = "red";
-
-    removeBtn.addEventListener("click", () => {
-      removeProduct(element);
-    })
-
-
-    tr.append(id, image, name, category, tag, price, editBtn, removeBtn);
-    displayel.append(tr);
   })
+})
+    
+
+    let removeBtn = document.getElementsByClassName("removeBtn");
+   let removeBtnArr=[];
+   removeBtnArr=[...removeBtn]
+   removeBtnArr.forEach((e)=>{
+    e.addEventListener("click", (event) => {
+      let removeID=event.target.dataset.removeId
+  //   let product = data.editID
+    // console.log(removeID)
+
+    fetch(`${baseServerURL}/products/${removeID}`)
+    .then(req=>req.json())
+    .then(res=>removeProduct(res))
+    })
+   })
+    
+  // })
+}
+
+function getCard(images,name,id,category,special,price){
+  
+if(category==undefined){
+  category="NA"
+}
+
+  let card=`<div class="card"><img src="${images}" alt="">
+  <h4>${name}</h4>
+  <h5>ID: ${id}</h5>
+  <h5>Category: ${category}</h5>
+  <h5>Tag: ${special}</h5>
+  <h5>Price: ₹${price}/-</h5>
+  <button class="editBtn" data-edit-id="${id}">Edit Item</button>
+  <button class="removeBtn" data-remove-id="${id}">Remove Item</button></div>`
+
+  return card
 }
 
 
@@ -118,8 +122,7 @@ function removeProduct(data) {
 //Edit Product details
 
 function editPopup(data) {
-  let popupDisplay = document.getElementById("editPopup")
-  popupDisplay.style.display = "flex";
+ document.querySelector(".editProduct-popup-section").style.display = "flex";
 
   let formel = document.querySelector("form");
   let obj = {};
@@ -133,18 +136,18 @@ function editPopup(data) {
       document.getElementById("price").value = data1.price;
       obj.id = data1.id
 
-      console.log(document.getElementById("name").value)
+      // console.log(document.getElementById("name").value)
     })
 
   formel.addEventListener("submit", (e) => {
     e.preventDefault();
 
     obj.name = document.getElementById("name").value;
-    obj.images = document.getElementById("image").value;
+    obj.images = [document.getElementById("image").value];
     obj.category = document.getElementById("category").value;
     obj.special = document.getElementById("tag").value;
     obj.price = document.getElementById("price").value;
-    console.log(obj)
+    // console.log(obj)
     editProduct(obj)
   })
 
@@ -161,7 +164,16 @@ function editProduct(obj) {
     .then(res => {
       fetchProductsData(1);
     })
+    alert("Product Changes Saved!")
+    document.querySelector(".editProduct-popup-section").style.display = "none";
 }
+
+document.getElementById("editProduct").addEventListener("click", () => {
+  document.querySelector(".form-popup-section").style.display = "flex";
+});
+document.getElementById("close-popup-Editform").addEventListener("click", () => {
+  document.querySelector(".editProduct-popup-section").style.display = "none";
+});
 
 // Pagination
 
@@ -197,39 +209,73 @@ let hoodiesBtn = document.getElementById("hoodies");
 let pantsBtn = document.getElementById("pants");
 let sortSelect = document.getElementById("sortByPrice");
 
+let currentCategory;
+
 tshirtBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "tshirt");
-  console.log("filterData")
+  // filteredData=[filterData]
+  currentCategory=filterData
+  // console.log("filterData")
   filterTable(filterData)
 });
 hoodiesBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "hoodie");
-  console.log("filterData")
+  // filteredData=[...filterData]
+  currentCategory=filterData
   filterTable(filterData)
 });
 pantsBtn.addEventListener("click", () => {
   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
-  console.log("filterData")
+  // filteredData=[filterData]
+  currentCategory=filterData
   filterTable(filterData)
 });
-sortSelect.addEventListener("change", () => {
-  console.log(filterData);
-  filterTable(filterData);
+
+
+
+sortSelect.addEventListener("change", (event) => {
+  let sortedData;
+  console.log(currentCategory)
+
+  if(currentCategory!==undefined){
+  if (event.target.value == "High to Low") {
+    sortedData = currentCategory.sort((a, b) => b.price - a.price);
+  } else if (event.target.value == "Low to High") {
+    sortedData = currentCategory.sort((a, b) => a.price - b.price);
+  }else if(event.target.value == ""){
+    sortedData = currentCategory
+  }
+  filterTable(sortedData);
+}else{
+  if (event.target.value == "High to Low") {
+    sortedData = allProductsData.sort((a, b) => b.price - a.price);
+  } else if (event.target.value == "Low to High") {
+    sortedData = allProductsData.sort((a, b) => a.price - b.price);
+  }else if(event.target.value == ""){
+    sortedData = allProductsData
+    console.log(sortedData)
+    // filterTable(sortedData);
+    // return
+  }
+  filterTable(sortedData);
+}
 });
+
+
 
 function filterTable(filterData) {
   // console.log("working")
   // console.log(filterData)
   // console.log(sortSelect.value)
-  if (sortSelect.value == "High to Low") {
-    filterData = filterData.sort((a, b) => console.log(b.price, a.price));
-  } else if (sortSelect.value == "Low to High") {
-    filterData = filterData.sort((a, b) => a.price - b.price);
-  }
+
   console.log(filterData)
   display_products(filterData);
 }
 
+
+function sortByPrice(){
+ 
+}
 
 
 //search function
@@ -314,3 +360,4 @@ searchBtn.addEventListener("click", (e) => {
 
 //     tr.append(id, image, name, category, tag, price, editBtn, removeBtn);
 //     displayel.append(tr);
+

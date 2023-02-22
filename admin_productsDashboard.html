@@ -1,22 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Dashboard</title>
+    <link rel="stylesheet" href="./styles/admin_productsDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  
+  <body>
+    
+    <!-- popup box -->
+    <section class="editProduct-popup-section">
+    <div id="editPopup">
+      <i class="fa-solid fa-circle-xmark" id="close-popup-Editform"></i>
+      <form id="edit-product">
+        <label for="name">NAME: </label>
+        <input type="text" placeholder="Name" id="name">
+        <label for="image">IMAGE</label>
+        <input type="text" placeholder="Enter Image Link" id="image">
+        <label for="category">CATEGORY</label>
+        <input type="text" placeholder="Category" id="category">
+        <label for="tag">SPECIAL TAG</label>
+        <input type="text" placeholder="Special Tag" id="tag">
+        <label for="price">PRICE</label>
+        <input type="number" placeholder="Price" id="price">
+        <input type="submit" id="editProduct" value="SUBMIT">
+      </form>
+    </div>
+    </section>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products Dashboard</title>
-  <link rel="stylesheet" href="./styles/admin_productsDashboard.css">
-</head>
-
-<body>
 
   <!-- header -->
+
+  
+  <section class="left-section">
+    <div class="logo-container">
+        <img src="./images/Magnawhite.png" alt="" class="magna magnaWhite">
+        <i class="fa-solid fa-xmark" id="closeMenu"></i>
+    </div>
+    <div class="links-container">
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-cube"></i>Dashboard</a></li>
+        <li><a href="#"><i class="fa-solid fa-users"></i>Users</a></li>
+        <li><a href="#"><i class="fa-solid fa-truck-fast"></i>Orders</a></li>
+        <li><a href="#"><i class="fa-solid fa-industry"></i></i>Products</a></li>
+        <li id="open-form"><a href="#"><i class="fa-solid fa-circle-plus"></i>Add New Product</a></li>
+      </ul>
+    </div>
+    <p id="settings"><i class="fa-sharp fa-solid fa-gear"></i>Settings<i class="fa-sharp fa-solid fa-angle-down"></i></p>
+  </section>
+
+
+
+
+
+  <div class="dashboard-navigation">
+    <nav>
+      <p>Overview dashboard</p>
+      <span class="date-container">
+        18 Feb 2023 - <span id="date"> &nbsp; 27 Feb 2023</span>
+      </span>
+    </nav>
+    <hr class="lining" />
+  </div>
 
   <!-- content -->
 
   <h1>PRODUCT DETAILS</h1>
-  <div id="categories">
+  <div class="categories">
     <div id="tshirts">
       <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
         alt="Image Unavailable">
@@ -36,15 +90,17 @@
 
 
   <div class="functions">
-
+<div class="searchFunc">
     <label for="search">Search</label>
     <input type="text" placeholder="Search by Name or Category" id="search">
+    <input type="submit" id="searchSub">
     <img src="./images/Search Icon.png" alt="" id="search_icon">
+  </div>
 
     <select name="Price" id="sortByPrice">
       <option value="">SORT BY PRICE</option>
-      <option value="high">Low to High</option>
-      <option value="medium">High to Low</option>
+      <option value="Low to High">Low to High</option>
+      <option value="High to Low">High to Low</option>
     </select>
   </div>
 
@@ -82,13 +138,7 @@
 
   <div id="displayContainer">
 
-    <div class="card">
-<img src="`${element.images[0]}`" alt="">
-<h3>Product Name: ${element.name}</h3>
-<h4>Product ID: ${element.id}</h4>
-<h4>Product Category: ${element.category}</h4>
-<h4>Product Tag: ${element.special}</h4>
-    </div>
+    <!-- appending all products data here -->
 
   </div>
 
@@ -98,16 +148,7 @@
     <div id="pagination"></div>
   </div>
 
-  <div id="editPopup">
-    <form>
-      <input type="text" placeholder="Name" id="name">
-      <input type="text" placeholder="Enter Image Link" id="image">
-      <input type="text" placeholder="Category" id="category">
-      <input type="text" placeholder="Special Tag" id="tag">
-      <input type="number" placeholder="Price" id="price">
-      <input type="submit">
-    </form>
-  </div>
+
 
 
   <!-- footer -->
