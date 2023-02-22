@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link rel="stylesheet" href="./styles/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav class="topNav">
+      <div class="name-logo-container">
+        <i class="fa-solid fa-bars" id="openMenu"></i>
+        <img src="./images/Magna.png" alt="" class="magna">
+      </div>
+      <div class="nav-right-container">
+        <div>
+          <img
+            src="https://png.pngitem.com/pimgs/s/128-1280822_check-mark-box-clip-art-blue-admin-icon.png"
+            alt=""
+            class="admin-logo"
+          />
+          <p>Welcome Admin</p>
+          <button id="log-out">LOG OUT</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- popup add product form  -->
+    <section class="form-popup-section">
+        <div class="popup-form">
+            <i class="fa-solid fa-circle-xmark" id="close-popup-form"></i>
+            <form id="add-product">
+                <input type="text" placeholder="Name" id="name" required />
+                <input type="text" placeholder="Image" id="image" style="width: 100%;" required />
+                <input type="text" placeholder="Color Icon" id="colorIcon" style="width: 100%;" required />
+                <select id="category" required>
+                    <option value="tshirt">tshirt</option>
+                    <option value="pants_shorts">pants_shorts</option>
+                    <option value="hoodie">hoodie</option>
+                </select>
+                <input type="number" placeholder="Price" id="price" required />
+                <input type="text" placeholder="special" id="special" />
+                <textarea id="sale_message" cols="30" rows="5" placeholder="sale-message" ></textarea>
+                <button id="add-product" type="submit" style="background-color: #181824;">ADD</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+    <section class="left-section">
+        <div class="logo-container">
+            <img src="./images/Magnawhite.png" alt="" class="magna magnaWhite">
+            <i class="fa-solid fa-xmark" id="closeMenu"></i>
+        </div>
+        <div class="links-container">
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-cube"></i>Dashboard</a></li>
+            <li><a href="#"><i class="fa-solid fa-users"></i>Users</a></li>
+            <li><a href="#"><i class="fa-solid fa-truck-fast"></i>Orders</a></li>
+            <li><a href="#"><i class="fa-solid fa-industry"></i></i>Products</a></li>
+            <li id="open-form"><a href="#"><i class="fa-solid fa-circle-plus"></i>Add New Product</a></li>
+          </ul>
+        </div>
+        <p id="settings"><i class="fa-sharp fa-solid fa-gear"></i>Settings<i class="fa-sharp fa-solid fa-angle-down"></i></p>
+      </section>
+
+
+
+
+
+      <div class="dashboard-navigation">
+        <nav>
+          <p>Overview dashboard</p>
+          <span class="date-container">
+            18 Feb 2023 - <span id="date"> &nbsp; 27 Feb 2023</span>
+          </span>
+        </nav>
+        <hr class="lining" />
+      </div>
+
+      <section class="dashboard-section">
+
+          <div class="main-container">
+              <div class="main-left-section">
+                  <div class="total-users-container">
+                <i class="fa-solid fa-users"></i>
+                <div class="count-card">
+                    <p class="total-count">23424</p>
+                    <p class="total-count-title">Total Users</p>
+                </div>
+            </div>
+                  <div class="total-users-container">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                <div class="count-card">
+                    <p class="total-count">23424</p>
+                    <p class="total-count-title">Total Orders</p>
+                </div>
+            </div>
+                  <div class="total-users-container">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                <div class="count-card">
+                    <p class="total-count">23424</p>
+                    <p class="total-count-title">Available Products</p>
+                </div>
+            </div>
+        </div>
+        <section class="right-section">
+            <span class="total-sale">Total Sale Price :- <span id="totalPrice">0</span></span>
+            <div class="cards-container"></div>
+        </section>
+    </div>
+
+</section>
+    <div class="chart-container"></div>
+</body>
+<script src="./scripts/admin.js"></script>
+</html>
