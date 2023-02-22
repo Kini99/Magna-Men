@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+
+:root{
+font-family: 'Libre Franklin', sans-serif;
+}
+
+/* content */
+
+h1{
+    text-align: center;
+}
+
+#categories{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+#categories img{
+    width:100px;
+}
+
+.functions{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+table{
+    width:90%;
+    margin: auto;
+    border-spacing: 0;
+    border: 0.1px solid black;
+    margin-bottom: 20px;
+}
+table th{
+    background-color: black;
+    color: white;
+}
+table th,td{
+    border: 0.1px solid black;
+    padding:5px;
+    text-align: center;
+}
+
+table td button{
+    margin:0;
+    font-size: 15px;
+}
+.paginationContainer{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#pagination{
+display: inline;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Dashboard</title>
+  <link rel="stylesheet" href="./styles/admin_productsDashboard.css">
+</head>
+
+<body>
+
+  <!-- header -->
+
+  <!-- content -->
+
+  <h1>PRODUCT DETAILS</h1>
+  <div id="categories">
+    <div id="tshirts">
+      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
+        alt="Image Unavailable">
+      <h3>T-Shirts</h3>
+    </div>
+    <div id="hoodies">
+      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Sweatshirts"
+        alt="Image Unavailable">
+      <h3>Hoodies & Sweatshirts</h3>
+    </div>
+    <div id="pants">
+      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Casual_Pants"
+        alt="Image Unavailable">
+      <h3>Pants & Shorts</h3>
+    </div>
+  </div>
+
+
+  <div class="functions">
+
+    <label for="search">Search</label>
+    <input type="text" placeholder="Search by Name or Category" id="search">
+    <img src="./images/Search Icon.png" alt="" id="search_icon">
+
+    <select name="Price" id="sortByPrice">
+      <option value="">SORT BY PRICE</option>
+      <option value="high">Low to High</option>
+      <option value="medium">High to Low</option>
+    </select>
+  </div>
+
+
+  <!-- <button class="new" onclick="popup()">Add New Product</button> -->
+  <!-- <div id="addNew">
+    <img src="Images/close icon.png" alt="" onclick="close()">
+    <form>
+      ID: <input type="number">
+      Name: <input type="text">
+      Brand: <input type="text">
+      Description: <input type="text">
+      Tag: <input type="text">
+      Price: <input type="number">
+      <input type="submit" id="submitBtn">
+    </form>
+  </div> -->
+
+<!-- 
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>IMAGE</th>
+      <th>PRODUCT NAME</th>
+      <th>CATEGORY</th>
+      <th>SPECIAL TAG</th>
+      <th>PRICE</th>
+      <th>EDIT PRODUCT DETAILS</th>
+      <th>REMOVE PRODUCT</th>
+    </thead>
+    <tbody>
+      appending all products data here
+   </tbody>
+  </table>  -->
+
+  <div id="displayContainer">
+
+    <div class="card">
+<img src="`${element.images[0]}`" alt="">
+<h3>Product Name: ${element.name}</h3>
+<h4>Product ID: ${element.id}</h4>
+<h4>Product Category: ${element.category}</h4>
+<h4>Product Tag: ${element.special}</h4>
+    </div>
+
+  </div>
+
+
+
+  <div class="paginationContainer">
+    <div id="pagination"></div>
+  </div>
+
+  <div id="editPopup">
+    <form>
+      <input type="text" placeholder="Name" id="name">
+      <input type="text" placeholder="Enter Image Link" id="image">
+      <input type="text" placeholder="Category" id="category">
+      <input type="text" placeholder="Special Tag" id="tag">
+      <input type="number" placeholder="Price" id="price">
+      <input type="submit">
+    </form>
+  </div>
+
+
+  <!-- footer -->
+
+</body>
+
+</html>
+<script src="./scripts/admin_productsDashboard.js"></script>
