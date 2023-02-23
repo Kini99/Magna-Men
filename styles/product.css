@@ -70,7 +70,7 @@ div > h3 {
   position: absolute;
   display: flex;
   width: 1410px;
-  height: 6202px;
+  /* height: 6202px; */
   left: 127px;
   top: 557px;
 
@@ -188,12 +188,30 @@ fieldset:hover{
   /* border: 1px solid; */
   margin: auto;
   padding: 15px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  line-height: 25px;
+  font-size: 13px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
   border-radius: 8px;
 }
-.product_card_image{
-  /* filter: drop-shadow(8px 8px 10px gray); */
+
+.color-container{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 5px 0px;
+}
+.color-btn {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 5px;
+  /* border: 5px double white; */
+  /* border: 1px solid black; */
+  border: 3px solid white; 
+  outline: 1px solid rgb(199, 197, 197);
   
+
 }
 
 .paginationContainer{
