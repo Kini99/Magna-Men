@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
+
+:root{
+font-family: 'Libre Franklin', sans-serif;
+word-spacing: 3px;
+}
+/* content */
+
+body{
+    width:90%;
+    margin:auto
+}
+h1{
+    text-align: center;
+    background-color: #152d47;
+    color: white;
+    border-radius: 15px;
+}
+.charts {
+    display: flex;
+    background-color: #fff;
+  }
+  .charts-left {
+    width: 20vw;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .charts-left i {
+    color: #fff;
+    background-color:#152d47;
+    width: 50px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+  }
+  
+  .mainDiv {
+    display: flex;
+    align-items: center;
+    height: 30%;
+    background-color: #d3d5db84;
+    border-radius: 4px;
+    margin: 0 20px;
+  }
+  .totalCount {
+    font-size: 20px;
+    margin:0
+  }
+  
+  .totalCountTitle {
+    font-size: 14px;
+    margin:0
+  }
+
+nav{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+nav p{
+padding:10px;
+}
+nav p:hover{
+    cursor: pointer;
+    background-color: #152d47;
+    color: white;
+}
+
+.functions{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bolder;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding:0 20px;
+}
+
+.searchFunc{
+    display: flex;
+    justify-content: space-around;
+    width:40%;
+}
+.searchFunc input{
+    width:70%;
+    margin:0;
+}
+.searchFunc label, select{
+    height: 25px;
+    margin: 22px 5px 0 0;
+}
+#searchSub{
+    display:none;
+}
+#search_icon , #search{
+    height: 25px;
+    margin: 22px 0 20px 0;
+}
+#search_icon{
+cursor: pointer;
+}
+
+table{
+    border:1px solid black;
+    margin-bottom: 20px;
+}
+thead th{
+border-top: 1px solid black;
+border-bottom: 1px solid black;
+border-spacing: 0;
+padding:5px;
+}
+td{
+    text-align: center;
+}
+tr:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
