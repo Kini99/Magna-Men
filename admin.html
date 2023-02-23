@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin</title>
     <link rel="stylesheet" href="./styles/admin.css" />
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap"
+    rel="stylesheet"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+      />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
+    <span id="dashboardScroll"></span>
     <nav class="topNav">
       <div class="name-logo-container">
         <i class="fa-solid fa-bars" id="openMenu"></i>
@@ -60,9 +63,6 @@
         </div>
     </section>
 
-
-
-
     <section class="left-section">
         <div class="logo-container">
             <img src="./images/Magnawhite.png" alt="" class="magna magnaWhite">
@@ -70,18 +70,19 @@
         </div>
         <div class="links-container">
           <ul>
-            <li><a href="#"><i class="fa-solid fa-cube"></i>Dashboard</a></li>
-            <li><a href="#"><i class="fa-solid fa-users"></i>Users</a></li>
+            <li><a href="#dashboardScroll"><i class="fa-solid fa-cube"></i>Dashboard</a></li>
+            <li><a href="#usersScroll"><i class="fa-solid fa-users"></i>Users</a></li>
             <li><a href="#"><i class="fa-solid fa-truck-fast"></i>Orders</a></li>
             <li><a href="#"><i class="fa-solid fa-industry"></i></i>Products</a></li>
             <li id="open-form"><a href="#"><i class="fa-solid fa-circle-plus"></i>Add New Product</a></li>
+            <li id="open-form"><a href="#outTeam"><i class="fa-brands fa-teamspeak"></i>Our Team</a></li>
           </ul>
         </div>
         <p id="settings"><i class="fa-sharp fa-solid fa-gear"></i>Settings<i class="fa-sharp fa-solid fa-angle-down"></i></p>
+        <p class="logoutHam"> <i class="fa-solid fa-right-from-bracket"></i> Log Out </p>
       </section>
 
-
-
+      
 
 
       <div class="dashboard-navigation">
@@ -98,24 +99,24 @@
 
           <div class="main-container">
               <div class="main-left-section">
-                  <div class="total-users-container">
+                  <div class="total-users-container" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">
                 <i class="fa-solid fa-users"></i>
                 <div class="count-card">
-                    <p class="total-count">23424</p>
+                    <p class="total-count" id="total-users-count">0</p>
                     <p class="total-count-title">Total Users</p>
                 </div>
             </div>
-                  <div class="total-users-container">
+                  <div class="total-users-container" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">
                     <i class="fa-solid fa-cart-shopping"></i>
                 <div class="count-card">
-                    <p class="total-count">23424</p>
+                    <p class="total-count" id="total-orders">0</p>
                     <p class="total-count-title">Total Orders</p>
                 </div>
             </div>
-                  <div class="total-users-container">
+                  <div class="total-users-container" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">
                     <i class="fa-solid fa-bag-shopping"></i>
                 <div class="count-card">
-                    <p class="total-count">23424</p>
+                    <p class="total-count" id="total-available-products">0</p>
                     <p class="total-count-title">Available Products</p>
                 </div>
             </div>
@@ -127,7 +128,195 @@
     </div>
 
 </section>
-    <div class="chart-container"></div>
-</body>
+
+<section class="charts-section">
+  <div class="chart-container"></div>
+</section>
+
+    <!-- users dettils  -->
+
+    <section class="users-section" id="usersScroll">
+      <div class="users-details-container" id="users-details-container">
+      </div>
+    </section>
+
+    <section class="employees-section" id="outTeam">
+      <p class="ourTeam">Out Team</p>
+      <div class="employees-container">
+        <div class="employeeCard">
+          <img
+            src="./images/kinjal.jpg"
+            alt=""
+          />
+          <p class="employeeName">Kinjal Momaya</p>
+          <p class="postTitle">Software Engineer
+            <p class="postSubtitle">Web dev</p>
+          </p>
+          <p class="role">
+            Server APIs, Admin product page, Edit and Delete operations
+          </p>
+          <p class="email">afrozsaifi80@gmail.com</p>
+        </div>
+        <div class="employeeCard">
+          <img
+            src="./images/gaurav.jpg"
+            alt=""
+          />
+          <p class="employeeName">Gaurav Shukla</p>
+          <p class="postTitle">Software Engineer
+            <p class="postSubtitle">Web dev</p>
+          </p>
+          <p class="role">
+            Product page, Add to Cart, Filters, Login and SignUp forms
+          </p>
+          <p class="email">afrozsaifi80@gmail.com</p>
+        </div>
+        <div class="employeeCard">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg"
+            alt=""
+          />
+          <p class="employeeName">Afroz Khan</p>
+          <p class="postTitle">Software Engineer
+            <p class="postSubtitle">Web dev</p>
+          </p>
+          <p class="role">
+            JSON files, Admin dashboard, Admin users, Admin employees, Add new product operation
+          </p>
+          <p class="email">afrozsaifi80@gmail.com</p>
+        </div>
+        <div class="employeeCard">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg"
+            alt=""
+          />
+          <p class="employeeName">Afroz Khan</p>
+          <p class="postTitle">Software Engineer
+            <p class="postSubtitle">Web dev</p>
+          </p>
+          <p class="role">
+            Server APIs, Admin dashboard, Admin users, admin team
+          </p>
+          <p class="email">afrozsaifi80@gmail.com</p>
+        </div>
+        <div class="employeeCard">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg"
+            alt=""
+          />
+          <p class="employeeName">Afroz Khan</p>
+          <p class="postTitle">Software Engineer
+            <p class="postSubtitle">Web dev</p>
+          </p>
+          <p class="role">
+            Server APIs, Admin dashboard, Admin users, admin team
+          </p>
+          <p class="email">afrozsaifi80@gmail.com</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-section">
+      <footer>
+      
+
+        <div class="row">
+             <div class="col-3">                
+                 <div class="link-cat" onclick="footerToggle(this)">
+                     <span class="footer-toggle"></span>
+                     <span class="footer-cat">CUSTOMER SUPPORT</span>
+                 </div>
+                 <ul class="footer-cat-links">
+                     <li><a href=""><span>Curbside Pickup</span></a></li>
+                     <li><a href=""><span>DXL Deals</span></a></li>
+                     <li><a href=""><span>DXL Rewards Club</span></a></li>
+                     <li><a href=""><span>Find a Wish List</span></a></li>
+                     <li><a href=""><span>Shipping & Delivery</span></a></li>
+                 </ul>
+             </div>
+             <div class="col-3">
+                 <div class="link-cat" onclick="footerToggle(this)">
+                     <span class="footer-toggle"></span>
+                     <span class="footer-cat">CONTACT US</span>
+                 </div>
+                 <ul class="footer-cat-links">
+                     <li><a href=""><span>Customer Service</span></a></li>
+                     <li><a href=""><span>Chat Now</span></a></li>
+                     <li><a href=""><span>Email Us</span></a></li>
+                     <li><a href=""><span>1.855.746.7395</span></a></li>
+                     <li><a href=""><span>Find a Store</span></a></li>
+                 </ul>
+             </div>
+             <div class="col-3">
+                 <div class="link-cat" onclick="footerToggle(this)">
+                     <span class="footer-toggle"></span>
+                     <span class="footer-cat">Quick Links</span>
+                 </div>
+                 <ul class="footer-cat-links">
+                     <li><a href=""><span>Reviews</span></a></li>
+                     <li><a href=""><span>Terms & Condition</span></a></li>
+                     <li><a href=""><span>Disclaimer</span></a></li>
+                     <li><a href=""><span>Site Map</span></a></li>
+                 </ul>
+             </div>
+             <div class="col-3" id="newsletter">
+                 <span>SIGN UP FOR OUR VERY BEST DEALS</span>
+                 <form id="subscribe">
+                     <input type="email" id="subscriber-email" placeholder="Enter Email Address"/>
+                     <input type="submit" value="Subscribe" id="btn-scribe"/>
+                 </form>
+                 
+                 <div class="social-links social-2">
+                     <a href=""><i class="fab fa-facebook-f"></i></a>
+                     <a href=""><i class="fab fa-twitter"></i></a>
+                     <a href=""><i class="fab fa-linkedin-in"></i></a>
+                     <a href=""><i class="fab fa-instagram"></i></a>
+                     <a href=""><i class="fab fa-tumblr"></i></a>
+                     <a href=""><i class="fab fa-reddit-alien"></i></a>
+                 </div>
+ 
+                 <div id="address">
+                     <span>Office Location</span>
+                     <ul>
+                         <li>
+                             <i class="far fa-building"></i>
+                             <div>Los Angeles<br/>
+                                 (310) 390-3845
+                                 5905 Sepulveda Boulevard
+                                 Culver City, CA 90230</div>
+                         </li>
+                         <li>
+                             <i class="fas fa-gopuram"></i>
+                             <div>Delhi<br/>
+                             Office 150B, Behind Sana Gate Char Bhuja Tower, Station Road, Delhi</div>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="social-links social-1 col-6">
+                 <a href=""><i class="fab fa-facebook-f"></i></a>
+                 <a href=""><i class="fab fa-twitter"></i></a>
+                 <a href=""><i class="fab fa-linkedin-in"></i></a>
+                 <a href=""><i class="fab fa-instagram"></i></a>
+                 <a href=""><i class="fab fa-tumblr"></i></a>
+                 <a href=""><i class="fab fa-reddit-alien"></i></a>
+             </div>
+        </div>
+        <div id="copyright">
+             All Rights Reserved 2011-2023
+        </div>
+        <div id="owner">
+            <span>
+             Destination XL Group, Inc. All Rights Reserved.
+            </span>
+        </div>
+     </footer>
+    </section>
+
+    </body>
 <script src="./scripts/admin.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </html>

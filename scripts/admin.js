@@ -1,8 +1,17 @@
-let baesUrl = "https://63f45eca3f99f5855dae29dc.mockapi.io/products";
+let baesUrl = "https://63f45eca3f99f5855dae29dc.mockapi.io/";
 
 let addNewProductForm = document.getElementById("add-product");
+let totalUserCount = document.getElementById("total-users-count");
+let totalOrdersCount = document.getElementById("total-orders");
+let totalAvailableProductsCoutn = document.getElementById(
+  "total-available-products"
+  );
+  let usersDetailsContainer = document.getElementById("users-details-container");
+  let avatars = ["https://cdn-icons-png.flaticon.com/512/190/190670.png", "https://static.vecteezy.com/system/resources/previews/002/400/532/original/young-happy-businessman-character-avatar-wearing-business-outfit-isolated-free-vector.jpg", "https://cdn-icons-png.flaticon.com/512/219/219969.png", "https://cdn-icons-png.flaticon.com/512/146/146035.png", "https://cdn-icons-png.flaticon.com/512/236/236832.png"]
 
-getApiData(baesUrl);
+getApiData(`${baesUrl}products`);
+
+totalUsers(`${baesUrl}users`);
 
 addNewProductForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -15,13 +24,13 @@ addNewProductForm.addEventListener("submit", (event) => {
     images: [addNewProductForm.image.value],
     color: [addNewProductForm.colorIcon.value],
   };
-  fetch(baesUrl, {
+  fetch(`${baesUrl}products`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify(bodyObj),
-  }).then((res) => getApiData(baesUrl));
+  }).then((res) => getApiData(`${baesUrl}products`));
   alert("Product added succesfully");
   addNewProductForm.name.value = "";
   addNewProductForm.image.value = "";
@@ -50,33 +59,22 @@ function getApiData(url) {
   fetch(url)
     .then((req) => req.json())
     .then((res) => {
-      console.log(res);
-      let total = 0;
-      let shirts = 0;
-      let hoodies = 0;
-      let pants_shorts = 0;
-      let totalCount = 0;
-      let shirtsCout = 0;
-      let hoodiesCount = 0;
-      let pants_shorts_count = 0;
-      res.forEach((ele) => {
-        total += +ele.price || 0;
-        totalCount++;
-        if (ele.category == "tshirt") {
-          shirts += +ele.price || 0;
-          shirtsCout++;
-        } else if (ele.category == "hoodie") {
-          hoodies += +ele.price || 0;
-          hoodiesCount++;
-        } else if (ele.category == "pants_shorts") {
-          pants_shorts += +ele.price || 0;
-          pants_shorts_count++;
+      totalAvailableProductsCoutn.textContent = res.length;
+      let totalAvailableProducts = res.length;
+      let shirtsAvailable = 0;
+      let hoodieAvailable = 0;
+      let pantsAvailable = 0;
+      res.forEach(ele => {
+        if(ele.category == "tshirt"){
+          shirtsAvailable++;
+        }else if(ele.category == "hoodie"){
+          hoodieAvailable++;
+        }else if(ele.category == "pants_shorts"){
+          pantsAvailable++;
         }
-      });
-      console.log(total, shirts, hoodies, pants_shorts);
-      createChart(totalCount, shirtsCout, hoodiesCount, pants_shorts_count);
-      document.getElementById("totalPrice").textContent = `₹ ${total}`;
-      appendProgress(total, shirts, hoodies, pants_shorts);
+      })
+      // console.log("thisisis" + totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable)
+      createChart("Available Products", totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable)
     });
 }
 
@@ -184,28 +182,66 @@ function appendProgressBar(
   }, hoodiespeed);
 }
 
-function createChart(totalCount, shirtsCout, hoodiesCount, pants_shorts_count) {
+function totalUsers(url) {
+  fetch(url)
+    .then((req) => req.json())
+    .then((res) => {
+      totalUserCount.textContent = res.length;
+      let total = 0;
+      let shirts = 0;
+      let hoodies = 0;
+      let pants_shorts = 0;
+      let totalCount = 0;
+      let shirtsCout = 0;
+      let hoodiesCount = 0;
+      let pants_shorts_count = 0;
+      let totalOrders = 0;
+      res.forEach((ele) => {
+        if (ele.orders) {
+          totalOrders += ele.orders.length;
+          totalCount += ele.orders.length;
+          ele.orders.forEach((order) => {
+            total += +order.price || 0;
+            if (order.category == "tshirt") {
+              shirts += +order.price || 0;
+              shirtsCout++;
+            } else if (order.category == "hoodie") {
+              hoodies += +order.price || 0;
+              hoodiesCount++;
+            } else if (order.category == "pants_shorts") {
+              pants_shorts += +order.price || 0;
+              pants_shorts_count++;
+            }
+          });
+        }
+      });
+      totalOrdersCount.textContent = totalOrders;
+      createChart("Sales Count", totalCount, shirtsCout, hoodiesCount, pants_shorts_count);
+      document.getElementById("totalPrice").textContent = `₹ ${total}`;
+      appendProgress(total, shirts, hoodies, pants_shorts);
+      console.log(total, shirts, hoodies, pants_shorts);
+      appendUserDetails(res)
+    });
+}
+
+function createChart(title, totalCount, shirtsCout, hoodiesCount, pants_shorts_count) {
   let ranges = Math.floor(totalCount / 10);
-  // console.log("temp" + temp);
-  document.querySelector(".chart-container").innerHTML = `
+  let tableEl = document.createElement("table");
+  tableEl.innerHTML = `
     <table class="tableChart"> 
-    <caption> Total Sales Count :- ${totalCount} </caption>
+    <caption> Total ${title} :- ${totalCount} </caption>
       <tr>
         <td colspan="3"> 
         <div class="chart">
         <div class="bar" data-percent=${Math.floor(
-          (shirtsCout / totalCount) * 100 + 17
-        )}>${Math.floor((shirtsCout / totalCount) * 100)}</div>
+          (shirtsCout / totalCount) * 100
+        )}>${shirtsCout}</div>
         <div class="bar" data-percent=${Math.floor(
-          (hoodiesCount / totalCount) * 100 
-        )}>${Math.floor(
-(hoodiesCount / totalCount) * 100
-)}</div>
+          (hoodiesCount / totalCount) * 100
+        )}>${hoodiesCount}</div>
         <div class="bar" data-percent=${Math.floor(
-          (pants_shorts_count / totalCount) * 100 + 27
-        )}>${Math.floor(
-(pants_shorts_count / totalCount) * 100
-)}</div>
+          (pants_shorts_count / totalCount) * 100
+        )}>${pants_shorts_count}</div>
         </td>
       </tr>
       <tr>
@@ -215,6 +251,8 @@ function createChart(totalCount, shirtsCout, hoodiesCount, pants_shorts_count) {
       </tr>
     </table>
   `;
+  document.querySelector(".chart-container").append(tableEl)
+  // document.querySelector(".chart-container").append(tableEl)
   let bars = document.querySelectorAll(".bar");
 
   bars.forEach((ele) => {
@@ -229,4 +267,46 @@ function createChart(totalCount, shirtsCout, hoodiesCount, pants_shorts_count) {
       }
     }, 15);
   });
+}
+
+function totalAvailableProductsChart(totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable){
+  
+}
+
+function appendUserDetails(data){
+  let allUsersData = data.map((ele) => getUserHtml(ele.fullname, ele.id, ele.email, ele.orders||[])).join("");
+  usersDetailsContainer.innerHTML = `
+  <div class="cards-title">
+    <p class="avarata">User</p>
+    <p>Id</p>
+    <p>Name</p>
+    <p>Email</p>
+    <p class="orders">Total Orders</p>
+    <p>Total Price</p>
+  </div>
+  ${allUsersData}
+  `
+  let userCards = document.querySelectorAll(".animatedCard")
+  for(let i=0;i<userCards.length;i++){
+    i%2==0 ? userCards[i].setAttribute("data-aos", "flip-left") : userCards[i].setAttribute("data-aos", "flip-right")
+  }
+}
+
+function getUserHtml(name, id, email, order){
+  let userTotalOrder = order.length;
+  let userTotalPrice = 0;
+    order.forEach(ele => {
+      userTotalPrice += ele.price;
+    })
+
+    return `
+  <div class="card animatedCard" data-aos-delay="100" data-aos-duration="1000">
+    <img src=${avatars[Math.floor(Math.random()*5)]} alt="">
+    <p>#magna_${id}</p>
+    <p class="name">${name}</p>
+    <p class="gmail">${email}</p>
+    <p class="orders">${userTotalOrder}</p>
+    <p class="price">₹ ${userTotalPrice}</p>
+  </div>
+    `
 }
