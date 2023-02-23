@@ -38,12 +38,14 @@ document.querySelector(".colors").addEventListener("mouseleave", () => {
 const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 
 let allProductsData = [];
+let sortArray = [];
 let totalProducts;
 fetch(`${baseServerURL}/products`)
   .then((res) => res.json())
   .then((data) => {
     totalProducts = data.length;
-    // console.log(totalProducts)
+    sortArray = data;
+    // console.log(sortArray)
     for (let i = 0; i < data.length; i++) {
       allProductsData.push(data[i]);
     }
@@ -85,28 +87,51 @@ async function fetchProductsData(pageNumber) {
 document.querySelector(".product_cards");
 function display(data) {
   document.querySelector(".product_cards").innerHTML = "";
-  data.forEach((el) => {
+  data.forEach((el, i) => {
+    const product = data[i];
+
     let card = document.createElement("div");
-    card.className = "product_card_data"
+    card.className = "product_card_data";
 
     let img = document.createElement("img");
 
-    img.src = el.images;
+    img.src = el.images[0];
     img.className = "product_card_image";
     img.style.width = "100%";
+
+    // product color seletction
+
+    const colorContainer = document.createElement("div");
+    colorContainer.classList.add("color-container");
+    product.color.forEach((color) => {
+      const colorBtn = document.createElement("button");
+      colorBtn.style.backgroundImage = `url(${color})`;
+      colorBtn.classList.add("color-btn");
+      colorBtn.addEventListener("click", () => {
+        img.src = product.images[product.color.indexOf(color)];
+      });
+      colorContainer.appendChild(colorBtn);
+    });
+
     let offer = document.createElement("p");
     offer.textContent = el.special;
+    offer.style.color = "#205493";
+    offer.style.fontWeight = "700";
 
     let title = document.createElement("p");
     title.textContent = el.name;
+    title.style.color = "gray"
 
     let price = document.createElement("p");
-    price.textContent = `INR${el.price}.00`;
-
+    price.textContent = `₹ ${el.price}.00`
+    price.style.fontWeight = "700";
+    
     let sale = document.createElement("p");
     sale.textContent = el[`sale-message`];
+    sale.style.color = "#dc3545";
 
-    card.append(img, offer, title, price, sale);
+    // colorContainer.append(colorBtn);
+    card.append(img, colorContainer, offer, title, price, sale);
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
@@ -130,7 +155,7 @@ function getButton(text, pageNumber) {
   btn.classList.add("pagination-button");
   btn.setAttribute("data-page-number", pageNumber);
   btn.textContent = text;
-  
+
   btn.addEventListener("click", function (e) {
     let pageNumber = e.target.dataset["pageNumber"];
     fetchProductsData(pageNumber);
@@ -139,3 +164,21 @@ function getButton(text, pageNumber) {
 
   return btn;
 }
+
+// sorting
+// let sorted = document.getElementById("sort");
+// sorted.addEventListener("change", () => {
+//   if (sorted.value === "") {
+//     display(sortArray);
+//     // console.log(sortArray);
+//   }
+//   else if (sorted.value === "Low To High") {
+//     let sortedData = JSON.parse(JSON.stringify(sortArray));
+//     sortedData = sortedData.sort((a, b) => {
+//       return a.price - b.price;
+//     })
+//     // console.log(sortedData);
+//   }
+
+// })
+
