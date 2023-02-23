@@ -35,64 +35,65 @@ document.querySelector(".colors").addEventListener("mouseleave", () => {
 });
 
 // appending all the product cards
-const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;  
+const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 
-// let allProductsData = [];
-// let totalProducts;
-// fetch(`${baseServerURL}/products`)
-//   .then(res => res.json())
-//   .then(data => {
-//     totalProducts = data.length;
-//     console.log(totalProducts)
-//     for (let i = 0; i < data.length; i++) {
-//       allProductsData.push(data[i]);
-//     }
-//     console.log(allProductsData)
-//   })
-
-
-// let productsData = []
-// fetchProductsData(1);
-// async function fetchProductsData(pageNumber) {
-//   try {
-//     let request = await fetch(`${baseServerURL}/products/?limit=10&page=${pageNumber}`);
-//     let products_data = await request.json();
-//     // let totalProducts =products_data.length;
-//     // console.log(totalProducts)
-//     showPagination(totalProducts, 10);
-
-//     display(products_data);
-//     console.log(products_data);
-//     productsData = [...products_data]
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
+let allProductsData = [];
+let totalProducts;
 fetch(`${baseServerURL}/products`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((response) => {
-        console.log(response);
-        display(response);
-    })
-    .catch((error) => { console.log(error);})
-  
+  .then((res) => res.json())
+  .then((data) => {
+    totalProducts = data.length;
+    // console.log(totalProducts)
+    for (let i = 0; i < data.length; i++) {
+      allProductsData.push(data[i]);
+    }
+    document.querySelector(".count").innerText = `(${allProductsData.length})`;
 
+    // console.log(allProductsData)
+  });
 
+let productsData = [];
+fetchProductsData(1);
+async function fetchProductsData(pageNumber) {
+  try {
+    let request = await fetch(
+      `${baseServerURL}/products/?limit=15&page=${pageNumber}`
+    );
+    let products_data = await request.json();
+    // let totalProducts =products_data.length;
+    // console.log(totalProducts)
+    showPagination(totalProducts, 15);
+
+    display(products_data);
+    // console.log(products_data);
+    productsData = [...products_data];
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// fetch(`${baseServerURL}/products`)
+//     .then((req) => {
+//       return req.json();
+//     })
+//     .then((response) => {
+//         console.log(response);
+//         display(response);
+//     })
+//     .catch((error) => { console.log(error);})
 
 document.querySelector(".product_cards");
 function display(data) {
-    document.querySelector(".count").innerText = (data.length);
+  document.querySelector(".product_cards").innerHTML = "";
   data.forEach((el) => {
     let card = document.createElement("div");
+    card.className = "product_card_data"
 
-      let img = document.createElement("img");
-      
-      img.src = el.images;
-      img.className = "product_card_image";
-      img.style.width = "100px";
+    let img = document.createElement("img");
+
+    img.src = el.images;
+    img.className = "product_card_image";
+    img.style.width = "100%";
     let offer = document.createElement("p");
     offer.textContent = el.special;
 
@@ -102,17 +103,8 @@ function display(data) {
     let price = document.createElement("p");
     price.textContent = `INR${el.price}.00`;
 
-    // let priceRange = document.createElement("p");
-    // if (el.minPrice == undefined || el.maxPrice == undefined) {
-    //   price.textContent = `INR${el.price}.00`;
-    // } else {
-    //   priceRange.textContent =
-    //     `INR${el.minPrice}.00 - INR${el.maxPrice}.00` || `INR${el.minPrice}.00`;
-    // }
-
     let sale = document.createElement("p");
     sale.textContent = el[`sale-message`];
-      
 
     card.append(img, offer, title, price, sale);
     document.querySelector(".product_cards").append(card);
@@ -120,30 +112,30 @@ function display(data) {
   // console.log(data);
 }
 
-
 // pagination
 
-// function showPagination(totalProducts, limit) {
-//     let numOfButtons = Math.ceil(totalProducts / limit);
+function showPagination(totalProducts, limit) {
+  let numOfButtons = Math.ceil(totalProducts / limit);
+
+  let pagination = document.getElementById("pagination");
+  pagination.innerHTML = null;
+
+  for (let i = 1; i <= numOfButtons; i++) {
+    pagination.append(getButton(i, i));
+  }
+}
+
+function getButton(text, pageNumber) {
+  let btn = document.createElement("button");
+  btn.classList.add("pagination-button");
+  btn.setAttribute("data-page-number", pageNumber);
+  btn.textContent = text;
   
-//     let pagination = document.getElementById("pagination");
-//     // pagination.innerHTML = null;
-  
-//     for (let i = 1; i <= numOfButtons; i++) {
-//       pagination.append(getButton(i, i))
-//     }
-//   }
-  
-//   function getButton(text, pageNumber) {
-//     let btn = document.createElement('button');
-//     btn.classList.add('pagination-button');
-//     btn.setAttribute('data-page-number', pageNumber);
-//     btn.textContent = text;
-  
-//     btn.addEventListener('click', function (e) {
-//       let pageNumber = e.target.dataset['pageNumber'];
-//       fetchProductsData(pageNumber);
-//     })
-  
-//     return btn;
-//   }
+  btn.addEventListener("click", function (e) {
+    let pageNumber = e.target.dataset["pageNumber"];
+    fetchProductsData(pageNumber);
+    // btn.style.backgroundColor = "black";
+  });
+
+  return btn;
+}

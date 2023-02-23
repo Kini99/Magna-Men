@@ -123,21 +123,35 @@ div > h3 {
 .product_container{
     position: absolute;
     width: 1150px;
-    height: 5723px ;
+    /* height: 5723px ; */
     left: 260px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
+.product_top>#sort{
+  padding: 20px;
+  border-radius: 10px;
+}
 
 .product_footer {
-  position: absolute;
-  width: 1100px;
+  /* position: absolute; */
+  width: 1150px;
   height: 241px;
   /* left: px; */
   top: 6445px;
-    border: 1px solid grey;
+  margin-top: 60px;
+  border: 1px solid grey;
+  border-left: none;
+  border-right: none;
   background: #ffffff;
   border-radius: 0px;
+}
+.product_footer>h3{
+  margin-top: 35px;
+}
+.product_footer > p{
+  margin-top: 10px;
+  line-height: 5px;
 }
 fieldset{
     border-color: rgb(236, 228, 228);
@@ -164,8 +178,49 @@ fieldset:hover{
 .product_cards{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    gap: 20px 10px;
+    margin-top: 30px;
+
 }
 
+.product_card_data{
+  width: 80%;
+  /* border: 1px solid; */
+  margin: auto;
+  padding: 15px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 8px;
+}
+.product_card_image{
+  /* filter: drop-shadow(8px 8px 10px gray); */
+  
+}
+
+.paginationContainer{
+  /* border: 1px solid ; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: 60px;
+}
+#pagination{
+  /* border: 1px solid red; */
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  /* margin: auto; */
+}
+.pagination-button{
+  font-size: 12px;
+  padding: 5px 8px 5px 8px ;
+  border-radius: 8px;
+  border: none;
+  
+}
+.pagination-button:hover{
+  color: white;
+  background-color: rgb(43, 38, 38);
+}
 
 
 
