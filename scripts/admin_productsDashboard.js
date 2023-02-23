@@ -1,6 +1,4 @@
-// --- do not touch  ↓↓↓↓↓↓↓↓↓↓↓↓ ----------
 const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
-// --- do not touch  ↑↑↑↑↑↑↑↑↑↑↑↑ ----------
 
 //fetching data
 
@@ -45,60 +43,72 @@ function display_products(data) {
   displayel.innerHTML = null;
   // data.forEach((element, index) => {
 
-      let list = `<div class="card-list">${data.map((item)=>{
-        if(item.category==undefined){
-          item.category = "NA";
-        }
-        return getCard(item.images[0],item.name,item.id,item.category,item.special,item.price)}).join("")}
+  let list = `<div class="card-list">${data.map((item) => {
+    return getCard(item.images[0], item.name, item.id, item.category, item.special, item.price)
+  }).join("")}
         </div>`
 
-    displayel.innerHTML=list
-
-    let editBtn = document.getElementsByClassName("editBtn");
-    // console.log(editBtn)
-    let editBtnArr=[]
-    editBtnArr=[...editBtn]
-    // console.log(editBtnArr)
-editBtnArr.forEach((e)=>{
-  e.addEventListener("click", (event) => {
-  //  console.log(event.target.dataset.editId)
-  let editID=event.target.dataset.editId
-  //   let product = data.editID
-    // console.log(editID)
-
-    fetch(`${baseServerURL}/products/${editID}`)
-    .then(req=>req.json())
-    .then(res=>editPopup(res))
-
-  })
-})
-    
-
-    let removeBtn = document.getElementsByClassName("removeBtn");
-   let removeBtnArr=[];
-   removeBtnArr=[...removeBtn]
-   removeBtnArr.forEach((e)=>{
+  
+  displayel.innerHTML = list
+  
+  let editBtn = document.getElementsByClassName("editBtn");
+  // console.log(editBtn)
+  let editBtnArr = []
+  editBtnArr = [...editBtn]
+  // console.log(editBtnArr)
+  editBtnArr.forEach((e) => {
     e.addEventListener("click", (event) => {
-      let removeID=event.target.dataset.removeId
-  //   let product = data.editID
-    // console.log(removeID)
+      //  console.log(event.target.dataset.editId)
+      let editID = event.target.dataset.editId
+      //   let product = data.editID
+      // console.log(editID)
 
-    fetch(`${baseServerURL}/products/${removeID}`)
-    .then(req=>req.json())
-    .then(res=>removeProduct(res))
+      fetch(`${baseServerURL}/products/${editID}`)
+        .then(req => req.json())
+        .then(res => editPopup(res))
+
     })
-   })
-    
+  })
+
+
+  let removeBtn = document.getElementsByClassName("removeBtn");
+  let removeBtnArr = [];
+  removeBtnArr = [...removeBtn]
+  removeBtnArr.forEach((e) => {
+    e.addEventListener("click", (event) => {
+      
+      let removeID = event.target.dataset.removeId
+      //   let product = data.editID
+      // console.log(removeID)
+
+      fetch(`${baseServerURL}/products/${removeID}`, {
+        method: "DELETE"
+      })
+        // .then(req => req.json())
+        // .then(res => removeProduct(res))
+        fetchProductsData(1)
+        alert("Product Deleted Successfully!")
+    })
+  })
+
   // })
 }
 
-function getCard(images,name,id,category,special,price){
-  
-if(category==undefined){
-  category="NA"
-}
+function getCard(images, name, id, category, special, price) {
 
-  let card=`<div class="card"><img src="${images}" alt="">
+  if (category == "tshirt") {
+    category="T-Shirt"
+  }else if(category=="hoodie"){
+    category="Hoodie"
+  }else if(category=="pants_shorts"){
+    category="Pants/Shorts"
+  }
+
+  if(special==undefined){
+    special="NA"
+  }
+
+  let card = `<div class="productcard"><img src="${images}" alt="">
   <h4>${name}</h4>
   <h5>ID: ${id}</h5>
   <h5>Category: ${category}</h5>
@@ -110,19 +120,18 @@ if(category==undefined){
   return card
 }
 
-
 //Remove Product
 
-function removeProduct(data) {
-  fetch(`${baseServerURL}/products/${element.id}`, {
-    method: "DELETE"
-  })
-}
+// function removeProduct(data) {
+//   fetch(`${baseServerURL}/products/${element.id}`, {
+//     method: "DELETE"
+//   })
+// }
 
 //Edit Product details
 
 function editPopup(data) {
- document.querySelector(".editProduct-popup-section").style.display = "flex";
+  document.querySelector(".editProduct-popup-section").style.display = "flex";
 
   let formel = document.querySelector("form");
   let obj = {};
@@ -132,11 +141,12 @@ function editPopup(data) {
       document.getElementById("name").value = data1.name;
       document.getElementById("image").value = data1.images[0];
       document.getElementById("category").value = data1.category;
+      if(data1.special==undefined){
+        data1.special="NA";
+      }
       document.getElementById("tag").value = data1.special;
       document.getElementById("price").value = data1.price;
       obj.id = data1.id
-
-      // console.log(document.getElementById("name").value)
     })
 
   formel.addEventListener("submit", (e) => {
@@ -164,8 +174,8 @@ function editProduct(obj) {
     .then(res => {
       fetchProductsData(1);
     })
-    alert("Product Changes Saved!")
-    document.querySelector(".editProduct-popup-section").style.display = "none";
+  alert("Product Changes Saved!")
+  document.querySelector(".editProduct-popup-section").style.display = "none";
 }
 
 document.getElementById("editProduct").addEventListener("click", () => {
@@ -214,68 +224,95 @@ let currentCategory;
 tshirtBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "tshirt");
   // filteredData=[filterData]
-  currentCategory=filterData
+  currentCategory = filterData
   // console.log("filterData")
   filterTable(filterData)
 });
 hoodiesBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "hoodie");
   // filteredData=[...filterData]
-  currentCategory=filterData
+  currentCategory = filterData
   filterTable(filterData)
 });
 pantsBtn.addEventListener("click", () => {
   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
   // filteredData=[filterData]
-  currentCategory=filterData
+  currentCategory = filterData
   filterTable(filterData)
 });
-
-
 
 sortSelect.addEventListener("change", (event) => {
   let sortedData;
   console.log(currentCategory)
 
-  if(currentCategory!==undefined){
-  if (event.target.value == "High to Low") {
-    sortedData = currentCategory.sort((a, b) => b.price - a.price);
-  } else if (event.target.value == "Low to High") {
-    sortedData = currentCategory.sort((a, b) => a.price - b.price);
-  }else if(event.target.value == ""){
-    sortedData = currentCategory
+  if (currentCategory !== undefined) {
+    if (event.target.value == "") {
+      sortedData = currentCategory
+    }else if (event.target.value == "High to Low") {
+      sortedData = currentCategory.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low to High") {
+      sortedData = currentCategory.sort((a, b) => a.price - b.price);
+    }
+    filterTable(sortedData);
+  } else {
+    if (event.target.value == "") {
+      sortedData = allProductsData
+      console.log(sortedData)
+      // filterTable(sortedData);
+      // return
+    }else if (event.target.value == "High to Low") {
+      sortedData = allProductsData.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low to High") {
+      sortedData = allProductsData.sort((a, b) => a.price - b.price);
+    }
+    filterTable(sortedData);
   }
-  filterTable(sortedData);
-}else{
-  if (event.target.value == "High to Low") {
-    sortedData = allProductsData.sort((a, b) => b.price - a.price);
-  } else if (event.target.value == "Low to High") {
-    sortedData = allProductsData.sort((a, b) => a.price - b.price);
-  }else if(event.target.value == ""){
-    sortedData = allProductsData
-    console.log(sortedData)
-    // filterTable(sortedData);
-    // return
-  }
-  filterTable(sortedData);
-}
 });
 
-
-
 function filterTable(filterData) {
-  // console.log("working")
-  // console.log(filterData)
-  // console.log(sortSelect.value)
-
+// let n=filterData.length
+// paginate(filterData,10,showPaginationFiltered(n,10))
   console.log(filterData)
   display_products(filterData);
+  let pagination = document.getElementById("pagination");
+  pagination.innerHTML = null;
 }
 
 
-function sortByPrice(){
- 
-}
+//Pagination on filtered Data 
+
+
+// function paginate(array, page_size, page_number) {
+//   console.log(array)
+//   let displayArr= array.slice((page_number - 1) * page_size, page_number * page_size);
+//   console.log(displayArr)
+//   display_products(displayArr);
+
+// }
+
+// function showPaginationFiltered(totalProducts, limit) {
+//   let numOfButtons = Math.ceil(totalProducts / limit);
+
+//   let pagination1 = document.getElementById("pagination");
+//   pagination1.innerHTML = null;
+
+//   for (let i = 1; i <= numOfButtons; i++) {
+//     pagination1.append(getButton(i, i))
+//   }
+//   // return pageNumber
+// }
+
+// function getButtonFiltered(text, pageNumber) {
+//   let btn = document.createElement('button');
+//   btn.classList.add('pagination-button');
+//   btn.setAttribute('data-page-number', pageNumber);
+//   btn.textContent = text;
+
+//   btn.addEventListener('click', function (e) {
+//     let pageNumber = e.target.dataset['pageNumber'];
+//     return pageNumber;
+//   })
+// }
 
 
 //search function

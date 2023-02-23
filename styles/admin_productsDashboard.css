@@ -2,111 +2,179 @@
 
 :root{
 font-family: 'Libre Franklin', sans-serif;
+word-spacing: 3px;
 }
 
 /* content */
+
 body{
     width:90%;
     margin:auto
 }
 
 
-h1{
+h1,h3{
     text-align: center;
+    background-color: #152d47;
+    color: white;
+    border-radius: 15px;
 }
 
-.categories{
+
+.swipper_container {
+    /* position: absolute; */
+    width: 95%;
+    height: 225px;
+    left: 127px;
+    /* border: 1px solid; */
+    margin: auto;
+    top: 263px;
+    font-weight: bold;
+    font-size: 14px;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
-}
-
-.categories img{
-    width:100px;
-    cursor: pointer;
-}
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+    background-color: #e8e9ec;
+    padding:10px 20px;
+    overflow: hidden;
+  
+  }
+    .swiper-slide img {
+      width: 150px;
+      
+    }
+    .swiper-slide {
+      /* margin-top: 20px; */
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding:5px;
+      cursor: pointer;
+      background-color: white;
+      transition: 0.3s all ease-in-out;
+        /* border: 1px solid red; */
+    }
+    .swiper-slide:hover{
+      transform: scale(1.15);
+    }
+  
 
 .functions{
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
+    justify-content: space-between;
     font-size: 20px;
     font-weight: bolder;
+    /* background-color: #e8e9ec; */
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding:0 20px;
 }
 
 .searchFunc{
     display: flex;
     justify-content: space-around;
+    width:40%;
+}
+.searchFunc input{
+    width:70%;
+    margin:0;
 }
 .searchFunc label, select{
     height: 25px;
-    margin: 22px 40px 0 0;
+    margin: 22px 5px 0 0;
 }
 #searchSub{
     display:none;
 }
 #search_icon , #search{
     height: 25px;
-    margin: 22px 40px 20px 0;
+    margin: 22px 0 20px 0;
+}
+#search_icon{
+cursor: pointer;
 }
 
-/* table{
-    width:90%;
+#displayContainer{
+    background-color:#e8e9ec;
+    padding:20px;
+    width: 95%;
     margin: auto;
-    border-spacing: 0;
-    border: 0.1px solid black;
-    margin-bottom: 20px;
 }
-table th{
-    background-color: black;
-    color: white;
-}
-table th,td{
-    border: 0.1px solid black;
-    padding:5px;
-    text-align: center;
-}
-
-table td button{
-    margin:0;
-    font-size: 15px;
-} */
 
 .card-list{
     display: grid;
     grid-template-columns: repeat(5,1fr);
     gap:40px 20px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 .card-list h4,h5{
-margin-bottom: 0;
-margin-top: 0;
+margin:0 5px;
 }
 .card-list h5{
   font-weight: lighter;
     }
-.card{
+.productcard{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding:20px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
 }
-.card img{
+.productcard img{
 width:100%;
+border:0.5px solid black;
+margin-bottom: 5px;
 }
+
+.removeBtn , .editBtn{
+background-color: #152d47;
+color: white;
+border:none;
+border-radius: 5px;
+padding:5px;
+margin-top: 10px;
+margin-left: 20px;
+cursor: pointer;
+}
+
+.removeBtn:hover , .editBtn:hover{
+  color: #152d47;
+  background-color: white;
+  border:1.5px solid #152d47;
+  font-weight: bold;
+}
+
 .paginationContainer{
 display: flex;
 justify-content: center;
 align-items: center;
 margin-bottom: 40px;
+margin-top: 20px;
 }
 #pagination{
 display: inline;
 }
 #pagination button{
 cursor: pointer;
+margin:3px;
+background-color: #152d47;
+color: white;
+border: none;
+border-radius: 5px;
+padding:5px;
+width:25px;
+}
+#pagination button:hover{
+  color: #152d47;
+background-color: white;
+border:2px solid #152d47;
+font-weight: bolder;
 }
 
 .editProduct-popup-section {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #181824ce;
