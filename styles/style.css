@@ -24,6 +24,136 @@ body {
 }
 
 
+/* login form ******************************** */
+.login-register-popup-section{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #2d2d2dc5;
+    backdrop-filter: blur(2px);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+  }
+  
+  .container {
+      width: 450px;
+      /* height: 600px; */
+      /* width: 100%; */
+      height: 100%;
+      /* margin: 6% auto; */
+      background: rgb(255, 255, 255);
+      /* padding: 5px; */
+      border-radius: 6px;
+      overflow: hidden;
+      /* position: fixed; */
+      /* right: 25%; */
+      /* display: none; */
+      /* top: 8%; */
+      z-index: 10;
+    }
+    .close{
+      font-size: 30px;
+      cursor: pointer;
+      padding-left: 6px;
+    }
+    .top-button {
+      width: 220px;
+      margin: 35px auto;
+      position: relative;
+      /* box-shadow: 0 0 20px 9px #ff61241f; */
+      border-radius: 30px;
+    }
+    .toggle {
+      padding: 10px 30px;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      outline: none;
+      font-weight: 700;
+      font-family: "Libre Franklin", sans-serif;
+  
+      color: var(--lightColor);
+      position: relative;
+    }
+    #btn {
+      top: 0;
+      left: 0;
+      width: 110px;
+      height: 100%;
+      position: absolute;
+      background-image: linear-gradient(1deg, #152d4747, #152d475a);
+      border-radius: 30px;
+      transition: 0.5s;
+    }
+    .form {
+      top: 180px;
+      position: absolute;
+      width: 280px;
+      transition: 0.5s;
+      margin-left: -20px;
+    }
+    .input {
+      width: 100%;
+      padding: 10px 0;
+      margin: 5px 0;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      border-bottom: 1px solid #999;
+      outline: none;
+      background: transparent;
+    }
+    .input:hover
+    {
+      /* background: rgb(242, 230, 230); */
+        
+    }
+    .submit-button {
+      width: 85%;
+      padding: 10px 30px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+      /* background-image: linear-gradient(1deg, white, black); */
+      background-color: var(--lightColor);
+      color: #fff;
+      border: 0;
+      outline: none;
+      border-radius: 30px;
+      border: 3px solid var(--lightColor);
+      transition: 0.2s;
+    }
+    .submit-button:hover{
+      background-color: #16508d7c;
+      color: var(--lightColor);
+      /* border: 1px solid var(--lightColor); */
+    }
+    .checkbox {
+      margin: 30px 10px 30px 0;
+    }
+    .i-agree-box{
+      display: flex;
+      /* justify-content: space-between; */
+      align-items: center;
+    }
+    .checkbox + span {
+      color: #777;
+      font-size: 13px;
+      bottom: 68px;
+      /* position: absolute; */
+    }
+    #login {
+      left: -20px;
+    }
+    #register {
+      left: 450px;
+    }
+    
+/* ******************* */
+
 .top-black-margin{
     height: 60px;
     background-color: #000;
