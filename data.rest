@@ -1,5 +1,5 @@
 ###GET request for products
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/products
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/users
 
 
 ### add new product
@@ -12,13 +12,13 @@ Content-Type: application/json
 
 
 ### DELETE product
-DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/products/92
+DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/users/
 
 ###GET request for users
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/users
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/products
 
 ### add new user
-POST https://63f45eca3f99f5855dae29dc.mockapi.io/users
+POST https://63f45eca3f99f5855dae29dc.mockapi.io/products/92
 Content-Type: application/json
 
 {
@@ -35,23 +35,45 @@ Content-Type: application/json
 
 
 ###GET request for products
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/8
 
 
 ### update user data
-PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
+PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users/8
 Content-Type: application/json
 
 {
- "id": "10",
+  "id": "8",
   "username": "user1",
-  "fullname": "Mahinder",
-  "email": "MahinderSingh@gmail.com",
+  "fullname": "Sonam",
+  "email": "sonam090909@gmail.com",
   "password": "1234",
   "profile": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/762.jpg",
   "role": "user",
   "location": "Delhi",
   "orders": [
+    {
+      "id": 1,
+      "special": "BUY MORE SAVE MORE",
+      "name": "Harbor Bay Space Dye Pocket T-Shirt",
+      "category": "pants_shorts",
+      "price": 3122,
+      "minPrice": 1122,
+      "maxPrice": 2676,
+      "sale-message": "Save Up To 58%",
+      "images": [
+        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye?$splp$"
+      ],
+      "color": [
+        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye_sw?$Swatch$"
+      ]
+    },
     {
       "id": 31,
       "special": "BUY MORE SAVE MORE",
@@ -75,7 +97,10 @@ Content-Type: application/json
     }
   ],
   "mobile": 1234567890,
-  "orderStatus":"Dispatch Pending"
+  "orderStatus": "Completed",
+  "paymentMode":"Net Banking",
+  "estimatedDate":"26/02/2023"
 }
 
-
+  # "paymentMode":"Credit Card",
+  # "estimatedDate":"27/02/2023"
