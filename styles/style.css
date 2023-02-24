@@ -27,7 +27,7 @@ body {
 /* login form  */
 /* ********************* */
 .login-register-popup-section{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100vh;
     background-color: #2d2d2dc5;
@@ -37,22 +37,15 @@ body {
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    z-index: 999;
   }
   
   .container {
       width: 450px;
-      /* height: 600px; */
-      /* width: 100%; */
-      height: 100%;
-      /* margin: 6% auto; */
+      height: 550px;
       background: rgb(255, 255, 255);
-      /* padding: 5px; */
       border-radius: 6px;
       overflow: hidden;
-      /* position: fixed; */
-      /* right: 25%; */
-      /* display: none; */
-      /* top: 8%; */
       z-index: 10;
     }
     .close{
