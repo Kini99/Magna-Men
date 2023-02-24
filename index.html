@@ -36,6 +36,7 @@
   </head>
   <body>
     <header>
+
       <div class="top-black-margin"></div>
       <nav class="header-top-navigation">
         <div class="find-store">
@@ -67,6 +68,37 @@
             <div class="login-signup-popup">
               <p id="login-form-opener">Sign In / Sign Up</p>
               <p id="order-status-opener">Order Status</p>
+
+        <div class="top-black-margin"></div>
+        <nav class="header-top-navigation">
+            <div class="find-store">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Find a Store</span>
+            </div>
+            <div class="logo">
+                <img src="./images/Magna.png" alt="">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search"/>
+                <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+            <div class="navigation-right">
+                <div class="order-status">
+                    <i class="fa fa-light fa-truck-fast"></i>
+                    <p>Order Status</p>
+                </div>
+                <div class="hi-guest" id="hii-user" onclick="openHiiUser()" onmouseleave="closeHiiUser()">
+                    <i class="fa-regular fa-user"></i>
+                    <p>Hi Guest</p>
+                    <div class="login-signup-popup">
+                        <p id="login-form-opener">Sign In / Sign Up</p>
+                        <p id="order-status-opener">Order Status</p>
+                    </div>
+                </div>
+                <div class="bag">
+                    <i class="fa fa-light fa-cart-shopping"></i>
+                    <p>Bag (0)</p>
+                </div>
             </div>
           </div>
           <div class="bag">
@@ -537,12 +569,44 @@
               />
               <p>Casual Shirts</p>
             </div>
+
             <div class="swiper-slide">
               <img
                 src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C2?$car203$"
                 alt=""
               />
               <p>T-Shirts</p>
+
+            <div class="new-now-drop" onmouseover="dropFilters(this)" onmouseout="closeDrpedFilter(this)" id="shirts-drop">
+                <p>SHIRTS</p>
+                <div class="filter-table-container" id="filter-table-container">
+                    <table class="filter-table">
+                        <tr>
+                            <th>Casual Shirts</th>
+                            <th>Swim Shirts</th>
+                        </tr>
+                        <tr>
+                            <th>Dress Shirts</th>
+                            <th>Workwear Shirts</th>
+                        </tr>
+                        <tr>
+                            <th>Polos & Rugbys</th>
+                        </tr>
+                        <tr>
+                            <th>T-Shirts</th>
+                        </tr>
+                        <tr>
+                            <th>Graphic Tees</th>
+                        </tr>
+                        <tr>
+                            <th>Hoodies & Sweatshirts</th>
+                        </tr>
+                        <tr>
+                            <th>Sweaters</th>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
             <div class="swiper-slide">
               <img
@@ -607,6 +671,7 @@
               />
               <p>Lounge & Pajamas</p>
             </div>
+
             <div class="swiper-slide">
               <img
                 src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C12?$car203$"
@@ -617,6 +682,17 @@
           </div>
         </div>
       </div>
+
+            <p style="color: red;">SALE</p>
+        </div>
+        <hr class="lining" /> 
+
+    </section>
+    <!-- filter section ends here  -->
+
+    <div class="sale-banner">
+        <img src="https://images.dxl.com/is/image/CasualMale/230117_DXL_SALE_BAN_4606_D_40?$sclp$" alt="">
+
     </div>
     <!-- slider ends here -->
 
