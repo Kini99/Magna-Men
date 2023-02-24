@@ -182,6 +182,19 @@ function appendProgressBar(
     }
   }, hoodiespeed);
 
+
+  // updating prgress bar
+  setInterval(() => {
+    appendProgressBar(
+      shirtPercentage,
+      hoodiePercentage,
+      pantShortPercentage,
+      shirts,
+      hoodies,
+      pants_shorts
+    )
+  }, 10000);
+
 }
 
 function totalUsers(url) {
@@ -384,5 +397,5 @@ setTimeout(() => {
 setTimeout(() => {
   document.querySelector(".hii-admin-main").style.visibility = "visible";
   document.querySelector(".hii-admin-main").style.opacity = "1";
-}, 6000)
+}, 20000)
 

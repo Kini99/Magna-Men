@@ -1,9 +1,17 @@
-//Login and SignUp
+// Login and SignUp
 let loginEl = document.getElementById("login");
 let registerEl = document.getElementById("register");
 let buttonEl = document.getElementById("btn");
 let submitEl = document.querySelectorAll(".submit-button");
 let input = document.querySelectorAll(".input");
+let sectionPopup = document.querySelector(".login-register-popup-section");
+
+document.getElementById("close-login-form").addEventListener("click", () => {
+  sectionPopup.style.visibility = "hidden"
+})
+document.getElementById("login-form-opener").addEventListener("click", () => {
+  sectionPopup.style.visibility = "visible"
+})
 
 function register() {
   loginEl.style.left = "-450px";
@@ -66,20 +74,50 @@ loginEl.addEventListener("submit", function (e) {
 
 function getLoginDetails(res, data) {
   let flag = 0;
+  let loginUerName = "";
   res.forEach(el => {
     if (el.email === data.email && el.password === data.password)
     {
       flag = 1;
+      loginUerName = el.fullname;
+      console.log(el.email);
+      alert("Congratulations SignIn Successful !!!");
+      return;
     }
   });
-  if (flag)
-  {
-    alert("Congratulations SignIn Successful !!!");
-    location.href ="./index.html";
-    
-  }
-  else {
+  
+  if(flag){
+    localStorage.setItem("userName", loginUerName);
+    location.reload();
+  }else{
     alert("Wrong Credentials Please Try Again !!!");
-    
   }
 }
+
+
+
+
+
+
+
+
+
+
+let logedUserName = localStorage.getItem("userName");
+
+if(logedUserName){
+    document.getElementById("loged-iser-name").textContent = logedUserName;
+    document.getElementById("login-form-opener").style.display = "none";
+    document.getElementById("logout-user-button").style.display = "block";
+    document.getElementById("order-status-opener").style.display = "none";
+}
+document.getElementById("logout-user-button").addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+})
+
+document.querySelector(".order-status").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }
+})
