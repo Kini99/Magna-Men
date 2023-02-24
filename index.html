@@ -33,6 +33,77 @@
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
     <title>DXL</title>
+
+</head>
+<body>    
+
+    <!-- login register popup  -->
+    <section class="login-register-popup-section">
+        <div class="container">
+            <span class="close" id="close-login-form">&times;</span>
+            <div></div>
+          <div class="top-button">
+            <div id="btn"></div>
+            <button type="button" class="toggle" onclick="login()">Login</button>
+            <button type="button" class="toggle" onclick="register()">
+              Register
+            </button>
+            <form id="login" class="form">
+              <input
+                type="email"
+                class="input"
+                placeholder="Enter Email"
+                required
+              />
+              <input
+                type="password"
+                class="input"
+                placeholder="Enter Password"
+                required
+              />
+              <div class="i-agree-box">
+                <input type="checkbox" class="checkbox"/><span
+                >Remember Password</span
+              >
+              </div>
+              <button type="submit" class="submit-button">Log in</button>
+            </form>
+            <form id="register" class="form">
+              <input type="text" class="input" placeholder="Enter Username" required />
+              <input
+                type="email"
+                class="input"
+                placeholder="Enter Email Id"
+                required
+              />
+              <input
+                type="password"
+                class="input"
+                placeholder="Enter Password"
+                required
+              />
+              <div class="i-agree-box">
+                <input type="checkbox" class="checkbox" required /><span
+                >I agree to the terms & condition</span
+              >
+              </div>
+              <button type="submit" class="submit-button">Register</button>
+            </form>
+          </div>
+        </div>
+        </section>  
+    
+        <!-- **************************************** -->
+    
+        
+    
+        <header>
+            <div class="top-black-margin"></div>
+            <nav class="header-top-navigation">
+                <div class="find-store">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Find a Store</span>
+
   </head>
   <body>
     <header>
@@ -86,19 +157,38 @@
                 <div class="order-status">
                     <i class="fa fa-light fa-truck-fast"></i>
                     <p>Order Status</p>
+
                 </div>
-                <div class="hi-guest" id="hii-user" onclick="openHiiUser()" onmouseleave="closeHiiUser()">
-                    <i class="fa-regular fa-user"></i>
-                    <p>Hi Guest</p>
-                    <div class="login-signup-popup">
-                        <p id="login-form-opener">Sign In / Sign Up</p>
-                        <p id="order-status-opener">Order Status</p>
+                <div class="logo">
+                    <img src="./images/Magna.png" alt="">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search"/>
+                    <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                </div>
+
+                <div class="navigation-right">
+                    <div class="order-status">
+                        <i class="fa fa-light fa-truck-fast"></i>
+                        <p>Order Status</p>
+                    </div>
+                    <div class="hi-guest" id="hii-user" onclick="openHiiUser()" onmouseleave="closeHiiUser()">
+                        <i class="fa-regular fa-user"></i>
+                        <p>Hi <span id="loged-iser-name">User</span></p>
+                        <div class="login-signup-popup">
+                            <p id="login-form-opener">Sign In / Sign Up</p>
+                            <p id="logout-user-button">Log Out</p>
+                            <p id="order-status-opener">Order Status</p>
+                        </div>
+                    </div>
+                    <div class="bag">
+                        <i class="fa fa-light fa-cart-shopping"></i>
+                        <p>Bag (0)</p>
                     </div>
                 </div>
-                <div class="bag">
-                    <i class="fa fa-light fa-cart-shopping"></i>
-                    <p>Bag (0)</p>
-                </div>
+            </nav>
+        </header>
+
             </div>
           </div>
           <div class="bag">
@@ -108,6 +198,7 @@
         </div>
       </nav>
     </header>
+
 
     <!-- filter section sarts here  -->
     <section class="filter-section">

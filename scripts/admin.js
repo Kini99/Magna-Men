@@ -181,6 +181,7 @@ function appendProgressBar(
       clearInterval(pantsprogress);
     }
   }, hoodiespeed);
+
 }
 
 function totalUsers(url) {
@@ -333,7 +334,7 @@ function getActiveUserHtml(fullname, id, totalPrice, totalPurchase){
   <p class="most-acive-user-p">#magna_${id}</p>
   <p class="most-acive-user-p">${fullname}</p>
   <p class="most-acive-user-p">${totalPurchase}</p>
-  <p class="most-acive-user-p">${totalPrice}</p>
+  <p class="most-acive-user-p">₹ ${totalPrice}</p>
 </div>
     `
 }
@@ -383,4 +384,5 @@ setTimeout(() => {
 setTimeout(() => {
   document.querySelector(".hii-admin-main").style.visibility = "visible";
   document.querySelector(".hii-admin-main").style.opacity = "1";
-}, 20000)
+}, 6000)
+
