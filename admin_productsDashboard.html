@@ -42,24 +42,6 @@
   <!-- content -->
 
   <h1>PRODUCT MANAGEMENT</h1>
-  <!-- <div class="categories">
-    <div id="tshirts">
-      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
-        alt="Image Unavailable">
-      <h3>T-Shirts</h3>
-    </div>
-    <div id="hoodies">
-      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Sweatshirts"
-        alt="Image Unavailable">
-      <h3>Hoodies & Sweatshirts</h3>
-    </div>
-    <div id="pants">
-      <img src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Casual_Pants"
-        alt="Image Unavailable">
-      <h3>Pants & Shorts</h3>
-    </div>
-  </div> -->
-
 
   <div class="swipper_container" data-aos="zoom-in">
   
@@ -134,12 +116,11 @@
       <label for="search">Search</label>
       <input type="text" placeholder="Search by Name or Category" id="search">
       <input type="submit" id="searchSub">
-      <!-- <img src="./images/Search Icon.png" alt="" id="search_icon"> -->
       <i class="fa fa-search" aria-hidden="true" id="search_icon"></i>
     </div>
 
     <select name="Price" id="sortByPrice">
-      <option value="">SORT BY PRICE</option>
+      <option value="default">SORT BY PRICE</option>
       <option value="Low to High">Low to High</option>
       <option value="High to Low">High to Low</option>
     </select>
@@ -179,3 +160,37 @@
   } 
     console.log(abc)
 </script> -->
+
+
+<!-- function getCard(img, colorContainer, name, id, category, special, price) {
+
+  console.log(img.src)
+  console.log(colorContainer)
+  
+    if (category == "tshirt") {
+      category="T-Shirt"
+    }else if(category=="hoodie"){
+      category="Hoodie"
+    }else if(category=="pants_shorts"){
+      category="Pants/Shorts"
+    }
+  
+    if(special==undefined){
+      special="NA"
+    }
+  
+  
+  
+    let card = `<div class="productcard">
+    <img src=${img.src}>
+  <div class="color-container"></div>
+    <h4>${name}</h4>
+    <h5>ID: ${id}</h5>
+    <h5>Category: ${category}</h5>
+    <h5>Tag: ${special}</h5>
+    <h5>Price: ₹${price}/-</h5>
+    <button class="editBtn" data-edit-id="${id}">Edit Item</button>
+    <button class="removeBtn" data-remove-id="${id}">Remove Item</button></div>`
+  
+    return card
+  } -->
