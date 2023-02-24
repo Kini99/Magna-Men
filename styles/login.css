@@ -3,16 +3,16 @@
 }
 .container {
     width: 550px;
-    height: 680px;
+    height: 600px;
     margin: 6% auto;
     background: rgb(242, 230, 230);
     padding: 5px;
     border-radius: 30px;
     overflow: hidden;
-    position: fixed;
-    right: 35%;
+    /* position: fixed; */
+    /* right: 25%; */
     /* display: none; */
-    top: 10%;
+    /* top: 8%; */
     z-index: 10;
   }
   .close{
