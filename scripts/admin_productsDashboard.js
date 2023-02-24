@@ -21,8 +21,6 @@ async function fetchProductsData(pageNumber) {
   try {
     let request = await fetch(`${baseServerURL}/products/?limit=10&page=${pageNumber}`);
     let products_data = await request.json();
-    // let totalProducts =products_data.length;
-    // console.log(totalProducts)
     showPagination(totalProducts, 10);
 
     display_products(products_data);
@@ -33,7 +31,6 @@ async function fetchProductsData(pageNumber) {
   }
 }
 
-
 // products data display function 
 
 let displayel = document.querySelector("#displayContainer");
@@ -41,16 +38,69 @@ let displayel = document.querySelector("#displayContainer");
 function display_products(data) {
   // console.log(data)
   displayel.innerHTML = null;
-  // data.forEach((element, index) => {
 
-  let list = `<div class="card-list">${data.map((item) => {
-    return getCard(item.images[0], item.name, item.id, item.category, item.special, item.price)
-  }).join("")}
-        </div>`
+  // let list = `<div class="card-list">${data.map((item) => {
+  //   return getCard(item)
+  // }).join("")}
+  //       </div>`
 
-  
-  displayel.innerHTML = list
-  
+  let maindiv = document.createElement("div");
+  maindiv.setAttribute("class", "card-list");
+
+  data.forEach((item) => {
+
+    let div = document.createElement("div");
+    div.setAttribute("class", "productcard");
+
+    let img = document.createElement("img");
+    img.src = item.images[0];
+    img.style.width = "100%";
+    // console.log(img)
+
+    let colorContainer = document.createElement("div");
+    colorContainer.classList.add("color-container");
+    item.color.forEach((color) => {
+      let colorBtn = document.createElement("button");
+      colorBtn.style.backgroundImage = `url(${color})`;
+      colorBtn.classList.add("color-btn");
+      colorBtn.addEventListener("click", () => {
+        img.src = item.images[item.color.indexOf(color)];
+      });
+      colorContainer.appendChild(colorBtn);
+    });
+
+    let h4 = document.createElement("h4");
+    h4.innerText = item.name;
+
+    let h5_id = document.createElement("h5");
+    h5_id.innerText = "ID: " + item.id;
+
+    let h5_category = document.createElement("h5");
+    h5_category.innerText = "Category: " + item.category;
+
+    let h5_tag = document.createElement("h5");
+    h5_tag.innerText = "Tag: " + item.special;
+
+    let h5_price = document.createElement("h5");
+    h5_price.innerText = "Price: ₹" + item.price + "/-";
+
+    let editBtn = document.createElement("button");
+    editBtn.setAttribute("class", "editBtn");
+    editBtn.setAttribute("data-edit-id", item.id);
+    editBtn.innerText = "Edit Item";
+
+    let removeBtn = document.createElement("button");
+    removeBtn.setAttribute("class", "removeBtn");
+    removeBtn.setAttribute("data-remove-id", item.id);
+    removeBtn.innerText = "Remove Item";
+
+    div.append(img, colorContainer, h4, h5_id, h5_category, h5_tag, h5_price, editBtn, removeBtn)
+    maindiv.append(div);
+
+  })
+
+  displayel.append(maindiv);
+
   let editBtn = document.getElementsByClassName("editBtn");
   // console.log(editBtn)
   let editBtnArr = []
@@ -60,8 +110,6 @@ function display_products(data) {
     e.addEventListener("click", (event) => {
       //  console.log(event.target.dataset.editId)
       let editID = event.target.dataset.editId
-      //   let product = data.editID
-      // console.log(editID)
 
       fetch(`${baseServerURL}/products/${editID}`)
         .then(req => req.json())
@@ -70,13 +118,12 @@ function display_products(data) {
     })
   })
 
-
   let removeBtn = document.getElementsByClassName("removeBtn");
   let removeBtnArr = [];
   removeBtnArr = [...removeBtn]
   removeBtnArr.forEach((e) => {
     e.addEventListener("click", (event) => {
-      
+
       let removeID = event.target.dataset.removeId
       //   let product = data.editID
       // console.log(removeID)
@@ -84,49 +131,11 @@ function display_products(data) {
       fetch(`${baseServerURL}/products/${removeID}`, {
         method: "DELETE"
       })
-        // .then(req => req.json())
-        // .then(res => removeProduct(res))
-        fetchProductsData(1)
-        alert("Product Deleted Successfully!")
+      fetchProductsData(1)
+      alert("Product Deleted Successfully!")
     })
   })
-
-  // })
 }
-
-function getCard(images, name, id, category, special, price) {
-
-  if (category == "tshirt") {
-    category="T-Shirt"
-  }else if(category=="hoodie"){
-    category="Hoodie"
-  }else if(category=="pants_shorts"){
-    category="Pants/Shorts"
-  }
-
-  if(special==undefined){
-    special="NA"
-  }
-
-  let card = `<div class="productcard"><img src="${images}" alt="">
-  <h4>${name}</h4>
-  <h5>ID: ${id}</h5>
-  <h5>Category: ${category}</h5>
-  <h5>Tag: ${special}</h5>
-  <h5>Price: ₹${price}/-</h5>
-  <button class="editBtn" data-edit-id="${id}">Edit Item</button>
-  <button class="removeBtn" data-remove-id="${id}">Remove Item</button></div>`
-
-  return card
-}
-
-//Remove Product
-
-// function removeProduct(data) {
-//   fetch(`${baseServerURL}/products/${element.id}`, {
-//     method: "DELETE"
-//   })
-// }
 
 //Edit Product details
 
@@ -141,8 +150,8 @@ function editPopup(data) {
       document.getElementById("name").value = data1.name;
       document.getElementById("image").value = data1.images[0];
       document.getElementById("category").value = data1.category;
-      if(data1.special==undefined){
-        data1.special="NA";
+      if (data1.special == undefined) {
+        data1.special = "NA";
       }
       document.getElementById("tag").value = data1.special;
       document.getElementById("price").value = data1.price;
@@ -223,55 +232,57 @@ let currentCategory;
 
 tshirtBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "tshirt");
-  // filteredData=[filterData]
   currentCategory = filterData
-  // console.log("filterData")
   filterTable(filterData)
 });
 hoodiesBtn.addEventListener('click', () => {
   let filterData = allProductsData.filter(el => el.category == "hoodie");
-  // filteredData=[...filterData]
   currentCategory = filterData
   filterTable(filterData)
 });
 pantsBtn.addEventListener("click", () => {
   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
-  // filteredData=[filterData]
   currentCategory = filterData
   filterTable(filterData)
 });
 
 sortSelect.addEventListener("change", (event) => {
   let sortedData;
-  console.log(currentCategory)
+  // console.log(currentCategory)
+  let sortedAllProductData = allProductsData
 
   if (currentCategory !== undefined) {
-    if (event.target.value == "") {
+    if (event.target.value == "default") {
       sortedData = currentCategory
-    }else if (event.target.value == "High to Low") {
+      display_products(currentCategory)
+      return
+      // fetchProductsData(6)
+    } else if (event.target.value == "High to Low") {
       sortedData = currentCategory.sort((a, b) => b.price - a.price);
     } else if (event.target.value == "Low to High") {
       sortedData = currentCategory.sort((a, b) => a.price - b.price);
     }
-    filterTable(sortedData);
+    display_products(sortedData);
   } else {
-    if (event.target.value == "") {
-      sortedData = allProductsData
-      console.log(sortedData)
-      // filterTable(sortedData);
-      // return
-    }else if (event.target.value == "High to Low") {
+    // sortedData=null;
+    if (event.target.value == "default") {
+      fetchProductsData(1)
+      return
+    } else if (event.target.value == "High to Low") {
       sortedData = allProductsData.sort((a, b) => b.price - a.price);
+      console.log(allProductsData)
     } else if (event.target.value == "Low to High") {
       sortedData = allProductsData.sort((a, b) => a.price - b.price);
+      console.log(allProductsData)
     }
-    filterTable(sortedData);
+
+    display_products(sortedData);
   }
 });
 
 function filterTable(filterData) {
-// let n=filterData.length
-// paginate(filterData,10,showPaginationFiltered(n,10))
+  // let n=filterData.length
+  // paginate(filterData,10,showPaginationFiltered(n,10))
   console.log(filterData)
   display_products(filterData);
   let pagination = document.getElementById("pagination");
@@ -339,62 +350,4 @@ searchBtn.addEventListener("click", (e) => {
 })
 
 
-// let tr = document.createElement("tr")
-//     // div.setAttribute("class","card")
-//     // div.innerHTML=
-
-//     let id = document.createElement("td");
-//     id.innerText = element.id;
-
-//     let image = document.createElement("td");
-//     let img = document.createElement("img");
-//     img.setAttribute("src", `${element.images[0]}`)
-//     image.append(img);
-
-//     let name = document.createElement("td");
-//     name.innerText = element.name;
-
-//     let category = document.createElement("td");
-//     if (element.category == "tshirt") {
-//       category.innerText = "T-Shirt"
-//     } else if (element.category == "hoodie") {
-//       category.innerText = "Hoodie"
-//     } else {
-//       category.innerText = "Pant/Shorts"
-//     }
-
-//     let tag = document.createElement("td");
-//     if (element.special != undefined) {
-//       tag.innerText = element.special;
-//     } else {
-//       tag.innerText = "NA"
-//     }
-
-
-//     let price = document.createElement("td");
-//     price.innerText = "₹ " + element.price + " /-";
-
-//     let editBtn = document.createElement("td");
-//     editBtn.innerText = "Edit Item";
-//     editBtn.style.cursor = "pointer";
-//     editBtn.style.color = "green";
-
-//     editBtn.addEventListener("click", () => {
-//       let product = { ...element }
-//       // console.log(product)
-//       editPopup(product);
-//     })
-
-//     let removeBtn = document.createElement("td");
-//     removeBtn.innerText = "Remove Item";
-//     removeBtn.style.cursor = "pointer";
-//     removeBtn.style.color = "red";
-
-//     removeBtn.addEventListener("click", () => {
-//       removeProduct(element);
-//     })
-
-
-//     tr.append(id, image, name, category, tag, price, editBtn, removeBtn);
-//     displayel.append(tr);
 
