@@ -38,9 +38,13 @@
                     <i class="fa fa-light fa-truck-fast"></i>
                     <p>Order Status</p>
                 </div>
-                <div class="hi-guest">
+                <div class="hi-guest" id="hii-user" onclick="openHiiUser()" onmouseleave="closeHiiUser()">
                     <i class="fa-regular fa-user"></i>
                     <p>Hi Guest</p>
+                    <div class="login-signup-popup">
+                        <p id="login-form-opener">Sign In / Sign Up</p>
+                        <p id="order-status-opener">Order Status</p>
+                    </div>
                 </div>
                 <div class="bag">
                     <i class="fa fa-light fa-cart-shopping"></i>
@@ -101,7 +105,7 @@
                 </div>
             </div>
             <div class="new-now-drop" onmouseover="dropFilters(this)" onmouseout="closeDrpedFilter(this)" id="shirts-drop">
-                <p>NEW + NOW</p>
+                <p>SHIRTS</p>
                 <div class="filter-table-container" id="filter-table-container">
                     <table class="filter-table">
                         <tr>
@@ -419,53 +423,10 @@
                     </table>
                 </div>
             </div>
-            <p>SALE</p>
+            <p style="color: red;">SALE</p>
         </div>
         <hr class="lining" /> 
-        <!-- <div class="filter-table-container" id="filter-table-container">
-            <table class="filter-table">
-                <tr>
-                    <th>Everyday Specials</th>
-                    <th>Brands</th>
-                </tr>
-                <tr>
-                    <th>New</th>
-                    <td>Brooks Brothers</td>
-                    <td>Michael Kors</td>
-                    <td>Rockport</td>
-                </tr>
-                <tr>
-                    <th>The Big + Tall Fit Experts</th>
-                    <td>Carhatt</td>
-                    <td>Nautica</td>
-                    <td>Skechers</td>
-                </tr>
-                <tr>
-                    <th>Sustainable Styles</th>
-                    <td>Columbia</td>
-                    <td>Oak Hill</td>
-                    <td>Society Of One</td>
-                </tr>
-                <tr>
-                    <th>Magna Spotlight</th>
-                    <td>Harbor Bay</td>
-                    <td>Polo Ralph Lauren</td>
-                    <td>Synrg</td>
-                </tr>
-                <tr>
-                    <th>The Magna Men + Tall Difference</th>
-                    <td>Levi's</td>
-                    <td>Reebok</td>
-                    <td>Vineyard</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Lucky Brand</td>
-                    <td>Robert Graham</td>
-                    <td>Oak Hill Premium</td>
-                </tr>
-            </table>
-        </div> -->
+
     </section>
     <!-- filter section ends here  -->
 

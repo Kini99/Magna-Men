@@ -4,6 +4,24 @@ const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 
 // /products
 // /users
+
+
+// let hiiUserEl = document.getElementById("hii-user");
+// hiiUserEl.addEventListener("mousemove", () => {
+// })
+
+// hiiUserEl.addEventListener("mouseleave", () => {
+//     document.querySelector(".login-signup-popup").style.visibility = "hidden";
+// })
+
+function openHiiUser(){
+    document.querySelector(".login-signup-popup").style.visibility = "visible";
+}
+function closeHiiUser(){
+    document.querySelector(".login-signup-popup").style.visibility = "hidden";
+}
+
+
 function dropFilters(elemnt){
     let abc = document.querySelector(`#${elemnt.id} .filter-table-container`);
     abc.style.visibility = "visible"

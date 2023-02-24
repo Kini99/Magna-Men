@@ -4,7 +4,15 @@
     margin: 0;
     font-family: "Libre Franklin", sans-serif;
     box-sizing: border-box;
+    font-size: 14px;
 }
+
+:root {
+    --baseFont: "Libre Franklin", sans-serif;
+    --dark: #181824;
+    --lightColor: #152d47;
+    --mediumFont: "Lato", sans-serif;
+  }
 
 html {
     scroll-behavior: smooth;
@@ -67,7 +75,33 @@ header .header-top-navigation .navigation-right div p{
     color: #626262;
 }
 header .header-top-navigation .navigation-right div i{
+    cursor: pointer;
     font-size: 30px;
+}
+#hii-user{
+    position: relative;
+}
+#hii-user .login-signup-popup{
+    position: absolute;
+    right: 0;
+    box-shadow: rgba(54, 54, 54, 0.507) 0px 2px 8px 0px;
+    border-radius: 6px;
+    background-color: #fff;
+    width: 200px;
+    z-index: 999;
+    visibility: hidden;
+}
+#hii-user .login-signup-popup p{
+    text-align: left;
+    line-height: 30px;
+    color: var(--lightColor);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#hii-user .login-signup-popup p:hover{
+    background-color: var(--lightColor);
+    color: #fff;
 }
 .sale-banner, .big-right-out-section{
     padding: 10px;

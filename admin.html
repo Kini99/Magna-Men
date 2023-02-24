@@ -23,6 +23,28 @@
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
+
+    <!-- welcome admin popup  -->
+      <div class="wecome-popup">
+        <div class="welcome-text">
+          Welcome Admin <i class="fa-solid fa-face-smile"></i>
+        </div>
+      </div>
+
+      <!-- want to add new product popup  -->
+      <div class="hii-admin-main">  
+        <div class="hii-admin-popup">
+          <img src="./images/hiiAdmin.png" alt="" id="hii-admin-logo">
+          <div class="hii-admin-content">
+            <i class="fa-solid fa-circle-xmark" id="close-hii-admin"></i>
+            <p class="hii-admin-title">hii Admin</p>
+            <p>Want to add new product ?</p>
+            <button id="add-by-hi">ADD NEW PRODUCT</button>
+          </div>
+        </div>
+      </div>
+
+
     <span id="dashboardScroll"></span>
     <nav class="topNav">
       <div class="name-logo-container">
@@ -37,7 +59,7 @@
             class="admin-logo"
           />
           <p>Welcome Admin</p>
-          <button id="log-out">LOG OUT</button>
+          <button id="log-out" onclick="logOutAdmin()">LOG OUT</button>
         </div>
       </div>
     </nav>
@@ -79,7 +101,7 @@
           </ul>
         </div>
         <p id="settings"><i class="fa-sharp fa-solid fa-gear"></i>Settings<i class="fa-sharp fa-solid fa-angle-down"></i></p>
-        <p class="logoutHam"> <i class="fa-solid fa-right-from-bracket"></i> Log Out </p>
+        <p class="logoutHam" onclick="logOutAdmin()"> <i class="fa-solid fa-right-from-bracket"></i> Log Out </p>
       </section>
 
       
@@ -131,6 +153,25 @@
 
 <section class="charts-section">
   <div class="chart-container"></div>
+  <div class="most-active-users-container">
+    <p class="most-active-users-tag">Most Active Users</p>
+    <div class="users-details-container" id="most-active-users-details-container">
+    <div class="cards-title active-user-card-title">
+      <p class="most-acive-user-p">User</p>
+      <p class="most-acive-user-p">Id</p>
+      <p class="most-acive-user-p">Name</p>
+      <p class="most-acive-user-p">Total Orders</p>
+      <p class="most-acive-user-p">Total Price</p>
+    </div>
+    <div class="card animatedCard active-user-card-title" data-aos-delay="100" data-aos-duration="1000">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190670.png" alt="" class="active-user-avatar">
+      <p class="most-acive-user-p">#magna_21</p>
+      <p class="most-acive-user-p">Afroz Khan</p>
+      <p class="most-acive-user-p">34</p>
+      <p class="most-acive-user-p">423423</p>
+    </div>
+  </div>
+</div>
 </section>
 
     <!-- users dettils  -->
@@ -141,77 +182,77 @@
     </section>
 
     <section class="employees-section" id="outTeam">
-      <p class="ourTeam">Out Team</p>
+      <p class="ourTeam">Our Team</p>
       <div class="employees-container">
-        <div class="employeeCard">
+        <div class="employeeCard" data-aos="zoom-in" data-aos-delay="50" data-aos-duration="500">
           <img
             src="./images/kinjal.jpg"
             alt=""
           />
           <p class="employeeName">Kinjal Momaya</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Web dev</p>
+            <p class="postSubtitle">Backend dev</p>
           </p>
           <p class="role">
-            Server APIs, Admin product page, Edit and Delete operations
+            Server APIs, Admin product page, Edit and Delete operations, Orders Dashboard
           </p>
-          <p class="email">afrozsaifi80@gmail.com</p>
+          <p class="email">kinjalmomaya99@gmail.com</p>
         </div>
-        <div class="employeeCard">
+        <div class="employeeCard"  data-aos="zoom-out" data-aos-delay="100" data-aos-duration="1000">
           <img
             src="./images/gaurav.jpg"
             alt=""
           />
           <p class="employeeName">Gaurav Shukla</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Web dev</p>
+            <p class="postSubtitle">Frontend dev</p>
           </p>
           <p class="role">
             Product page, Add to Cart, Filters, Login and SignUp forms
           </p>
-          <p class="email">afrozsaifi80@gmail.com</p>
+          <p class="email">gauravshukla.ec1022@gmail.com</p>
         </div>
-        <div class="employeeCard">
+        <div class="employeeCard" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="700">
           <img
             src="./images/akaka.jpeg"
             alt=""
           />
           <p class="employeeName">Afroz Khan</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Web dev</p>
+            <p class="postSubtitle">Fullstack dev</p>
           </p>
           <p class="role">
             JSON files, Admin dashboard, Admin users, Admin employees, Add new product operation
           </p>
           <p class="email">afrozsaifi80@gmail.com</p>
         </div>
-        <div class="employeeCard">
+        <div class="employeeCard" data-aos="zoom-out" data-aos-delay="100" data-aos-duration="1000">
           <img
             src="./images/hemant.jpg"
             alt=""
           />
-          <p class="employeeName">Afroz Khan</p>
+          <p class="employeeName">Hemant Singh Bangari</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Web dev</p>
+            <p class="postSubtitle">Frontend dev</p>
           </p>
           <p class="role">
-            Server APIs, Admin dashboard, Admin users, admin team
+            Cart page, View product page, Checkout order opreation
           </p>
           <p class="email">hemant2307sb@gmail.com</p>
         </div>
-        <div class="employeeCard">
+        <div class="employeeCard" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
           <img
-            src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-preview.jpg"
+            src="./images/sweta.jpg"
             alt=""
           />
-          <p class="employeeName">Afroz Khan</p>
+          <p class="employeeName">Sweta Singh</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Web dev</p>
+            <p class="postSubtitle">Frontend dev</p>
           </p>
           <p class="role">
-            Server APIs, Admin dashboard, Admin users, admin team
+            Home page, Footer
           </p>
-          <p class="email">afrozsaifi80@gmail.com</p>
+          <p class="email">sweta235410@gmail.com</p>
         </div>
       </div>
     </section>
