@@ -7,6 +7,7 @@ let totalAvailableProductsCoutn = document.getElementById(
   "total-available-products"
   );
   let usersDetailsContainer = document.getElementById("users-details-container");
+  let mostActiveUserDetailsContainer = document.getElementById("most-active-users-details-container");
   let avatars = ["https://cdn-icons-png.flaticon.com/512/190/190670.png", "https://static.vecteezy.com/system/resources/previews/002/400/532/original/young-happy-businessman-character-avatar-wearing-business-outfit-isolated-free-vector.jpg", "https://cdn-icons-png.flaticon.com/512/219/219969.png", "https://cdn-icons-png.flaticon.com/512/146/146035.png", "https://cdn-icons-png.flaticon.com/512/236/236832.png"]
 
 getApiData(`${baesUrl}products`);
@@ -274,7 +275,29 @@ function totalAvailableProductsChart(totalAvailableProducts, shirtsAvailable, ho
 }
 
 function appendUserDetails(data){
+  let mostActiveUser = [...data];
+  // mostActiveUser.sort((a,b) => a.)
+  // console.log(mostActiveUser);
   let allUsersData = data.map((ele) => getUserHtml(ele.fullname, ele.id, ele.email, ele.orders||[])).join("");
+  mostActiveUser = mostActiveUser.map(ele => ({name: ele.fullname, id: ele.id, totalPrice:getActivePrice(ele.orders||[]), totalPurchase:getActivePurchase(ele.orders||[])}));
+  mostActiveUser = mostActiveUser.sort((a,b) => b.totalPrice-a.totalPrice);
+  while(mostActiveUser.length>5){
+    mostActiveUser.pop();
+  }
+  mostActiveUser = mostActiveUser.map((ele) => getActiveUserHtml(ele.name, ele.id, ele.totalPrice, ele.totalPurchase)).join("");
+  // console.log(mostActiveUser);
+
+  mostActiveUserDetailsContainer.innerHTML = `
+  <div class="cards-title active-user-card-title">
+  <p class="most-acive-user-p">User</p>
+  <p class="most-acive-user-p">Id</p>
+  <p class="most-acive-user-p">Name</p>
+  <p class="most-acive-user-p">Total Orders</p>
+  <p class="most-acive-user-p">Total Price</p>
+</div>
+${mostActiveUser}
+  `
+
   usersDetailsContainer.innerHTML = `
   <div class="cards-title">
     <p class="avarata">User</p>
@@ -290,6 +313,29 @@ function appendUserDetails(data){
   for(let i=0;i<userCards.length;i++){
     i%2==0 ? userCards[i].setAttribute("data-aos", "flip-left") : userCards[i].setAttribute("data-aos", "flip-right")
   }
+}
+
+function getActivePrice(data){
+  let activeTotalPrice = 0;
+    data.forEach(ele => {
+      activeTotalPrice += ele.price;
+    })
+    return activeTotalPrice;
+}
+function getActivePurchase(data){
+  return data.length;
+}
+
+function getActiveUserHtml(fullname, id, totalPrice, totalPurchase){
+  return `
+  <div class="card animatedCard active-user-card-title" data-aos-delay="100" data-aos-duration="1000">
+  <img src=${avatars[Math.floor(Math.random()*5)]} alt="" class="active-user-avatar">
+  <p class="most-acive-user-p">#magna_${id}</p>
+  <p class="most-acive-user-p">${fullname}</p>
+  <p class="most-acive-user-p">${totalPurchase}</p>
+  <p class="most-acive-user-p">${totalPrice}</p>
+</div>
+    `
 }
 
 function getUserHtml(name, id, email, order){
@@ -310,3 +356,31 @@ function getUserHtml(name, id, email, order){
   </div>
     `
 }
+
+function logOutAdmin(){
+  location.href = "./index.html"
+}
+
+document.getElementById("close-hii-admin").addEventListener("click", () => {
+  document.querySelector(".hii-admin-main").style.visibility = "hidden";
+  document.querySelector(".hii-admin-main").style.opacity = "0";
+})
+
+document.getElementById("add-by-hi").addEventListener("click", () => {
+  document.querySelector(".form-popup-section").style.display = "flex";
+  document.querySelector(".hii-admin-main").style.visibility = "hidden";
+  document.querySelector(".hii-admin-main").style.opacity = "0";
+})
+
+setTimeout(() => {
+  document.querySelector(".wecome-popup").style.transform = "translateY(120px)";
+}, 3000);
+
+setTimeout(() => {
+  document.querySelector(".wecome-popup").style.transform = "translateY(0)";
+}, 5000);
+
+setTimeout(() => {
+  document.querySelector(".hii-admin-main").style.visibility = "visible";
+  document.querySelector(".hii-admin-main").style.opacity = "1";
+}, 20000)
