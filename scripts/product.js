@@ -51,7 +51,7 @@ fetch(`${baseServerURL}/products`)
     }
     document.querySelector(".count").innerText = `(${allProductsData.length})`;
 
-    // console.log(allProductsData)
+    console.log(allProductsData)
   });
 
 let productsData = [];
@@ -85,12 +85,17 @@ async function fetchProductsData(pageNumber) {
 //     .catch((error) => { console.log(error);})
 
 document.querySelector(".product_cards");
+
 function display(data) {
   document.querySelector(".product_cards").innerHTML = "";
   data.forEach((el, i) => {
     const product = data[i];
 
     let card = document.createElement("div");
+
+    card.setAttribute('data-product-id', product.id);
+    //console.log(product.id)
+
     card.className = "product_card_data";
 
     let img = document.createElement("img");
@@ -182,3 +187,13 @@ function getButton(text, pageNumber) {
 
 // })
 
+const cardElements = document.getElementsByClassName('product_cards');
+console.log(cardElements.length)
+for (let i = 0; i < cardElements.length; i++) {
+    cardElements[i].addEventListener('click', (event) => {
+      const productId = event.currentTarget.getAttribute('data-product-id');
+      console.log(productId)
+      // Redirect to the product page
+      window.location.href = `../description/main_description.html?productId=${productId}`;
+    });
+}
