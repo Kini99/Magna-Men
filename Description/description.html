@@ -1,15 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fetching Data from API</title>
-  <link rel="stylesheet" href="description.css">
- 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="description.css">
 </head>
 <body>
-  <div id="product-details"></div>
+  <header>
+    <div class="top-black-margin"></div>
+    <nav class="header-top-navigation">
+        <div class="find-store">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Find a Store</span>
+        </div>
+        <div class="logo">
+            <img src="./images/Magna.png" alt="">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search"/>
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+        <div class="navigation-right">
+            <div class="order-status">
+                <i class="fa fa-light fa-truck-fast"></i>
+                <p>Order Status</p>
+            </div>
+            <div class="hi-guest">
+                <i class="fa-regular fa-user"></i>
+                <p>Hi Guest</p>
+            </div>
+            <div class="bag">
+                <i class="fa fa-light fa-cart-shopping"></i>
+                <p>Bag<span id="cart-item-count"></span></p>
+                
+                
+            </div>
+        </div>
+    </nav>
+</header>
+<!--product description container-->
+<div id="product-container"></div>
 
+<div id="similar-products-container">
  
+  
+  <span id="cart-item-count"></span>
+
+</div>
+
+
+<!--review button-->
+
+<div id="review-button-container">
+  
+  <h1>Ratings and Reviews</h1>
+  <div id="div-button"><button id="review-button">Write the first Review</button></div>
+    
+</div>
+
+
+
 </body>
 <script src="description.js"></script>
+
+
 </html>

@@ -51,7 +51,8 @@ fetch(`${baseServerURL}/products`)
     }
     document.querySelector(".count").innerText = `(${allProductsData.length})`;
 
-    // console.log(allProductsData)
+    //console.log(allProductsData)
+   // console.log(allProductsData.length)
   });
 
 let productsData = [];
@@ -84,14 +85,23 @@ async function fetchProductsData(pageNumber) {
 //     })
 //     .catch((error) => { console.log(error);})
 
-document.querySelector(".product_cards");
+let hemant=document.querySelector(".product_cards");
+
+
 function display(data) {
   document.querySelector(".product_cards").innerHTML = "";
   data.forEach((el, i) => {
     const product = data[i];
 
     let card = document.createElement("div");
+
+    card.setAttribute('data-product-id', product.id);
+    
+    //console.log(product.id)
+
     card.className = "product_card_data";
+    //const cardElements = document.querySelector('.product_card_data');
+    //console.log(cardElements)
 
     let img = document.createElement("img");
 
@@ -146,6 +156,7 @@ function display(data) {
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
+  //console.log(data.length)
 }
 
 // pagination
@@ -192,4 +203,5 @@ function getButton(text, pageNumber) {
 //   }
 
 // })
+
 

@@ -1,26 +1,392 @@
-#product-details {
-      text-align: center;
-    }
-    #product-details img {
-      max-width: 100%;
-      height: auto;
-    }
-    #product-details img.zoom {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      cursor: zoom-out;
-    }
-    .color-btn {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      margin: 5px;
-      border: none;
-    }
+/* Add some basic styling to the page */
+* {
+  margin: 0;
+  padding: 0;
+ }
+body {
+  font-family: "Libre Franklin", "sans-serif";;
+  
+}
+
+/* Style the product container */
+#product-container {
+  
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Style the product name */
+#product-container h1 {
+  font-size: 21px;
+  margin-top: 20px;
+  font-weight: 500;
+  line-height: 25px;
+  padding-bottom: 20px;
+}
+#product-container p {
+  font-size: 16px;
+  margin-top: 0;
+  line-height: 24px;
+  font-weight: 600px;
+ 
+  padding-bottom: 20px;
+}
+#product-container h4{
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  padding-bottom: 20px;
+  text-decoration: underline;
+
+}
+#review-button-container{
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: 400;
+  padding-bottom: 50px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+  position: relative;
+  top: 500px;
+ 
+}
+#product-container .color-btn{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius:50%;
+  cursor: pointer;
+  margin: 5px;
+  border: none;
+}
+
+
+
+/* Style the product image */
+#product-container img {
+  max-width: 100%;
+  cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+#product-container img:hover {
+  transform: scale(1.1);
+}
+
+/* Style the "Add to Cart" button */
+#product-container button {
+  background-color:black;
+  width: 300px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+}
+#product-image-container {
+  float: left;
+  width: 40%;
+}
+#product-image-container img {
+  width: 100%;
+}
+#product-details-container {
+  float: right;
+  width: 50%;
+  text-align: left;
+  
+}
+#color-buttons{
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+#size-options{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#quantity{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#quantity input{
+  border-radius: 24%;
+} 
+#similar-products-container {
+  clear: both;
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.similar-product {
+  flex: 1;
+  margin: 0.5em;
+  text-align: center;
+}
+.similar-product img {
+  width: 100%;
+}
+span{
+  font-size: x-small;
+  color: grey;
+  padding-left: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+  /* styles for tablet and mobile devices */
+  #product-image-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  #product-details-container {
+    width: 100%;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item img {
+    width: 50%;
+    margin-right: 20px;
+  }
+}
+
+
+
+/*review button  */
+#review-button {
+  background-color:black;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: auto;
+  width: 300px;
+  border-radius: 20px;
+  
+}
+
+#review-button:hover {
+  background-color:  #003366;
+}
+
+#review-button:active {
+  background-color: darkblue;
+}
+
+
+
+/*number of cart item show */
+#cart-item-count {
+  background-color: none;
+  color: black;
+  border-radius: 50%;
+  padding: 3px;
+  position: absolute;
+  top: 2px;
+  right: -12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+
+#div-button{
+text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+padding: 0;
+margin: 0;
+font-family: "Libre Franklin", sans-serif;
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+padding: 0;
+margin: 0;
+}
+
+
+.top-black-margin{
+height: 60px;
+background-color: #000;
+}
+section{
+padding: 10px;
+}
+
+header .header-top-navigation{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px;
+}
+header .header-top-navigation .logo img{
+width: 140px;
+}
+
+header .header-top-navigation .search-bar{
+display: flex;
+}
+
+header .header-top-navigation .search-bar input{
+width: 40vw;
+background-color: #efefef;
+border: 1px solid #000;
+height: 50px;
+padding-left: 10px;
+margin: 0;
+font-family: inherit;
+font-size: inherit;
+line-height: inherit;
+}
+header .header-top-navigation .search-bar .search-icon{
+width: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+border: 1px solid;
+}
+header .header-top-navigation .navigation-right{
+display: flex;
+}
+header .header-top-navigation .navigation-right div{
+text-align: center;
+margin-left: 20px;
+}
+header .header-top-navigation .navigation-right div p{
+color: #626262;
+}
+header .header-top-navigation .navigation-right div i{
+font-size: 30px;
+}
+.sale-banner, .big-right-out-section{
+padding: 10px;
+}
+.sale-banner img, .big-right-out-container img{
+width: 100%;
+cursor: pointer;
+}
+
+.social-media-container{
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 10px;
+}
+.social-media-container img{
+width: 100%;
+}
+
+#des{
+position: absolute;
+top: 850px;
+width: 85%;
+line-height: 20px;
+font-weight: 400;
+font-size: 13px;
+
+}
+#des p, h4{
+
+line-height: 20px;
+font-weight: 400;
+font-size: 13px;
+
+}
+
+
+.size-option {
+display: inline-block;
+margin-right: 10px;
+padding: 5px 10px;
+background-color: #f2f2f2;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.size-option.selected {
+background-color: #4CAF50;
+color: white;
+}
+
+
+
+/*pop up */
+.bag {
+  position: relative;
+}
+
+.bag-popup {
+  position: absolute;
+  top: 100%;
+  right: 80%;
+  z-index: 1;
+  width: 400px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none;
+}
+
+.bag-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bag-popup ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bag-popup ul li img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.bag-popup ul li .name {
+  flex: 1;
+}
+
+.bag-popup ul li .price {
+  font-weight: bold;
+}
+.remove-item{
+background-color: white;
+text-decoration: none;
+border: none;
+color: rgb(96, 96, 96);
+padding-left: 20px;
+}
