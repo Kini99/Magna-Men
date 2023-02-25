@@ -184,22 +184,8 @@ function getButton(text, pageNumber) {
   return btn;
 }
 
-// sorting
-// let sorted = document.getElementById("sort");
-// sorted.addEventListener("change", () => {
-//   if (sorted.value === "") {
-//     display(sortArray);
-//     // console.log(sortArray);
-//   }
-//   else if (sorted.value === "Low To High") {
-//     let sortedData = JSON.parse(JSON.stringify(sortArray));
-//     sortedData = sortedData.sort((a, b) => {
-//       return a.price - b.price;
-//     })
-//     // console.log(sortedData);
-//   }
 
-// })
+
 
 
 //search function
@@ -227,6 +213,79 @@ searchBtn.addEventListener("click", (e) => {
   });
   display(searched);
 });
+
+
+
+// sorting
+//Filter and Sort functions
+
+let tshirtBtn = document.querySelectorAll("#tshirts");
+let hoodiesBtn = document.querySelectorAll("#hoodies");
+// let pantsBtn = document.getElementById("pants");
+let sortSelect = document.getElementById("sort");
+
+let currentCategory;
+
+tshirtBtn.forEach((element) => {
+  element.addEventListener('click', () => {
+    let filterData = allProductsData.filter(el => el.category == "tshirt");
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+  
+})
+hoodiesBtn.forEach((element) => { 
+  element.addEventListener('click', () => {
+    let filterData = allProductsData.filter(el => el.category == "hoodie");
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+
+})
+// pantsBtn.addEventListener("click", () => {
+//   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
+//   currentCategory = filterData
+//   filterTable(filterData)
+// });
+
+sortSelect.addEventListener("change", (event) => {
+  let sortedData;
+
+  if (currentCategory !== undefined) {
+    if (event.target.value == "") {
+      sortedData = currentCategory
+      display(currentCategory)
+      return
+      // fetchProductsData(6)
+    } else if (event.target.value == "High To Low") {
+      sortedData = currentCategory.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low To High") {
+      sortedData = currentCategory.sort((a, b) => a.price - b.price);
+    } else if (event.target.value == "A to Z") {
+      sortedData = currentCategory.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    display(sortedData);
+  } else {
+    if (event.target.value == "") {
+      fetchProductsData(1)
+      return
+    } else if (event.target.value == "High To Low") {
+      sortedData = allProductsData.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low To High") {
+      sortedData = allProductsData.sort((a, b) => a.price - b.price);
+    }else if (event.target.value == "A to Z") {
+      sortedData = allProductsData.sort((a, b) => a.name.localeCompare(b.name));
+      
+    }
+
+    display(sortedData);
+  }
+});
+
+function filterTable(filterData) {
+  console.log(filterData)
+  display(filterData);
+}
 
 
 
