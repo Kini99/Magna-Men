@@ -1,0 +1,120 @@
+/* Payment form styles */
+*{
+  font-family: "Libre Franklin", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color:grey;
+}
+
+/* Order summary styles */
+.order-summary {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 30px;
+}
+
+.order-summary h3 {
+  margin-top: 0;
+}
+
+.order-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.order-summary th, .order-summary td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.order-summary th {
+  background-color: #f2f2f2;
+}
+
+.order-summary .total-row {
+  font-weight: bold;
+}
+
+.order-summary .total-row td {
+  border-top: 2px solid #ccc;
+}
+
+
+
+/* Container for the entire payment form */
+.payment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  grid-gap: 20px;
+}
+
+/* Left side containing shipping address form */
+.address-container {
+  grid-column: 1 / 2;
+}
+
+/* Right side containing payment form and order summary */
+.payment-summary-container {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-rows: repeat(2, min-content) 1fr;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Payment form styles */
+form {
+  max-width: 100%;
+}
+
+/* Order summary styles */
+.order-summary {
+  margin-top: 20px;
+  grid-row: 2 / 4;
+  grid-column: 2 / 3;
+}
+
+

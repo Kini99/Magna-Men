@@ -51,7 +51,8 @@ fetch(`${baseServerURL}/products`)
     }
     document.querySelector(".count").innerText = `(${allProductsData.length})`;
 
-    // console.log(allProductsData)
+    //console.log(allProductsData)
+   // console.log(allProductsData.length)
   });
 
 let productsData = [];
@@ -84,14 +85,23 @@ async function fetchProductsData(pageNumber) {
 //     })
 //     .catch((error) => { console.log(error);})
 
-document.querySelector(".product_cards");
+let hemant=document.querySelector(".product_cards");
+
+
 function display(data) {
   document.querySelector(".product_cards").innerHTML = "";
   data.forEach((el, i) => {
     const product = data[i];
 
     let card = document.createElement("div");
+
+    card.setAttribute('data-product-id', product.id);
+    
+    //console.log(product.id)
+
     card.className = "product_card_data";
+    //const cardElements = document.querySelector('.product_card_data');
+    //console.log(cardElements)
 
     let img = document.createElement("img");
 
@@ -113,6 +123,17 @@ function display(data) {
       colorContainer.appendChild(colorBtn);
     });
 
+    // for linking cart page
+    let contentBox = document.createElement("div");
+    contentBox.addEventListener("click", () => {
+      localStorage.setItem("cartId", el.id);
+
+      window.location.href = "./description.html"
+    })
+
+
+
+
     let offer = document.createElement("p");
     offer.textContent = el.special;
     offer.style.color = "#205493";
@@ -120,21 +141,23 @@ function display(data) {
 
     let title = document.createElement("p");
     title.textContent = el.name;
-    title.style.color = "gray"
+    title.style.color = "gray";
 
     let price = document.createElement("p");
-    price.textContent = `₹ ${el.price}.00`
+    price.textContent = `₹ ${el.price}.00`;
     price.style.fontWeight = "700";
-    
+
     let sale = document.createElement("p");
     sale.textContent = el[`sale-message`];
     sale.style.color = "#dc3545";
 
     // colorContainer.append(colorBtn);
-    card.append(img, colorContainer, offer, title, price, sale);
+    contentBox.append(offer, title, price, sale);
+    card.append(img, colorContainer, contentBox);
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
+  //console.log(data.length)
 }
 
 // pagination
@@ -165,20 +188,104 @@ function getButton(text, pageNumber) {
   return btn;
 }
 
-// sorting
-// let sorted = document.getElementById("sort");
-// sorted.addEventListener("change", () => {
-//   if (sorted.value === "") {
-//     display(sortArray);
-//     // console.log(sortArray);
-//   }
-//   else if (sorted.value === "Low To High") {
-//     let sortedData = JSON.parse(JSON.stringify(sortArray));
-//     sortedData = sortedData.sort((a, b) => {
-//       return a.price - b.price;
-//     })
-//     // console.log(sortedData);
-//   }
 
-// })
+
+
+
+//search function
+
+let searchInp = document.querySelector("#search_product");
+let searchBtn = document.getElementById("search_product_icon");
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  let search = searchInp.value;
+  console.log(allProductsData);
+  let searched = allProductsData.filter((el) => {
+    // console.log(el)
+    if (
+      el.name.toLowerCase().includes(search.toLowerCase()) == true ||
+      el.category.toLowerCase().includes(search.toLowerCase()) == true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  display(searched);
+});
+
+
+
+// sorting
+//Filter and Sort functions
+
+let tshirtBtn = document.querySelectorAll("#tshirts");
+let hoodiesBtn = document.querySelectorAll("#hoodies");
+// let pantsBtn = document.getElementById("pants");
+let sortSelect = document.getElementById("sort");
+
+let currentCategory;
+
+tshirtBtn.forEach((element) => {
+  element.addEventListener('click', () => {
+    let filterData = allProductsData.filter(el => el.category == "tshirt");
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+  
+})
+hoodiesBtn.forEach((element) => { 
+  element.addEventListener('click', () => {
+    let filterData = allProductsData.filter(el => el.category == "hoodie");
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+
+})
+// pantsBtn.addEventListener("click", () => {
+//   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
+//   currentCategory = filterData
+//   filterTable(filterData)
+// });
+
+sortSelect.addEventListener("change", (event) => {
+  let sortedData;
+
+  if (currentCategory !== undefined) {
+    if (event.target.value == "") {
+      sortedData = currentCategory
+      display(currentCategory)
+      return
+      // fetchProductsData(6)
+    } else if (event.target.value == "High To Low") {
+      sortedData = currentCategory.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low To High") {
+      sortedData = currentCategory.sort((a, b) => a.price - b.price);
+    } else if (event.target.value == "A to Z") {
+      sortedData = currentCategory.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    display(sortedData);
+  } else {
+    if (event.target.value == "") {
+      fetchProductsData(1)
+      return
+    } else if (event.target.value == "High To Low") {
+      sortedData = allProductsData.sort((a, b) => b.price - a.price);
+    } else if (event.target.value == "Low To High") {
+      sortedData = allProductsData.sort((a, b) => a.price - b.price);
+    }else if (event.target.value == "A to Z") {
+      sortedData = allProductsData.sort((a, b) => a.name.localeCompare(b.name));
+      
+    }
+
+    display(sortedData);
+  }
+});
+
+function filterTable(filterData) {
+  console.log(filterData)
+  display(filterData);
+}
+
+
 

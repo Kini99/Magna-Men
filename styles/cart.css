@@ -1,0 +1,288 @@
+#cart-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.remove-from-cart {
+  background-color:white;
+  color:#1e3371;
+  text-decoration: underline;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.remove-from-cart:hover {
+  text-decoration: none;
+}
+
+#size-select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#size-select:focus {
+  border: 2px solid #555;
+}
+
+label[for="size-select"] {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+/*resvonsive for website */
+@media (max-width: 768px) {
+  /* styles for tablet and mobile devices */
+  #product-image-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  #product-details-container {
+    width: 100%;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item img {
+    width: 50%;
+    margin-right: 20px;
+  }
+}
+
+
+
+
+#cart-page {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+#heading-cart{
+
+width: 80%;
+display: flex;
+padding-left: 6%;
+
+}
+#heading-cart span{
+font-family: "Libre Franklin", sans-serif;
+font-weight: 700;
+color: grey;
+padding-right:100px ;
+text-align: center;
+padding-top: 30px;
+}
+
+/*order summery*/
+
+#order-summary{
+background-color: #f7f7f7;
+padding: 40px;
+font-family: "Libre Franklin", sans-serif;
+
+
+
+}
+#order-summary h2{
+font-family: "Visuelt Pro", sans-serif;
+font-weight: 700;
+color: #030304;
+padding-right:100px ;
+
+}
+#summary-items #total-price{
+font-size: 400;
+font-size: 14px;
+line-height: 14px;
+color: #94abc1;
+}
+#checkout-button{
+width: 100%;
+height: 50px;
+background-color: #000000;
+color: white;
+border: none;
+}
+#checkout-button:hover{
+background-color: black;
+font-family: "Visuelt Pro", sans-serif;
+font-size: 500;
+font-size: 14px;
+line-height: 18px;
+}
+#paypal{
+border: none;
+border-radius: 50px;
+background-color: #ffc439;
+width: 100%;
+margin-top: 10px;
+padding: 10px;
+}
+#paypal:hover{
+background-color: #eeac0f88;
+
+}
+#paypal img{
+height: 20px;
+padding-right: 10px;
+}
+#p{
+text-align: center;
+font-weight: 200;
+font-size: 10px;
+padding: 0px 10px;
+}
+
+/* cart item */
+.cart-item{
+padding: 50px 20px;
+}
+
+.decrease-quantity {
+font-size: 20px;
+font-weight: 900;
+border: none;
+color: #1e3371;
+background-color: white;
+}
+.increase-quantity{
+font-size: 20px;
+border: none;
+color: #1e3371;
+background-color: white;
+font-weight: 900;
+
+}
+#name-div{
+width: 50%;
+}
+#heading-cart h1{
+font-family: "Visuelt Pro", sans-serif;
+font-weight: 700;
+color: #050507;
+padding-right:100px ;
+
+
+}
+.container{
+display: block;
+font-size: 12px;
+line-height: 14px;
+font-weight: 200;
+}
+
+
+@media (max-width: 768px) {
+/* styles for tablet and mobile devices */
+#cart-container {
+    flex-wrap: wrap;
+}
+
+#cart-items {
+    width: 100%;
+    order: 1;
+}
+
+#order-summary {
+    width: 100%;
+    order: 2;
+}
+}
+
+
+/* Cart footer */
+.cart-footer {
+position: fixed;
+bottom: 0;
+width: 100%;
+display: flex;
+justify-content:flex-start;
+align-items: center;
+margin-top: 2rem;empty-cells: show;
+padding: 1rem;
+background-color: #f2f2f2;
+border-top: 1px solid #ddd;
+box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Continue shopping button */
+.continue-shopping {
+display: inline-block;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+font-weight: 600;
+text-transform: uppercase;
+color:black;
+
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Arrow icon */
+.arrow-icon {
+display: inline-block;
+margin-right: 0.5rem;
+width: 1rem;
+height: 1rem;
+border-right: 2px solid black;
+border-top: 2px solid black;
+
+}
+
+/* FAQ link */
+.faq-link {
+font-size: 0.8rem;
+text-decoration: none;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+font-weight: 600;
+color: #333;
+}
+
+.faq-link:hover {
+text-decoration: underline;
+}
+.back-btn {
+display: inline-block;
+margin: 0 10px;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+background-color: #ddd;
+color: black;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+cursor: pointer;
+}
+
+.back-btn i {
+margin-right: 5px;
+}
