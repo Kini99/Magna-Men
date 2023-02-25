@@ -1,8 +1,11 @@
 let cartContainer = document.getElementById('cart-container');
 const cartItemsContainer = document.getElementById("cart-items");
 let cartItem = JSON.parse(localStorage.getItem('cartItem')) || [];
+let userName=localStorage.getItem('userName')
+document.getElementById('loged-iser-name').textContent=userName
+console.log(userName)
 
-console.log(cartItem.price)
+//console.log(cartItem.price)
 if (cartItem.length === 0) {
     cartContainer.innerHTML = '<p>Your cart is empty</p>';
   } else {

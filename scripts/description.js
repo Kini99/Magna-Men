@@ -1,10 +1,10 @@
-function getProductIdFromUrl() {
-  const searchParams = new URLSearchParams(window.location.search);
-  return searchParams.get('productId');
-}
-
-const productId = getProductIdFromUrl();
-const productUrl = `https://63f45eca3f99f5855dae29dc.mockapi.io/products/2`;
+//function getProductIdFromUrl() {
+  //const searchParams = new URLSearchParams(window.location.search);
+ // return searchParams.get('productId');
+//}
+let productId=localStorage.getItem("cartId")
+//const productId = getProductIdFromUrl();
+const productUrl = `https://63f45eca3f99f5855dae29dc.mockapi.io/products/${productId}`;
 let description = `<h4>Item # P2736</h4>
 <p>A picturesque lighthouse scene with Jake and his dog are depicted here in this Life is Good® graphic T-shirt. Crafted in 100% cotton and designed with proper proportions for Big and Tall guys in mind, it's the perfect choice for casual comfort. Pair it with jeans, shorts or swim trunks for a complete look.
 <ol>Details

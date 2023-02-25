@@ -1,0 +1,62 @@
+
+
+let trackingUsername=localStorage.getItem("userName");
+console.log(trackingUsername)
+
+
+function updatePopup(order) {
+
+  fetch(`${baseServerURL}/users`)
+  .then(res => res.json())
+  .then(data => {
+
+    user=data.filter((el)=>el.fullname==trackingUsername)
+    userobj=user[0]
+  // document.querySelector(".popupSection").style.display = "flex";
+  console.log(userobj)
+  let obj = {};
+  obj.id = userobj.id;
+  console.log(obj.id)
+
+  obj.username=userobj.username;
+  obj.fullname=userobj.fullname;
+  obj.email=userobj.email;
+  obj.password=userobj.password;
+  obj.mobile=userobj.mobile;
+  obj.location=userobj.location;
+  // obj.orders=;
+  obj.paymentMode="Credit Card";
+  obj.orderStatus="Dispatch Pending";
+
+ let targetDate = new Date();
+ targetDate.setDate(targetDate.getDate() + 5);
+
+ let dd = targetDate.getDate();
+ let mm = targetDate.getMonth() + 1; 
+let yyyy = targetDate.getFullYear();
+
+ let dateString = dd + "/" + mm + "/" + yyyy;
+
+ console.log(dateString);
+  obj.estimatedDate=dateString;
+  
+
+  updateAPI(obj);
+
+  console.log(obj)
+
+  return obj
+   })
+}
+
+function updateAPI(obj){
+  console.log(obj)
+  fetch(`${baseServerURL}/users/${obj.id}`, {
+    method: "PUT", 
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(obj)
+  })
+
+}

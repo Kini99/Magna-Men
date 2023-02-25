@@ -127,7 +127,7 @@ function display(data) {
     let contentBox = document.createElement("div");
     contentBox.addEventListener("click", () => { 
       localStorage.setItem("cartId", el.id);
-      // location.href = ""
+      window.location.href = "./description.html"
     })
 
 
