@@ -191,8 +191,8 @@ tr:hover{
   cursor: pointer;
 }
 .radio{
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
 }
 #close-popup-updateform {
   position: absolute;

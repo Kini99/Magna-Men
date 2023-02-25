@@ -15,7 +15,7 @@ Content-Type: application/json
 DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/users/
 
 ###GET request for users
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/products
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
 
 ### add new user
 POST https://63f45eca3f99f5855dae29dc.mockapi.io/products/92
@@ -35,72 +35,21 @@ Content-Type: application/json
 
 
 ###GET request for products
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/8
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
 
 
-### update user data
-PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users/8
+
+PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users
 Content-Type: application/json
 
 {
-  "id": "8",
-  "username": "user1",
-  "fullname": "Sonam",
-  "email": "sonam090909@gmail.com",
-  "password": "1234",
-  "profile": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/762.jpg",
-  "role": "user",
-  "location": "Delhi",
-  "orders": [
-    {
-      "id": 1,
-      "special": "BUY MORE SAVE MORE",
-      "name": "Harbor Bay Space Dye Pocket T-Shirt",
-      "category": "pants_shorts",
-      "price": 3122,
-      "minPrice": 1122,
-      "maxPrice": 2676,
-      "sale-message": "Save Up To 58%",
-      "images": [
-        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye?$splp$"
-      ],
-      "color": [
-        "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321june_bug_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321wineberry_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye_sw?$Swatch$"
-      ]
-    },
-    {
-      "id": 31,
-      "special": "BUY MORE SAVE MORE",
-      "name": "Harbor Bay Elastic-Waist Pants",
-      "category": "pants_shorts",
-      "price": 4905,
-      "minPrice": 4905,
-      "maxPrice": 4013,
-      "images": [
-        "https://images.dxl.com/is/image/CasualMale/pG5115navy?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115black?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115olive?$splp$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115charcoal?$splp$"
-      ],
-      "color": [
-        "https://images.dxl.com/is/image/CasualMale/pG5115navy_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115black_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115olive_sw?$Swatch$",
-        "https://images.dxl.com/is/image/CasualMale/pG5115charcoal_sw?$Swatch$"
-      ]
-    }
-  ],
-  "mobile": 1234567890,
-  "orderStatus": "Completed",
-  "paymentMode":"Net Banking",
-  "estimatedDate":"26/02/2023"
 }
 
-  # "paymentMode":"Credit Card",
-  # "estimatedDate":"27/02/2023"
+### update order status 
+PATCH https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
+Content-Type: application/json
+
+{
+  "orderStatus": "Return/Exchange Requested",
+  "estimatedDate": "28/02/2023"
+}

@@ -76,7 +76,7 @@
             <th>Order Total</th>
             <th>Order Status</th>
             <th>Payment Mode</th>
-            <th>Update Status</th>
+            <!-- <th>Update Status</th> -->
         </thead>
         <tbody>
 
@@ -101,12 +101,16 @@
             </div>
             <div>
                 <input type="radio" name="order-status" id="completed" value="Completed">
-                <label for="completed">Order Completed</label>
+                <label for="completed">Completed</label>
+            </div>
+            <div>
+                <input type="radio" name="order-status" id="request" value="Return/Exchange Requested">
+                <label for="request">Return/Exchange Requested</label>
             </div>
             </div>
 
                 <label for="completed">Estimated Date of Delivery: </label>
-                <input type="date" id="date" value="">
+                <input type="date" id="date">
 
                 <input type="submit" id="updateProduct" value="SUBMIT">
             </form>
@@ -117,4 +121,5 @@
 </body>
 
 </html>
-<script src="./scripts/admin_orderTracking.js"></script>
+<script src="./scripts/admin_orderTracking.js" type="module"></script>
+
