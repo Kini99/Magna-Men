@@ -564,15 +564,14 @@ td {
 }
 .users-details-container .cards-title {
   display: grid;
-  /* grid-template-columns: 1fr 2fr 2fr 3fr 2fr 2fr 2fr; */
-  grid-template-columns: 100px repeat(5, 1fr);
+  grid-template-columns: 100px repeat(2, 1fr) 250px repeat(3, 1fr);
   padding-bottom: 8px;
   border-bottom: 1px solid;
 }
 .users-details-container .card {
   margin: 6px 0;
   display: grid;
-  grid-template-columns: 100px repeat(5, 1fr);
+  grid-template-columns: 100px repeat(2, 1fr) 250px repeat(3, 1fr);
   border-bottom: 1px solid #959595a2;
   align-items: center;
 }
@@ -587,6 +586,10 @@ td {
 }
 .gmail{
   color: blue;
+}
+.users-details-container .delete-user{
+  color: red;
+  cursor: pointer;
 }
 
 /* employees  */

@@ -75,7 +75,7 @@ function getApiData(url) {
         }
       })
       // console.log("thisisis" + totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable)
-      createChart("Available Products", totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable)
+      createChart("Available Products", totalAvailableProducts, shirtsAvailable, hoodieAvailable, pantsAvailable, "sales-chart-table")
     });
 }
 
@@ -181,20 +181,6 @@ function appendProgressBar(
       clearInterval(pantsprogress);
     }
   }, hoodiespeed);
-
-
-  // updating prgress bar
-  setInterval(() => {
-    appendProgressBar(
-      shirtPercentage,
-      hoodiePercentage,
-      pantShortPercentage,
-      shirts,
-      hoodies,
-      pants_shorts
-    )
-  }, 10000);
-
 }
 
 function totalUsers(url) {
@@ -231,7 +217,7 @@ function totalUsers(url) {
         }
       });
       totalOrdersCount.textContent = totalOrders;
-      createChart("Sales Count", totalCount, shirtsCout, hoodiesCount, pants_shorts_count);
+      createChart("Sales Count", totalCount, shirtsCout, hoodiesCount, pants_shorts_count, "price-chart-table");
       document.getElementById("totalPrice").textContent = `₹ ${total}`;
       appendProgress(total, shirts, hoodies, pants_shorts);
       console.log(total, shirts, hoodies, pants_shorts);
@@ -239,11 +225,12 @@ function totalUsers(url) {
     });
 }
 
-function createChart(title, totalCount, shirtsCout, hoodiesCount, pants_shorts_count) {
+function createChart(title, totalCount, shirtsCout, hoodiesCount, pants_shorts_count, tableId) {
   let ranges = Math.floor(totalCount / 10);
-  let tableEl = document.createElement("table");
+  // let tableEl = document.createElement("table");
+  let tableEl = document.getElementById(`${tableId}`);
+  // <table class="tableChart"> 
   tableEl.innerHTML = `
-    <table class="tableChart"> 
     <caption> Total ${title} :- ${totalCount} </caption>
       <tr>
         <td colspan="3"> 
@@ -264,9 +251,9 @@ function createChart(title, totalCount, shirtsCout, hoodiesCount, pants_shorts_c
         <td> HOODIES </td>
         <td> PANTS </td>
       </tr>
-    </table>
-  `;
-  document.querySelector(".chart-container").append(tableEl)
+      `;
+      // </table>
+  // document.querySelector(".chart-container").append(tableEl)
   // document.querySelector(".chart-container").append(tableEl)
   let bars = document.querySelectorAll(".bar");
 
@@ -320,6 +307,7 @@ ${mostActiveUser}
     <p>Email</p>
     <p class="orders">Total Orders</p>
     <p>Total Price</p>
+  <p class="delete-user"> Delete Account </p>
   </div>
   ${allUsersData}
   `
@@ -327,6 +315,20 @@ ${mostActiveUser}
   for(let i=0;i<userCards.length;i++){
     i%2==0 ? userCards[i].setAttribute("data-aos", "flip-left") : userCards[i].setAttribute("data-aos", "flip-right")
   }
+  document.querySelectorAll(".delte-operation-user").forEach(user => {
+    user.addEventListener("click", () => {
+      let confirmation = confirm("Are you sure you want to delet this users account ?");
+      if(confirmation){
+        fetch(`${baesUrl}/users/${user.dataset.deleteUserId}`, {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json"
+          }
+        })
+        .then(req => totalUsers(`${baesUrl}users`))
+      }
+    })
+  })
 }
 
 function getActivePrice(data){
@@ -367,6 +369,7 @@ function getUserHtml(name, id, email, order){
     <p class="gmail">${email}</p>
     <p class="orders">${userTotalOrder}</p>
     <p class="price">₹ ${userTotalPrice}</p>
+  <p class="delete-user delte-operation-user" data-delete-user-id=${id}> Delete </p>
   </div>
     `
 }
@@ -397,5 +400,5 @@ setTimeout(() => {
 setTimeout(() => {
   document.querySelector(".hii-admin-main").style.visibility = "visible";
   document.querySelector(".hii-admin-main").style.opacity = "1";
-}, 20000)
+}, 7000)
 
