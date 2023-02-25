@@ -134,10 +134,6 @@ function display(data) {
 
 
 
-      // location.href = ""
-    });
-
-
     let offer = document.createElement("p");
     offer.textContent = el.special;
     offer.style.color = "#205493";
@@ -202,11 +198,7 @@ let searchInp = document.querySelector("#search_product");
 let searchBtn = document.getElementById("search_product_icon");
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  // console.log("working")
-  // console.log(searchInp.value)
   let search = searchInp.value;
-  // console.log(search)
-  // console.log(productsData)
   console.log(allProductsData);
   let searched = allProductsData.filter((el) => {
     // console.log(el)
