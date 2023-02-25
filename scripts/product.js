@@ -113,6 +113,16 @@ function display(data) {
       colorContainer.appendChild(colorBtn);
     });
 
+    // for linking cart page
+    let contentBox = document.createElement("div");
+    contentBox.addEventListener("click", () => { 
+      localStorage.setItem("cartId", el.id);
+      // location.href = ""
+    })
+
+
+
+
     let offer = document.createElement("p");
     offer.textContent = el.special;
     offer.style.color = "#205493";
@@ -131,7 +141,8 @@ function display(data) {
     sale.style.color = "#dc3545";
 
     // colorContainer.append(colorBtn);
-    card.append(img, colorContainer, offer, title, price, sale);
+    contentBox.append(offer, title, price, sale)
+    card.append(img, colorContainer,contentBox);
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
