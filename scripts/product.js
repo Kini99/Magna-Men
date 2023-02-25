@@ -127,8 +127,16 @@ function display(data) {
     let contentBox = document.createElement("div");
     contentBox.addEventListener("click", () => {
       localStorage.setItem("cartId", el.id);
+
+      window.location.href = "./description.html"
+    })
+
+
+
+
       // location.href = ""
     });
+
 
     let offer = document.createElement("p");
     offer.textContent = el.special;
