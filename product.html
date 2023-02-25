@@ -91,7 +91,7 @@
           <span>Find a Store</span>
         </div>
         <div class="logo">
-          <img src="./images/Magna.png" alt="" />
+          <img src="./images/magna_logo_black.png" alt="" />
         </div>
         <div class="search-bar">
           <input type="text" placeholder="Search" id="search_product" />
@@ -187,7 +187,7 @@
           onmouseout="closeDrpedFilter(this)"
           id="shirts-drop"
         >
-          <p>SHIRTS</p>
+          <p id="tshirts">SHIRTS</p>
           <div class="filter-table-container" id="filter-table-container">
             <table class="filter-table">
               <tr>
@@ -202,13 +202,13 @@
                 <th>Polos & Rugbys</th>
               </tr>
               <tr>
-                <th>T-Shirts</th>
+                <th id="tshirts">T-Shirts</th>
               </tr>
               <tr>
-                <th>Graphic Tees</th>
+                <th id="tshirts">Graphic Tees</th>
               </tr>
               <tr>
-                <th>Hoodies & Sweatshirts</th>
+                <th id="hoodies">Hoodies & Sweatshirts</th>
               </tr>
               <tr>
                 <th>Sweaters</th>
@@ -570,7 +570,7 @@
               />
               <p>Polos & Rugbys</p>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="tshirts">
               <img
                 src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
                 alt=""
@@ -591,7 +591,7 @@
               />
               <p>Graphic Tees</p>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="hoodies">
               <img
                 src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Sweatshirts"
                 alt=""
@@ -627,23 +627,23 @@
             <legend><h4>Department</h4></legend>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <div class="dep_select">
+          <div class="dep_select" >
             <input
               type="checkbox"
               name=""
-              id="dep_check"
-              value="Casual Shirts"
-            />Casual Shirts<br />
+              id="hoodies"
+              value="Hoodies and Sweatshirts"
+            />Hoodies and Sweatshirts<br />
             <input
               type="checkbox"
               name=""
               id="dep_check"
               value="Polos & Rugbys"
-            />CPolos & Rugbys<br />
+            />Polos & Rugbys<br />
             <input
               type="checkbox"
               name=""
-              id="dep_check"
+              id="tshirts"
               value="T-Shirts"
             />T-Shirts<br />
             <input
@@ -759,7 +759,7 @@
             <option value="Low To High">Sort By: <span>Price (Low To High)</span></option>
             <option value="High To Low">Sort By: <span>Price (High To Low)</span></option>
             <option value="A to Z">Sort By: <span>Brand (A to Z)</span></option>
-            <option value="Off">Sort By: <span>%Off (High To Low)</span></option>
+            <!-- <option value="Off">Sort By: <span>%Off (High To Low)</span></option> -->
           </select>
         </div>
         <div class="product_cards">
