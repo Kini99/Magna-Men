@@ -125,13 +125,10 @@ function display(data) {
 
     // for linking cart page
     let contentBox = document.createElement("div");
-    contentBox.addEventListener("click", () => { 
+    contentBox.addEventListener("click", () => {
       localStorage.setItem("cartId", el.id);
       // location.href = ""
-    })
-
-
-
+    });
 
     let offer = document.createElement("p");
     offer.textContent = el.special;
@@ -140,19 +137,19 @@ function display(data) {
 
     let title = document.createElement("p");
     title.textContent = el.name;
-    title.style.color = "gray"
+    title.style.color = "gray";
 
     let price = document.createElement("p");
-    price.textContent = `₹ ${el.price}.00`
+    price.textContent = `₹ ${el.price}.00`;
     price.style.fontWeight = "700";
-    
+
     let sale = document.createElement("p");
     sale.textContent = el[`sale-message`];
     sale.style.color = "#dc3545";
 
     // colorContainer.append(colorBtn);
-    contentBox.append(offer, title, price, sale)
-    card.append(img, colorContainer,contentBox);
+    contentBox.append(offer, title, price, sale);
+    card.append(img, colorContainer, contentBox);
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
@@ -203,5 +200,33 @@ function getButton(text, pageNumber) {
 //   }
 
 // })
+
+
+//search function
+
+let searchInp = document.querySelector("#search_product");
+let searchBtn = document.getElementById("search_product_icon");
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  // console.log("working")
+  // console.log(searchInp.value)
+  let search = searchInp.value;
+  // console.log(search)
+  // console.log(productsData)
+  console.log(allProductsData);
+  let searched = allProductsData.filter((el) => {
+    // console.log(el)
+    if (
+      el.name.toLowerCase().includes(search.toLowerCase()) == true ||
+      el.category.toLowerCase().includes(search.toLowerCase()) == true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  display(searched);
+});
+
 
 
