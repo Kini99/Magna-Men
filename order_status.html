@@ -6,33 +6,632 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Status</title>
     <link rel="stylesheet" href="./styles/order_status.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
+
     
-<!-- header -->
+    <!-- header -->
 
-<!-- content -->
-<div class="container">
+    <!-- **************************************** -->
 
-<div class="sidebar_profile">
-    <h2>Hello, <span id="userName"></span> </h2>
-    <p>Your Orders</p>
-    <p>Your Wishlist</p>
-    <p>Your Account</p>
-    <p>Track Order</p>
-    <p>Subscription</p>
-    <p>Referrals</p>
-    <p>Offers</p>
-    <p>Catalog</p>
-    <p>Help & FAQ</p>
+    <header>
+        <div class="top-black-margin"></div>
+        <nav class="header-top-navigation">
+          <div class="find-store">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Find a Store</span>
+          </div>
+          <div class="logo">
+            <img src="./images/magna_logo_black.png" alt="" />
+          </div>
+          <div class="search-bar">
+            <input type="text" placeholder="Search" />
+            <div class="search-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </div>
+          <div class="navigation-right">
+            <div class="order-status">
+              <i class="fa fa-light fa-truck-fast"></i>
+              <p>Order Status</p>
+            </div>
+            <div
+              class="hi-guest"
+              id="hii-user"
+              onclick="openHiiUser()"
+              onmouseleave="closeHiiUser()"
+            >
+              <i class="fa-regular fa-user"></i>
+              <p>Hi <span id="loged-iser-name">User</span></p>
+              <div class="login-signup-popup">
+                <p id="login-form-opener">Sign In / Sign Up</p>
+                <p id="logout-user-button">Log Out</p>
+                <p id="order-status-opener">Order Status</p>
+              </div>
+            </div>
+            <div class="bag">
+              <i class="fa fa-light fa-cart-shopping"></i>
+              <p>Bag (0)</p>
+            </div>
+          </div>
+        </nav>
+      </header>
+  
+      <!-- filter section sarts here  -->
+      <section class="filter-section">
+        <div class="filter-container">
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="new-now-drop"
+          >
+            <p>NEW + NOW</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Everyday Specials</th>
+                  <th>Brands</th>
+                </tr>
+                <tr>
+                  <th>New</th>
+                  <td>Brooks Brothers</td>
+                  <td>Michael Kors</td>
+                  <td>Rockport</td>
+                </tr>
+                <tr>
+                  <th>The Big + Tall Fit Experts</th>
+                  <td>Carhatt</td>
+                  <td>Nautica</td>
+                  <td>Skechers</td>
+                </tr>
+                <tr>
+                  <th>Sustainable Styles</th>
+                  <td>Columbia</td>
+                  <td>Oak Hill</td>
+                  <td>Society Of One</td>
+                </tr>
+                <tr>
+                  <th>Magna Spotlight</th>
+                  <td>Harbor Bay</td>
+                  <td>Polo Ralph Lauren</td>
+                  <td>Synrg</td>
+                </tr>
+                <tr>
+                  <th>The Magna Men + Tall Difference</th>
+                  <td>Levi's</td>
+                  <td>Reebok</td>
+                  <td>Vineyard</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Lucky Brand</td>
+                  <td>Robert Graham</td>
+                  <td>Oak Hill Premium</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="shirts-drop"
+          >
+            <p>SHIRTS</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Casual Shirts</th>
+                  <th>Swim Shirts</th>
+                </tr>
+                <tr>
+                  <th>Dress Shirts</th>
+                  <th>Workwear Shirts</th>
+                </tr>
+                <tr>
+                  <th>Polos & Rugbys</th>
+                </tr>
+                <tr>
+                  <th>T-Shirts</th>
+                </tr>
+                <tr>
+                  <th>Graphic Tees</th>
+                </tr>
+                <tr>
+                  <th>Hoodies & Sweatshirts</th>
+                </tr>
+                <tr>
+                  <th>Sweaters</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="pant-shirts-drop"
+          >
+            <p>PANTS & SHORTS</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Active Pants</th>
+                  <th>Jeans</th>
+                  <th>Shorts</th>
+                </tr>
+                <tr>
+                  <th>Active Shorts</th>
+                  <td>Tapered Fit</td>
+                  <th>Swim Trunks</th>
+                </tr>
+                <tr>
+                  <th>Casual Pants</th>
+                  <td>Straight Fit</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Dress Pants</th>
+                  <td>Relaxed Straight Fit</td>
+                  <th>Workwear</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td>Relax Fit</td>
+                  <td>Workwear Pants</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td>Loose Fit</td>
+                  <td>Workwear Coveralls & Jumpsuits</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td>Athletic</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Bootcut Fit</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="outwear-drop"
+          >
+            <p>OUTWEAR</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Coats & Jackets</th>
+                </tr>
+                <tr>
+                  <th>Rain Jackets</th>
+                </tr>
+                <tr>
+                  <th>Denim Jackets</th>
+                </tr>
+                <tr>
+                  <th>Fleece</th>
+                </tr>
+                <tr>
+                  <th>Vests</th>
+                </tr>
+                <tr>
+                  <th>Overcoats</th>
+                </tr>
+                <tr>
+                  <th>Workwear Jackets</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="activewear-drop"
+          >
+            <p>ACTIVEWEAR</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Active Tees</th>
+                  <th>Athletic</th>
+                  <th>Golf</th>
+                </tr>
+                <tr>
+                  <th>Active Pants</th>
+                  <td>Walking</td>
+                  <td>Golf Shirts</td>
+                </tr>
+                <tr>
+                  <th>Active Shorts</th>
+                  <td>Running</td>
+                  <td>Golf Pants & Sorts</td>
+                </tr>
+                <tr>
+                  <th>Active Sweatshirts & Hoodies</th>
+                  <td>Cross Trainers</td>
+                  <td>Golf Layering</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td>Trend Sneakers</td>
+                  <td>Golf Jackets & Vests</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="team-shop-drop"
+          >
+            <p>TEAM SHOP</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>NFL</th>
+                </tr>
+                <tr>
+                  <th>MLB</th>
+                </tr>
+                <tr>
+                  <th>NLH</th>
+                </tr>
+                <tr>
+                  <th>NBA</th>
+                </tr>
+                <tr>
+                  <th>Collegiate</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="suiting-drop"
+          >
+            <p>SUITING</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Sport Coats & Blazers</th>
+                  <th>Ties & Pockets Squares</th>
+                </tr>
+                <tr>
+                  <th>Suit Separates</th>
+                  <th>Jewelry & Cufflinks</th>
+                </tr>
+                <tr>
+                  <th>Suits</th>
+                  <th>Dress Belts</th>
+                </tr>
+                <tr>
+                  <th>Dress Shirts</th>
+                  <th>Dress Shoes</th>
+                </tr>
+                <tr>
+                  <th>Dress Pants</th>
+                  <td>Dress</td>
+                </tr>
+                <tr>
+                  <th>Formalwear</th>
+                  <td>Dress Casual</td>
+                </tr>
+                <tr>
+                  <th>Suit Vests</th>
+                  <td>Dress Boots</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="underwear-drop"
+          >
+            <p>UNDERWEAR & LOUNGE</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Underwear</th>
+                </tr>
+                <tr>
+                  <th>Undershirts</th>
+                </tr>
+                <tr>
+                  <th>Roboes</th>
+                </tr>
+                <tr>
+                  <th>Lounge & Pajamas</th>
+                </tr>
+                <tr>
+                  <th>Sloppers</th>
+                </tr>
+                <tr>
+                  <th>Socks</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="shoes-drop"
+          >
+            <p>SHOES</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Athletic</th>
+                  <th>Casual Shoes</th>
+                  <th>Boots</th>
+                  <th>Dress Shoes</th>
+                  <th>Sandals</th>
+                </tr>
+                <tr>
+                  <td>Walking</td>
+                  <td>Casual Slip Ons & Loafers</td>
+                  <td>Casual Boots</td>
+                  <td>Dress</td>
+                  <td>Sport</td>
+                </tr>
+                <tr>
+                  <td>Running</td>
+                  <td>Casual Oxfords</td>
+                  <td>Chukka Boots</td>
+                  <td>Dress Casual</td>
+                  <td>Slide</td>
+                </tr>
+                <tr>
+                  <td>Cross Trainers</td>
+                  <td>Casual Boots</td>
+                  <td>Dress Boots</td>
+                  <td>Flip Flops</td>
+                  <td>Lakhani</td>
+                </tr>
+                <tr>
+                  <td>Trend Sneakers</td>
+                  <td>Casual Boat Shoes</td>
+                  <td>Weather Boots</td>
+                  <td></td>
+                  <td>Fisherman</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Work Boots</td>
+                  <td></td>
+                  <td>Fisherman</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Sports & Trail</td>
+                  <td></td>
+                  <th>Slippers</th>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Western & Biker</td>
+                  <td></td>
+                  <th></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div
+            class="new-now-drop"
+            onmouseover="dropFilters(this)"
+            onmouseout="closeDrpedFilter(this)"
+            id="accessories-drop"
+          >
+            <p>ACCESSORIES</p>
+            <div class="filter-table-container" id="filter-table-container">
+              <table class="filter-table">
+                <tr>
+                  <th>Face Masks</th>
+                  <th>Winter Accessories</th>
+                  <th>Chairs</th>
+                </tr>
+                <tr>
+                  <th>Socks</th>
+                  <td>Scarves</td>
+                  <td>Clothing & Shoe Care</td>
+                </tr>
+                <tr>
+                  <td>Ties & Pocket Squares</td>
+                  <td>Gloves</td>
+                  <th>Rain Accessories</th>
+                </tr>
+                <tr>
+                  <th>Jewelry & Cufflinks</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Belts</th>
+                  <th>Watches</th>
+                  <th>Small Gifts</th>
+                </tr>
+                <tr>
+                  <th>Hats</th>
+                  <th>Sunglasses</th>
+                </tr>
+                <tr>
+                  <td></td>
+                  <th>Luggage & Wallets</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <p style="color: red">SALE</p>
+        </div>
+        <hr class="lining" />
+      </section>
+      <!-- filter section ends here  -->
+    
+    <!-- content -->
+    <div class="container">
+        
+        <div class="sidebar_profile">
+            <h2>Hello, <span id="userName"></span> </h2>
+            <p>Your Orders</p>
+            <p>Your Wishlist</p>
+            <p>Your Account</p>
+            <p>Track Order</p>
+            <p>Subscription</p>
+            <p>Referrals</p>
+            <p>Offers</p>
+            <p>Catalog</p>
+            <p>Help & FAQ</p>
+        </div>
+        <div class="order-content">
+            <img src="./images/movingTruck-unscreen.gif" alt="" class="moving-truck">
+            
+            <div id="status"></div>
 </div>
-    <div id="status">
-
-    </div>
 </div>
 
 <!-- footer -->
 
+<footer>
+    <div class="row">
+      <div class="col-3">
+        <div class="link-cat" onclick="footerToggle(this)">
+          <span class="footer-toggle"></span>
+          <span class="footer-cat">CUSTOMER SUPPORT</span>
+        </div>
+        <ul class="footer-cat-links">
+          <li>
+            <a href=""><span>Curbside Pickup</span></a>
+          </li>
+          <li>
+            <a href=""><span>DXL Deals</span></a>
+          </li>
+          <li>
+            <a href=""><span>DXL Rewards Club</span></a>
+          </li>
+          <li>
+            <a href=""><span>Find a Wish List</span></a>
+          </li>
+          <li>
+            <a href=""><span>Shipping & Delivery</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <div class="link-cat" onclick="footerToggle(this)">
+          <span class="footer-toggle"></span>
+          <span class="footer-cat">CONTACT US</span>
+        </div>
+        <ul class="footer-cat-links">
+          <li>
+            <a href=""><span>Customer Service</span></a>
+          </li>
+          <li>
+            <a href=""><span>Chat Now</span></a>
+          </li>
+          <li>
+            <a href=""><span>Email Us</span></a>
+          </li>
+          <li>
+            <a href=""><span>1.855.746.7395</span></a>
+          </li>
+          <li>
+            <a href=""><span>Find a Store</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <div class="link-cat" onclick="footerToggle(this)">
+          <span class="footer-toggle"></span>
+          <span class="footer-cat">Quick Links</span>
+        </div>
+        <ul class="footer-cat-links">
+          <li>
+            <a href=""><span>Reviews</span></a>
+          </li>
+          <li>
+            <a href=""><span>Terms & Condition</span></a>
+          </li>
+          <li>
+            <a href=""><span>Disclaimer</span></a>
+          </li>
+          <li>
+            <a href=""><span>Site Map</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3" id="newsletter">
+        <span>SIGN UP FOR OUR VERY BEST DEALS</span>
+        <form id="subscribe">
+          <input
+            type="email"
+            id="subscriber-email"
+            placeholder="Enter Email Address"
+          />
+          <input type="submit" value="Subscribe" id="btn-scribe" />
+        </form>
+
+        <div class="social-links social-2">
+          <a href=""><i class="fab fa-facebook-f"></i></a>
+          <a href=""><i class="fab fa-twitter"></i></a>
+          <a href=""><i class="fab fa-linkedin-in"></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+          <a href=""><i class="fab fa-tumblr"></i></a>
+          <a href=""><i class="fab fa-reddit-alien"></i></a>
+        </div>
+
+        <div id="address">
+          <span>Office Location</span>
+          <ul>
+            <li>
+              <i class="far fa-building"></i>
+              <div>
+                Los Angeles<br />
+                (310) 390-3845 5905 Sepulveda Boulevard Culver City, CA 90230
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-gopuram"></i>
+              <div>
+                Delhi<br />
+                Office 150B, Behind Sana Gate Char Bhuja Tower, Station Road,
+                Delhi
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="social-links social-1 col-6">
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-linkedin-in"></i></a>
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-tumblr"></i></a>
+        <a href=""><i class="fab fa-reddit-alien"></i></a>
+      </div>
+    </div>
+    <div id="copyright">All Rights Reserved 2011-2023</div>
+    <div id="owner">
+      <span> Destination XL Group, Inc. All Rights Reserved. </span>
+    </div>
+  </footer>
+
 </body>
 </html>
 <script src="./scripts/order_status.js"></script>
+<!-- <script src="./scripts/script.js"></script> -->

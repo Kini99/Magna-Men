@@ -171,9 +171,7 @@ function updateAPI(obj){
 
 }
 
-// document.getElementById("tr").addEventListener("click", () => {
-//   document.querySelector(".popupSection").style.display = "flex";
-// });
+
 document.getElementById("close-popup-updateform").addEventListener("click", () => {
   document.querySelector(".popupSection").style.display = "none";
 });

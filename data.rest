@@ -12,37 +12,98 @@ Content-Type: application/json
 
 
 ### DELETE product
-DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/users/
+DELETE https://63f45eca3f99f5855dae29dc.mockapi.io/products/92
 
 ###GET request for users
 GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
 
 ### add new user
-POST https://63f45eca3f99f5855dae29dc.mockapi.io/products/92
+POST https://63f45eca3f99f5855dae29dc.mockapi.io/products
 Content-Type: application/json
 
 {
-      "id":2,
-      "username": "user1",
-      "fullname": "User 1",
-      "email": "user@mail.com",
-      "password": "1234",
-      "profile": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/762.jpg",
-      "role": "user",
-      "location":"Delhi",
-      "orders":[]
-  }
+  "id": "91",
+  "special": "BUY MORE SAVE MORE",
+  "name": "Harbor Bay Space Dye Pocket T-Shirt",
+  "category": "tshirt",
+  "price": 1122,
+  "minPrice": 1122,
+  "maxPrice": 2676,
+  "sale-message": "Save Up To 58%",
+  "images": [
+    "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple?$splp$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321june_bug?$splp$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321wineberry?$splp$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye?$splp$"
+  ],
+  "color": [
+    "https://images.dxl.com/is/image/CasualMale/pG6321amaranth_purple_sw?$Swatch$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321june_bug_sw?$Swatch$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321wineberry_sw?$Swatch$",
+    "https://images.dxl.com/is/image/CasualMale/pG6321lyons_blu_space_dye_sw?$Swatch$"
+  ]
+}
 
 
 ###GET request for products
 GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
 
 
-
-PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users
+###Update
+PUT https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
 Content-Type: application/json
 
 {
+  "id": "1",
+  "username": "user1",
+  "fullname": "User 1",
+  "email": "user1@mail.com",
+  "password": "1234",
+  "profile": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/762.jpg",
+  "role": "user",
+  "mobile": 1234567890,
+  "location": "Delhi",
+  "orders": [
+    {
+      "special": "NEW ITEM",
+      "name": "Society of One Birdseye Full-Zip Hoodie",
+      "id": 62,
+      "price": 5797,
+      "category": "hoodie",
+      "images": [
+        "https://images.dxl.com/is/image/CasualMale/pP2556orange?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pP2556grey?$splp$"
+      ],
+      "color": [
+        "https://images.dxl.com/is/image/CasualMale/pP2556orange_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pP2556grey_sw?$Swatch$"
+      ]
+    },
+    {
+      "id": 31,
+      "special": "BUY MORE SAVE MORE",
+      "name": "Harbor Bay Elastic-Waist Pants",
+      "category": "pants_shorts",
+      "price": 4905,
+      "minPrice": 4905,
+      "maxPrice": 4013,
+      "images": [
+        "https://images.dxl.com/is/image/CasualMale/pG5115navy?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115black?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115olive?$splp$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115charcoal?$splp$"
+      ],
+      "color": [
+        "https://images.dxl.com/is/image/CasualMale/pG5115navy_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115black_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115olive_sw?$Swatch$",
+        "https://images.dxl.com/is/image/CasualMale/pG5115charcoal_sw?$Swatch$"
+      ]
+    }
+  ],
+  "orderStatus": "Return/Exchange Requested",
+  "paymentMode": "Credit Card",
+  "estimatedDate": "27/02/2023"
 }
 
 ### update order status 
