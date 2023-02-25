@@ -4,7 +4,7 @@ function getProductIdFromUrl() {
 }
 
 const productId = getProductIdFromUrl();
-const productUrl = `https://63f45eca3f99f5855dae29dc.mockapi.io/products/${productId}`;
+const productUrl = `https://63f45eca3f99f5855dae29dc.mockapi.io/products/2`;
 let description = `<h4>Item # P2736</h4>
 <p>A picturesque lighthouse scene with Jake and his dog are depicted here in this Life is Good® graphic T-shirt. Crafted in 100% cotton and designed with proper proportions for Big and Tall guys in mind, it's the perfect choice for casual comfort. Pair it with jeans, shorts or swim trunks for a complete look.
 <ol>Details
@@ -21,8 +21,9 @@ let description = `<h4>Item # P2736</h4>
 <li>Machine Wash; Imported</li>
 </ol>
 </p>`
-
-fetch(productUrl)
+render(0)
+function render(src){
+  fetch(productUrl)
   .then(response => response.json())
   .then(data => {
     const product = data;
@@ -30,19 +31,23 @@ fetch(productUrl)
 
     // Generate the HTML for the product page
     const mainImg = document.createElement('img');
-    mainImg.src = product.images[0];
+    mainImg.src = product.images[src];
     mainImg.alt = product.name;
     const colorContainer = document.createElement('div');
     colorContainer.classList.add('color-container');
-    product.color.forEach(color => {
+    product.color.forEach((color,i) => {
       const colorBtn = document.createElement('button');
       colorBtn.style.backgroundImage = `url(${color})`;
       colorBtn.classList.add('color-btn');
+      colorBtn.setAttribute("id",i)
       colorBtn.addEventListener('click', () => {
         mainImg.src = product.images[product.color.indexOf(color)];
         console.log('New image URL:', mainImg.src);
       });
+
       colorContainer.appendChild(colorBtn);
+      //let colorbuton=document.querySelectorAll(".color-btn")
+      //console.log(colorbuton)
     });
 
 
@@ -95,6 +100,18 @@ quantityContainer.appendChild(quantityInput);
     const productContainer = document.getElementById('product-container');
     productContainer.innerHTML = productHTML;
     quantity.appendChild(quantityContainer)
+    let colorbuton=document.querySelectorAll(".color-btn")
+   // console.log(colorbuton)
+   colorbuton.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      //console.log(btn)
+      //console.log(mainImg)
+      //mainImg.src=data.images[btn.id]
+      //console.log(data.images[btn.id])
+      render(btn.id)
+    })
+    
+   })
 // Get all size options
 const sizeOptions = document.querySelectorAll('.size-option');
 
@@ -136,6 +153,9 @@ sizeOptions.forEach(option => {
   .catch(error => {
     console.error('Error fetching product data:', error);
   });
+
+}
+
 
   function addProductToCart(cartItem) {
     const cartItemCount = document.getElementById('cart-item-count');
