@@ -134,9 +134,9 @@ console.log(ele)
       obj.orderStatus = ele[i].value;
     }
   }
-  console.log(document.getElementById("date").value)
-  if (document.getElementById("date").value != null) {
-   let date = document.getElementById("date").value;
+  console.log(document.getElementById("date-of-order").value)
+  if (document.getElementById("date-of-order").value != null) {
+   let date = document.getElementById("date-of-order").value;
    console.log(date)
    let format="";
   //  2023-02-27
