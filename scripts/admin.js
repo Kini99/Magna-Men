@@ -400,5 +400,5 @@ setTimeout(() => {
 setTimeout(() => {
   document.querySelector(".hii-admin-main").style.visibility = "visible";
   document.querySelector(".hii-admin-main").style.opacity = "1";
-}, 7000)
+}, 6000)
 

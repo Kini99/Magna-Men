@@ -7,6 +7,8 @@
     <title>admin</title>
     <link rel="stylesheet" href="./styles/admin.css" />
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/admin_productsDashboard.css">
+    <link rel="stylesheet" href="./styles/admin_orderTracking.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,7 +51,7 @@
     <nav class="topNav">
       <div class="name-logo-container">
         <i class="fa-solid fa-bars" id="openMenu"></i>
-        <img src="./images/magna_logo_black.png" alt="" class="magna">
+        <img src="./images/magna_logo_black.png" alt="" class="magna" onclick="logOutAdmin()">
       </div>
       <div class="nav-right-container">
         <div>
@@ -85,17 +87,19 @@
         </div>
     </section>
 
+
+    <!-- hamburger -->
     <section class="left-section">
         <div class="logo-container">
-            <img src="./images/Magnawhite.png" alt="" class="magna magnaWhite">
+            <img src="./images/Magnawhite.png" alt="" class="magna magnaWhite"  onclick="logOutAdmin()">
             <i class="fa-solid fa-xmark" id="closeMenu"></i>
         </div>
         <div class="links-container">
           <ul>
             <li><a href="#dashboardScroll"><i class="fa-solid fa-cube"></i>Dashboard</a></li>
             <li><a href="#usersScroll"><i class="fa-solid fa-users"></i>Users</a></li>
-            <li><a href="#"><i class="fa-solid fa-truck-fast"></i>Orders</a></li>
-            <li><a href="#"><i class="fa-solid fa-industry"></i></i>Products</a></li>
+            <li><a href="#order-tracking-page"><i class="fa-solid fa-truck-fast"></i>Orders</a></li>
+            <li><a href="#admin_product"><i class="fa-solid fa-industry"></i></i>Products</a></li>
             <li id="open-form"><a href="#"><i class="fa-solid fa-circle-plus"></i>Add New Product</a></li>
             <li id="open-form"><a href="#outTeam"><i class="fa-brands fa-teamspeak"></i>Our Team</a></li>
           </ul>
@@ -184,6 +188,212 @@
       </div>
     </section>
 
+
+<!-- admin products hanler -->
+<section id="admin_product">
+<!-- popup box -->
+<section class="editProduct-popup-section">
+  <div id="editPopup">
+    <i class="fa-solid fa-circle-xmark" id="close-popup-Editform"></i>
+    <form id="edit-product">
+      <label for="name">NAME: </label>
+      <input type="text" placeholder="Name" id="name">
+      <label for="image">IMAGE</label>
+      <input type="text" placeholder="Enter Image Link" id="image">
+      <label for="category">CATEGORY</label>
+      <input type="text" placeholder="Category" id="category">
+      <label for="tag">SPECIAL TAG</label>
+      <input type="text" placeholder="Special Tag" id="tag">
+      <label for="price">PRICE</label>
+      <input type="number" placeholder="Price" id="price">
+      <input type="submit" id="editProduct" value="SUBMIT">
+    </form>
+  </div>
+</section>
+
+
+<!-- header -->
+
+
+<!-- content -->
+
+<h1 class="headings">PRODUCT MANAGEMENT</h1>
+
+<div class="swipper_container" data-aos="zoom-in">
+
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Polos_rugbys"
+            alt=""
+          />
+          <p>Polos & Rugbys</p>
+        </div>
+        <div class="swiper-slide" id="tshirts">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
+            alt=""
+          />
+          <p>T-Shirts</p>
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Casual_shirts"
+            alt=""
+          />
+          <p>Casual Shirts</p>
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Graphic_Tees"
+            alt=""
+          />
+          <p>Graphic Tees</p>
+        </div>
+        <div class="swiper-slide" id="hoodies">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Sweatshirts"
+            alt=""
+          />
+          <p>Hoodies & Sweatshirts</p>
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_DressShirts"
+            alt=""
+          />
+          <p>Dress Shirts</p>
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Workwear"
+            alt=""
+          />
+          <p>Workwear Shirts</p>
+        </div>
+        <div class="swiper-slide" id="pants">
+          <img
+            src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Casual_Pants"
+            alt=""
+          />
+          <p>Pants & Shorts</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<h1 class="headings">PRODUCT LIST</h1>
+
+<div class="functions">
+  <div class="searchFunc">
+    <label for="search">Search</label>
+    <input type="text" placeholder="Search by Name or Category" id="search">
+    <!-- <input type="submit" id="searchSub"> -->
+    <i class="fa fa-search" aria-hidden="true" id="search_icon"></i>
+  </div>
+
+  <select name="Price" id="sortByPrice">
+    <option value="default">SORT BY PRICE</option>
+    <option value="Low to High">Low to High</option>
+    <option value="High to Low">High to Low</option>
+  </select>
+</div>
+
+
+<div id="displayContainer" data-aos="zoom-in">
+  <!--  -->
+  <!-- appending all products data here -->
+
+</div>
+
+
+<div class="paginationContainer">
+  <div id="pagination"></div>
+</div>
+</section>
+
+<script src="./scripts/admin_productsDashboard.js"></script>
+
+
+<!-- order tracking page starts -->
+<section id="order-tracking-page">
+  <h1>ORDER MANAGEMENT</h1>
+  <nav>
+      <p id="all">All Orders</p>
+      <p id="pending">Dispatch Pending</p>
+      <p id="initiated">Dispatch Initiated</p>
+      <p id="allcompleted">Order Completed</p>
+      <p id="requested">Return/Exchange Requested</p>
+  </nav>
+  <hr>
+
+  <div class="functions">
+      <div class="searchFunc">
+          <label for="search">Search</label>
+          <input type="text" placeholder="Search by ID, Name or Order Details" id="search">
+          <input type="submit" id="searchSub">
+          <i class="fa fa-search" aria-hidden="true" id="search_icon"></i>
+      </div>
+  </div>
+
+  <table>
+      <thead>
+          <th>Customer ID</th>
+          <th>Customer</th>
+          <th style="width:30%">Order Details</th>
+          <th>Estimated Delivery Date</th>
+          <th>Order Total</th>
+          <th>Order Status</th>
+          <th>Payment Mode</th>
+          <!-- <th>Update Status</th> -->
+      </thead>
+      <tbody>
+
+      </tbody>
+  </table>
+
+  <!-- popup box -->
+
+  <section class="popupSection">
+      <div id="updatePopup">
+          <i class="fa-solid fa-circle-xmark" id="close-popup-updateform"></i>
+          <form id="update-order">
+<h3>Update Order Status</h3>
+<div class="radio">
+  <div>
+              <input type="radio" name="order-status" id="dispatchPending" value="Dispatch Pending">
+              <label for="dispatchPending">Dispatch Pending</label>
+          </div>
+          <div>
+              <input type="radio" name="order-status" id="dispatchInitiated" value="Dispatch Initiated">
+              <label for="dispatchInitiated">Dispatch Initiated</label>
+          </div>
+          <div>
+              <input type="radio" name="order-status" id="completed" value="Completed">
+              <label for="completed">Completed</label>
+          </div>
+          <div>
+              <input type="radio" name="order-status" id="request" value="Return/Exchange Requested">
+              <label for="request">Return/Exchange Requested</label>
+          </div>
+          </div>
+
+              <label for="completed">Estimated Date of Delivery: </label>
+              <input type="date" id="date">
+
+              <input type="submit" id="updateProduct" value="SUBMIT">
+          </form>
+      </div>
+  </section>
+</section>
+
+<script src="./scripts/admin_orderTracking.js"></script>
+<!-- order page ends -->
+
+
     <section class="employees-section" id="outTeam">
       <p class="ourTeam">Our Team</p>
       <div class="employees-container">
@@ -194,10 +404,10 @@
           />
           <p class="employeeName">Kinjal Momaya</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Backend dev</p>
+            <p class="postSubtitle">Fullstack Developer</p>
           </p>
           <p class="role">
-            Server APIs, Admin product page, Edit and Delete operations, Orders Dashboard
+            Server APIs, Admin product page, Orders Dashboard, Edit and Delete operations
           </p>
           <p class="email">kinjalmomaya99@gmail.com</p>
         </div>
@@ -208,10 +418,10 @@
           />
           <p class="employeeName">Gaurav Shukla</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Frontend dev</p>
+            <p class="postSubtitle">Fullstack Developer</p>
           </p>
           <p class="role">
-            Product page, Add to Cart, Filters, Login and SignUp forms
+            Product page, Add to Cart, Filters, Login and SignUp forms, Navigation bar
           </p>
           <p class="email">gauravshukla.ec1022@gmail.com</p>
         </div>
@@ -222,7 +432,7 @@
           />
           <p class="employeeName">Afroz Khan</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Fullstack dev</p>
+            <p class="postSubtitle">Fullstack Developer</p>
           </p>
           <p class="role">
             JSON files, Admin dashboard, Admin users, Admin employees, Add new product operation
@@ -236,10 +446,10 @@
           />
           <p class="employeeName">Hemant Singh Bangari</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Frontend dev</p>
+            <p class="postSubtitle">Fullstack Developer</p>
           </p>
           <p class="role">
-            Cart page, View product page, Checkout order opreation
+            Cart page, View product page, Checkout order operation, Order Status
           </p>
           <p class="email">hemant2307sb@gmail.com</p>
         </div>
@@ -250,10 +460,10 @@
           />
           <p class="employeeName">Sweta Singh</p>
           <p class="postTitle">Software Engineer
-            <p class="postSubtitle">Frontend dev</p>
+            <p class="postSubtitle">Fullstack Developer</p>
           </p>
           <p class="role">
-            Home page, Footer
+            Home page footer
           </p>
           <p class="email">sweta235410@gmail.com</p>
         </div>
@@ -356,6 +566,10 @@
         </div>
      </footer>
     </section>
+
+
+
+    
 
     </body>
 <script src="./scripts/admin.js"></script>

@@ -1,16 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 
-:root{
-font-family: 'Libre Franklin', sans-serif;
-word-spacing: 3px;
-}
-/* content */
-
-body{
-    width:90%;
-    margin:auto
-}
-h1{
+#order-tracking-page h1{
     text-align: center;
     background-color: #152d47;
     color: white;
@@ -19,60 +8,12 @@ h1{
     margin-top: 20px;
 }
 
-/* .cardsContainer{
-  display: flex;
-  margin-bottom: 20px;
-  border:1px solid black;
-}
-.charts {
-    display: flex;
-    background-color: #fff;
-  }
-  .charts-left {
-    width: 20vw;
-    padding-left: 10px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-  }
-  .charts-left i {
-    color: #fff;
-    background-color:#152d47;
-    width: 50px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 20px;
-  }
-  
-  .mainDiv {
-    display: flex;
-    align-items: center;
-    height: 30%;
-    background-color: #d3d5db84;
-    border-radius: 4px;
-    margin: 0 20px;
-  }
-  .totalCount {
-    font-size: 20px;
-    margin:0
-  }
-  
-  .totalCountTitle {
-    font-size: 14px;
-    margin:0
-  } */
-
-#all{
+#order-tracking-page #all{
   background-color: #152d47;
   color:white;
 }
 
-nav{
+#order-tracking-page nav{
     width: 70%;
     display: flex;
     justify-content: space-between;
@@ -80,17 +21,17 @@ nav{
     background-color: white;
     margin-top: 20px;
 }
-nav p{
+#order-tracking-page nav p{
 padding:10px;
 }
 
-nav p:hover{
+#order-tracking-page nav p:hover{
     cursor: pointer;
     background-color: #152d47;
     color: white;
 }
 
-.functions{
+#order-tracking-page .functions{
     display: flex;
     justify-content: space-between;
     font-size: 20px;
@@ -101,32 +42,32 @@ nav p:hover{
     padding:0 20px;
 }
 
-.searchFunc{
+#order-tracking-page .searchFunc{
     display: flex;
     justify-content: space-around;
     width:40%;
 }
-.searchFunc input{
+#order-tracking-page .searchFunc input{
     width:70%;
     margin:0;
 }
-.searchFunc label, select{
+#order-tracking-page .searchFunc label, #order-tracking-page select{
     height: 25px;
     margin: 22px 5px 0 0;
 }
-#searchSub{
+#order-tracking-page #searchSub{
     display:none;
 }
-#search_icon , #search{
+#order-tracking-page #search_icon , #order-tracking-page #search{
     height: 25px;
     margin: 22px 0 20px 0;
 }
-#search_icon{
+#order-tracking-page #search_icon{
 cursor: pointer;
 color:#152d47;
 }
 
-table{
+#order-tracking-page table{
     border:1px solid black;
     background-color: white;
     width:100%;
@@ -134,25 +75,26 @@ table{
     border-spacing: 0;
     margin-bottom: 20px;
 }
-thead th{
+#order-tracking-page thead th{
 border-bottom: 1px solid black;
 padding:5px;
 background-color: #152d47;
 color: white;
 font-weight: lighter;
+text-align: center;
 }
-td{
+#order-tracking-page td{
     text-align: center;
     padding:10px;
 }
-tr:hover{
+#order-tracking-page tr:hover{
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     cursor: pointer;
 }
 
 
-.popupSection {
+#order-tracking-page .popupSection {
   position: fixed;
   top: 0;
   left: 0;
@@ -167,7 +109,7 @@ tr:hover{
   align-items: center;
 }
 
-#updatePopup {
+#order-tracking-page #updatePopup {
   background-color: #181824ce;
   width: 40vw;
   padding: 20px;
@@ -176,32 +118,32 @@ tr:hover{
   display: flex;
   flex-direction: column;
 }
-#updatePopup form h3{
+#order-tracking-page #updatePopup form h3{
   color:white;
   text-align: center;
   margin-bottom: 10px;
 }
-#updatePopup form label{
+#order-tracking-page #updatePopup form label{
   color:#fff;
 }
-#updatePopup form input {
+#order-tracking-page #updatePopup form input {
   padding: 5px 10px;
   font-size: 18px;
   margin-bottom: 20px;
   cursor: pointer;
 }
-.radio{
+#order-tracking-page .radio{
   /* display: flex;
   justify-content: space-between; */
 }
-#close-popup-updateform {
+#order-tracking-page #close-popup-updateform {
   position: absolute;
   transform: translate(-30px, -30px);
   cursor: pointer;
   font-size: 30px;
   color: red;
 }
-#updateProduct {
+#order-tracking-page #updateProduct {
   width: 30%;
   margin: auto;
   background-color: #fff;
@@ -211,6 +153,6 @@ tr:hover{
   cursor: pointer;
   border-radius: 15px;
 }
-#updateProduct:hover{
-
+#order-tracking-page #updateProduct:hover{
+  text-decoration: underline;
 }

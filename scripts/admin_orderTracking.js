@@ -1,9 +1,9 @@
-const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
+const baseServerURLTrack= `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 
 let usersList;
 
 function fecthrequest(){
-  fetch(`${baseServerURL}/users`)
+  fetch(`${baseServerURLTrack}/users`)
   .then(res => res.json())
   .then(data => {
     // console.log(data)
@@ -157,7 +157,7 @@ console.log(ele)
 
 function updateAPI(obj){
   console.log(obj)
-  fetch(`${baseServerURL}/users/${obj.id}`, {
+  fetch(`${baseServerURLTrack}/users/${obj.id}`, {
     method: "PUT", 
     headers: {
       "Content-type": "application/json"
@@ -197,7 +197,7 @@ let initiatedBtn = document.getElementById("initiated");
 let allCompletedBtn = document.getElementById("allcompleted");
 let requestedBtn = document.getElementById("requested");
 
-let sortSelect = document.getElementById("sortByPrice");
+// let sortSelectTrack = document.getElementById("sortByPrice");
 
 let currentStatus;
 
@@ -326,25 +326,25 @@ function filterTable(filterData) {
 
 //search function
 
-let searchInp = document.querySelector("#search");
-let searchBtn = document.getElementById("search_icon");
-searchBtn.addEventListener("click", (e) => {
+let searchInp1 = document.querySelector("#search");
+let searchBtn1 = document.getElementById("search_icon");
+searchBtn1.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("working")
-  let search = searchInp.value;
-  let searched = usersList.filter((el) => {
+  let search1 = searchInp1.value;
+  let searched1 = usersList.filter((el) => {
     let mem = "";
     for (let i = 0; i < el.orders.length; i++) {
       mem += el.orders[i].name + " ";
     }
-    if (el.id.toLowerCase().includes(search.toLowerCase()) == true || el.fullname.toLowerCase().includes(search.toLowerCase()) == true || mem.toLowerCase().includes(search.toLowerCase()) == true) {
+    if (el.id.toLowerCase().includes(search1.toLowerCase()) == true || el.fullname.toLowerCase().includes(search.toLowerCase()) == true || mem.toLowerCase().includes(search.toLowerCase()) == true) {
       return true;
     } else {
       return false;
     }
   })
-  console.log(searched)
-  displayOrders(searched)
+  console.log(searched1)
+  displayOrders(searched1)
 })
 
 
