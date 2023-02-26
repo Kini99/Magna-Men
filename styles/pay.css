@@ -3,118 +3,168 @@
   font-family: "Libre Franklin", sans-serif;
   margin: 0;
   padding: 0;
-}
-
-h1, h2 {
-  text-align: center;
-}
-
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input[type="text"], textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   box-sizing: border-box;
 }
 
-button[type="submit"] {
-  background-color: black;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+:root {
+  --baseFont: "Libre Franklin", sans-serif;
+  --dark: #181824;
+  --lightColor: #152d47;
+  --mediumFont: "Lato", sans-serif;
+}
+
+
+body{
+  /* background-image: url("https://media0.giphy.com/media/A5ffIYwJoEpVcMOYiO/giphy.gif"); */
+  background-image: url("https://cdn.dribbble.com/users/410907/screenshots/4606457/packaging.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* backdrop-filter: blur(2px); */
+}
+
+.black_belt{
+  background-color: #000;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 40px;
+}
+.black_belt img{
+  width: 100px;
+}
+
+.go-back-product a{
+  color: #fafafa;  
+  transition: 0.2s;
   cursor: pointer;
+  text-decoration: none;
+}
+.go-back-product a:hover{
+  text-decoration: underline;
 }
 
-button[type="submit"]:hover {
-  background-color:grey;
+.address-form-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
 }
-
-/* Order summary styles */
-.order-summary {
-  max-width: 500px;
-  margin: 0 auto;
+.address-form-container{
+  /* border: 1px solid red; */
+  padding: 10px 40px;
+  width: 40vw;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  border-radius: 6px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+.address-form-container h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.address-container{
+  width: 40vw;
+  border-radius: 6px;
   padding: 20px;
-  border: 1px solid #ccc;
-  margin-top: 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #ffffffe5;
 }
-
-.order-summary h3 {
-  margin-top: 0;
-}
-
-.order-summary table {
+input, textarea{
+  display: block;
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.order-summary th, .order-summary td {
-  border: 1px solid #ccc;
   padding: 8px;
-  text-align: left;
+  font-size: 14px;
+  color: #000;
+  margin: 4px 0 12px 0;
+  border: 1px solid var(--lightColor);
+  outline: 1px solid var(--lightColor);
+  font-weight: 400;
 }
 
-.order-summary th {
-  background-color: #f2f2f2;
-}
-
-.order-summary .total-row {
+.address-submit{
+  display: block;
+  width: 200px;
+  margin: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 18px;
+  border: none;
+  background-color: var(--lightColor);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
   font-weight: bold;
+  border: 1px solid var(--lightColor);
+}
+.address-submit:hover{
+  background-color: #152d4737;
+  color: var(--lightColor);
+  border: 1px solid var(--lightColor);
 }
 
-.order-summary .total-row td {
-  border-top: 2px solid #ccc;
+
+.order-summary-container{
+  height: 80vh;
+  padding: 10px 40px 10px 70px;
+  width: 100%;
 }
-
-
-
-/* Container for the entire payment form */
-.payment-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 800px;
-  margin: 0 auto;
+#order-summary{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 20px;
-  grid-gap: 20px;
+  border-radius: 6px;
+  background-color: #ffffffe5;
+}
+#order-summary h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#order-summary table{
+  width: 100%;
+}
+#order-summary table tr *{
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--lightColor);
+}
+.td-center{
+  text-align: center;
+}
+#order-summary table tr .grand-total{
+  text-align: center;
+  border-bottom: 3px double red;
+  color: rgb(9, 185, 9);
+}
+.total-row{
+  background-color: #00000012;
 }
 
-/* Left side containing shipping address form */
-.address-container {
-  grid-column: 1 / 2;
+
+
+/* ***************  */
+/* paypent fomr start  */
+
+#payment-section{
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  /* width: 40vw; */
+  /* background-color: #fff; */
+  display: none;
 }
-
-/* Right side containing payment form and order summary */
-.payment-summary-container {
-  grid-column: 2 / 3;
-  display: grid;
-  grid-template-rows: repeat(2, min-content) 1fr;
-  grid-template-columns: repeat(2, 1fr);
+#address-section{
+  /* display: none; */
+  /* border: 1px solid red; */
 }
-
-/* Payment form styles */
-form {
-  max-width: 100%;
+#back-address{
+  padding: 3px 26px;
+  font-size: 18px;
+  background-color: var(--lightColor);
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid var(--lightColor);
 }
-
-/* Order summary styles */
-.order-summary {
-  margin-top: 20px;
-  grid-row: 2 / 4;
-  grid-column: 2 / 3;
+#back-address:hover{
+  background-color: #152d4737;
+  color: var(--lightColor);
+  border: 1px solid var(--lightColor);
 }
-
-
