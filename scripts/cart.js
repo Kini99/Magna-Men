@@ -160,5 +160,5 @@ function updateOrderSummary() {
  // redirect to a payment page
  const checkoutButton = document.getElementById('checkout-button');
 checkoutButton.addEventListener('click', event => {
-  window.location.href = '../cart/pay.html';
+  window.location.href = './pay.html';
 });

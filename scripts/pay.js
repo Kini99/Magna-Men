@@ -9,8 +9,26 @@ const cartItems = JSON.parse(localStorage.getItem('cartItem')) || [];
 let addressSection = document.getElementById("address-section");
 let paymentSection = document.getElementById("payment-section");
 
+addressSubmitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  //if (addressForm.checkValidity()) {
+    paymentForm.style.display = 'block';
+    addressForm.querySelectorAll('input, textarea').forEach((element) => {
+      element.disabled = true;
+    });
+    addressSubmitButton.disabled = true;
+
+    // Populate the order summary
+    
+    console.log(cartItems)
+
+    let orderSummaryHtml = '<h2>Order Summary</h2>';
+    orderSummaryHtml += '<table>';
+    
 let orderSummaryHtml = '<h2>Order Summary</h2>';
     orderSummaryHtml += '<table cellspacing="0">';
+
     orderSummaryHtml += '<thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th></tr></thead>';
     orderSummaryHtml += '<tbody>';
 
@@ -28,6 +46,9 @@ let orderSummaryHtml = '<h2>Order Summary</h2>';
 
     orderSummary.innerHTML = orderSummaryHtml;
 
+  //}
+
+
 
 
 
@@ -42,6 +63,7 @@ addressSubmitButton.addEventListener('submit', (event) => {
   event.preventDefault();
     addressSection.style.display = "none";
     paymentSection.style.display = "block";
+
 });
 
 paymentForm.addEventListener('submit', (event) => {
