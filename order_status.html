@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Status</title>
    
+    <link rel="icon" href="./images/favicon.jpeg" type="image/icon type">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/description.css">
 
     <link
     href="https://fonts.googleapis.com/css?family=Lato|Nanum+Gothic:700|Raleway&display=swap"
@@ -31,6 +33,7 @@
 
   <link rel="stylesheet" href="./styles/order_status.css">
 
+
 </head>
 <body>
 
@@ -47,7 +50,7 @@
             <span>Find a Store</span>
           </div>
           <div class="logo">
-            <img src="./images/magna_logo_black.png" alt="" />
+            <a href="./index.html" target="_blank"><img src="./images/magna_logo_black.png" alt="" /></a>
           </div>
           <div class="search-bar">
             <input type="text" placeholder="Search" />
@@ -67,16 +70,16 @@
               onmouseleave="closeHiiUser()"
             >
               <i class="fa-regular fa-user"></i>
-              <p>Hi <span id="loged-iser-name">User</span></p>
+              <p>Hi<span id="loged-iser-name">User</span></p>
               <div class="login-signup-popup">
                 <!-- <p id="login-form-opener">Sign In / Sign Up</p> -->
                 <p id="logout-user-button">Log Out</p>
                 <!-- <p id="order-status-opener">Order Status</p> -->
               </div>
             </div>
-            <div class="bag" id="#move-to-cart">
+            <div class="" id="#move-to-cart">
               <i class="fa fa-light fa-cart-shopping"></i>
-              <p>Bag (<span id="cart-item-count">0</span>) </p>
+              <p>Bag<span id="cart-item-count" style="display: none;"></span>(0)</p>
             </div>
           </div>
         </nav>
