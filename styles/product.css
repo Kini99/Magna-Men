@@ -131,6 +131,9 @@ div > h3 {
 }
 .dep_select{
     display: none;
+  }
+.dep_select>input{
+    margin-top: 10px;
 }
 .brands_legend{
 
@@ -140,13 +143,19 @@ div > h3 {
 .brands_select{
     display: none;
 }
-.graphic_legend{
+.brands_select>input{
+  margin-top: 10px;
+}
+.types_legend{
 
     display: flex;
     justify-content: space-between;
 }
-.graphic_select{
+.types_select{
     display: none;
+}
+.types_select>input{
+  margin-top: 10px;
 }
 .colors_legend{
 
@@ -155,6 +164,9 @@ div > h3 {
 }
 .colors_select{
     display: none;
+}
+.colors_select>input{
+  margin-top: 10px;
 }
 .product_container{
     /* position: absolute; */
@@ -170,7 +182,7 @@ div > h3 {
 }
 
 .product_footer {
-  padding: 10px;
+  padding: 20px;
   /* position: absolute; */
   /* width: 1150px; */
   /* height: 241px; */
@@ -184,34 +196,26 @@ div > h3 {
   /* border-radius: 0px; */
 }
 .product_footer>h3{
-  /* margin-top: 35px; */
+  margin-top: 30px;
   width: 100%;
   margin-bottom: 10px;
 }
 .product_footer > p{
-  /* margin-top: 10px; */
-  line-height: 24px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  color: #212529;
+  font-size: 13px;
 }
 fieldset{
     border-color: rgb(236, 228, 228);
     border-right: 1px solid white;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     border-left: 1px solid white;
 }
 fieldset:hover{
     cursor: pointer;
-}
-.product_footer > p {
-  /* font-family: "Libre Franklin"; */
-  /* font-style: normal; */
-  /* font-weight: 400; */
-  /* font-size: 12px; */
-  /* line-height: 20px; */
-  /* identical to box height, or 162% */
-
-  color: #212529;
 }
 
 .product_cards{
@@ -223,6 +227,7 @@ fieldset:hover{
 }
 
 .product_card_data{
+  position: relative;
   width: 80%;
   /* border: 1px solid; */
   margin: auto;
@@ -279,5 +284,23 @@ fieldset:hover{
   background-color: rgb(43, 38, 38);
 }
 
+
+
+/* quickview */
+.quick_view{
+  position: absolute;
+  cursor: pointer;
+  top: 312px;
+  width: 98%;
+  border: 1px solid black;
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px;
+  background-color: white;
+  opacity: 0.5;
+  display: none;
+}
 
 

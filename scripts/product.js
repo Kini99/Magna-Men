@@ -16,13 +16,13 @@ document.querySelector(".brands").addEventListener("mouseleave", () => {
   document.querySelector(".brands_select").style.display = "none";
 });
 
-// graphic
-document.querySelector(".graphic_legend").addEventListener("click", () => {
-  document.querySelector(".graphic_select").style.display = "block";
+// types
+document.querySelector(".types_legend").addEventListener("click", () => {
+  document.querySelector(".types_select").style.display = "block";
 });
 
-document.querySelector(".graphic").addEventListener("mouseleave", () => {
-  document.querySelector(".graphic_select").style.display = "none";
+document.querySelector(".types").addEventListener("mouseleave", () => {
+  document.querySelector(".types_select").style.display = "none";
 });
 
 // colors
@@ -68,7 +68,7 @@ async function fetchProductsData(pageNumber) {
     showPagination(totalProducts, 15);
 
     display(products_data);
-    // console.log(products_data);
+    console.log(products_data);
     productsData = [...products_data];
   } catch (error) {
     console.log(error);
@@ -108,6 +108,27 @@ function display(data) {
     img.src = el.images[0];
     img.className = "product_card_image";
     img.style.width = "100%";
+    
+
+
+    // quick view
+    let quickView = document.createElement("div");
+    quickView.className = "quick_view";
+    quickView.textContent = "Quick View";
+
+    card.addEventListener("mouseenter", () => {
+      quickView.style.display = "block";
+    })
+    card.addEventListener("mouseleave", () => {
+      quickView.style.display = "none";
+    })
+
+    quickView.addEventListener("click", () => {
+      localStorage.setItem("cartId", el.id);
+
+      window.location.href = "./description.html"
+    })
+
 
     // product color seletction
 
@@ -125,6 +146,7 @@ function display(data) {
 
     // for linking cart page
     let contentBox = document.createElement("div");
+    contentBox.style.cursor = "pointer";
     contentBox.addEventListener("click", () => {
       localStorage.setItem("cartId", el.id);
 
@@ -153,7 +175,7 @@ function display(data) {
 
     // colorContainer.append(colorBtn);
     contentBox.append(offer, title, price, sale);
-    card.append(img, colorContainer, contentBox);
+    card.append(img,quickView, colorContainer, contentBox);
     document.querySelector(".product_cards").append(card);
   });
   // console.log(data);
@@ -221,7 +243,11 @@ searchBtn.addEventListener("click", (e) => {
 
 let tshirtBtn = document.querySelectorAll("#tshirts");
 let hoodiesBtn = document.querySelectorAll("#hoodies");
-// let pantsBtn = document.getElementById("pants");
+let pantsBtn = document.querySelectorAll("#pants");
+let poloBtn = document.querySelectorAll("#polo");
+let jeansBtn = document.querySelectorAll("#jeans");
+let brandSelect = document.querySelectorAll(".brands_select input[name='brand']");
+let typesSelect = document.querySelectorAll(".types_select input[name='types']");
 let sortSelect = document.getElementById("sort");
 
 let currentCategory;
@@ -231,6 +257,7 @@ tshirtBtn.forEach((element) => {
     let filterData = allProductsData.filter(el => el.category == "tshirt");
     currentCategory = filterData
     filterTable(filterData)
+
   });
   
 })
@@ -242,11 +269,62 @@ hoodiesBtn.forEach((element) => {
   });
 
 })
-// pantsBtn.addEventListener("click", () => {
-//   let filterData = allProductsData.filter(el => el.category == "pants_shorts");
-//   currentCategory = filterData
-//   filterTable(filterData)
-// });
+pantsBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    let filterData = allProductsData.filter(el => el.category == "pants_shorts");
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+})
+poloBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("polo"));
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+})
+jeansBtn.forEach((element) => {
+  element.addEventListener("click", () => {
+    let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("jeans"));
+    currentCategory = filterData
+    filterTable(filterData)
+  });
+})
+
+// brand select
+
+brandSelect.forEach((element) => { 
+  element.addEventListener("change", () => { 
+    // console.log(element.value);
+    if (element.checked) {
+      let lowerCase = element.value.toLowerCase();
+      let filterData = allProductsData.filter(el => el.name.toLowerCase().includes(lowerCase));
+      currentCategory = filterData;//defining current category for sorting with filter
+      filterTable(filterData);
+    } else {
+      fetchProductsData(1);
+  }
+   
+  })
+})
+
+// types select
+
+typesSelect.forEach((element) => { 
+  element.addEventListener("change", () => { 
+    // console.log(element.value);
+    if (element.checked) {
+      let lowerCase = element.value.toLowerCase();
+      let filterData = allProductsData.filter(el => el.name.toLowerCase().includes(lowerCase));
+      currentCategory = filterData;//defining current category for sorting with filter
+      filterTable(filterData);
+    } else {
+      fetchProductsData(1);
+  }
+   
+  })
+})
+
 
 sortSelect.addEventListener("change", (event) => {
   let sortedData;
