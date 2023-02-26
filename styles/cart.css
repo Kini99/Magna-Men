@@ -16,17 +16,32 @@
   margin-right: 20px;
 }
 
+.cart-item-content{
+  /* border: 1px solid; */
+  width: 300px;
+  line-height: 20px;
+  text-align: left;
+}
+.increase-descrease{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .remove-from-cart {
-  background-color:white;
+  display: block;
+  background-color:rgba(255, 0, 0, 0.683);
   color:#1e3371;
-  text-decoration: underline;
+  border-radius: 2px;
   border: none;
   padding: 6px 10px;
   cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
 }
 
 .remove-from-cart:hover {
-  text-decoration: none;
+  background-color:rgb(255, 0, 0);
 }
 
 #size-select {
@@ -84,16 +99,20 @@ label[for="size-select"] {
 
 width: 80%;
 display: flex;
-padding-left: 6%;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+/* padding-left: 6%; */
+
 
 }
 #heading-cart span{
 font-family: "Libre Franklin", sans-serif;
 font-weight: 700;
 color: grey;
-padding-right:100px ;
+/* padding-right:100px ; */
+
 text-align: center;
-padding-top: 30px;
 }
 
 /*order summery*/
@@ -102,9 +121,9 @@ padding-top: 30px;
 background-color: #f7f7f7;
 padding: 40px;
 font-family: "Libre Franklin", sans-serif;
-
-
-
+}
+#order-summary *{
+  margin-bottom: 6px;
 }
 #order-summary h2{
 font-family: "Visuelt Pro", sans-serif;
@@ -112,6 +131,13 @@ font-weight: 700;
 color: #030304;
 padding-right:100px ;
 
+}
+#total-price{
+  border-bottom: 3px double red;
+  color: rgb(9, 185, 9);
+}
+#summary-items{
+  /* border: 1px solid red; */
 }
 #summary-items #total-price{
 font-size: 400;
@@ -122,17 +148,23 @@ color: #94abc1;
 #checkout-button{
 margin-top: 25px;
 width: 100%;
-height: 50px;
-background-color: #000000;
+/* height: 50px; */
+padding: 10px 0;
+background-color: var(--lightColor);
 color: white;
 border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: 0.2s;
 }
 #checkout-button:hover{
-background-color: black;
+background-color: rgba(0, 0, 0, 0.26);
 font-family: "Visuelt Pro", sans-serif;
 font-size: 500;
 font-size: 14px;
-line-height: 18px;
+color: #000;
+
+/* line-height: 18px; */
 }
 #paypal{
 border: none;
@@ -159,7 +191,7 @@ padding: 0px 10px;
 
 /* cart item */
 .cart-item{
-padding: 50px 20px;
+/* padding: 50px 20px; */
 }
 
 .decrease-quantity {
@@ -178,7 +210,7 @@ font-weight: 900;
 
 }
 #name-div{
-width: 50%;
+/* width: 50%; */
 }
 #heading-cart h1{
 font-family: "Visuelt Pro", sans-serif;

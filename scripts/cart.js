@@ -9,7 +9,7 @@ console.log(userName)
 if (cartItem.length === 0) {
     cartContainer.innerHTML = '<p>Your cart is empty</p>';
   } else {
-    let cartHTML = `<div id="heading-cart"><h1>Shopping Bag</h1><span>cart item : ${cartItem.length}</span></div>
+    let cartHTML = `<div id="heading-cart"><h1>Shopping Bag</h1><span>Cart Item : ${cartItem.length}</span></div>
     <hr>`;
     cartItem.forEach(item => {
       cartHTML += `
@@ -18,15 +18,21 @@ if (cartItem.length === 0) {
                   <img src="${item.product.images[0]}" alt="${item.name}">
                   
                   
+                  <div class="cart-item-content">
                   <div id="name-div"><h2>${item.product.name}</h2></div>
-                  <p>Price: $${item.product.price}</p>
+                  <p>Price: ₹${item.product.price}</p>
                   <p>Quantity ${item.quantity||1}</p>
-                  <p style="padding: 0px 10px;">Size ${item.size}<p>
+                  <p>Size ${item.size}<p>
                   
+                  </div>
+                  <div class="change-item-numbers">
+                  <div class="increase-descrease">
                   <button class="increase-quantity" data-product-id="${item.product.id}">+</button>
-                  <button class="decrease-quantity" data-product-id="${item.product.id}">-</button>
+                  <button class="decrease-quantity" data-product-id="${item.product.id}">&#8722;</button>
+                  </div>
 
                   <button class="remove-from-cart" data-product-id="${item.product.id}">Remove</button>
+                  </div>
               </div>
               
           `;
@@ -124,9 +130,9 @@ function updateOrderSummary() {
             totalPrice += itemTotal;
             summaryHTML += `
                 <div class="summary-item">
-                    <p>Price: INR  ${+item.product.price} x Quantity : ${item.quantity||1}</p>
+                    <p>Price: ₹  ${+item.product.price} x Quantity : ${item.quantity||1}</p>
                     
-                    <p>Subtotal :     INR  ${itemTotal||item.product.price}</p>
+                    <p>Subtotal :     ₹  ${itemTotal||item.product.price}</p>
                     <hr>
                 </div>
             `;
@@ -134,7 +140,7 @@ function updateOrderSummary() {
       
     });
     document.getElementById("summary-items").innerHTML = summaryHTML;
-    document.getElementById("total-price").innerHTML = `SubTotal: INR ${+totalPrice}`;
+    document.getElementById("total-price").innerHTML = `SubTotal: ₹ ${+totalPrice}`;
 }
 
 
@@ -160,5 +166,35 @@ function updateOrderSummary() {
  // redirect to a payment page
  const checkoutButton = document.getElementById('checkout-button');
 checkoutButton.addEventListener('click', event => {
+
   window.location.href = './pay.html';
+
 });
+
+
+
+document.getElementById("total-bags-item").textContent = cartItem.length;
+
+
+
+let logedUserName = localStorage.getItem("userName");
+
+if(logedUserName){
+  document.getElementById("loged-iser-name").textContent = logedUserName;
+  document.getElementById("login-form-opener").style.display = "none";
+  document.getElementById("logout-user-button").style.display = "block";
+  document.getElementById("order-status-opener").style.display = "none";
+}
+document.getElementById("logout-user-button").addEventListener("click", () => {
+  localStorage.clear();
+  location.href = "./product.html"
+})
+
+
+document.querySelector(".order-status").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./order_status.html"
+    }
+})

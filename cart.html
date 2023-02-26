@@ -48,9 +48,9 @@
             <p id="order-status-opener">Order Status</p>
           </div>
         </div>
-        <div class="bag">
+        <div class="bag" id="hover-bag">
           <i class="fa fa-light fa-cart-shopping"></i>
-          <p>Bag (0)</p>
+          <p>Bag (<span id="total-bags-item">0</span>)</p>
         </div>
       </div>
     </nav>
@@ -495,7 +495,7 @@
 
       
       <div id="order-summary">
-        
+
         <h2>Order Summary</h2>
         <div id="summary-items"></div>
         <p id="total-price"></p>
@@ -521,6 +521,15 @@
 </body>
 <script src="./scripts/script.js"></script>
 <script  defer src="./scripts/cart.js"></script>
+<script>
 
+document
+      .querySelectorAll(".filter-container p, .filter-table tr *")
+      .forEach((ele) => {
+        ele.addEventListener("click", () => (location.href = "./product.html"));
+      });
+
+      document.querySelector(".search-bar").addEventListener("click", () => location.href = "./product.html")
+</script>
 
 </html>
