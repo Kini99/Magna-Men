@@ -91,7 +91,7 @@
           <span>Find a Store</span>
         </div>
         <div class="logo">
-          <img src="./images/magna_logo_black.png" alt="" />
+          <img src="./images/magna_logo_black.png" alt="" onclick="{window.location = './index.html'}"/>
         </div>
         <div class="search-bar">
           <input type="text" placeholder="Search" id="search_product" />
@@ -118,7 +118,7 @@
               <p id="order-status-opener">Order Status</p>
             </div>
           </div>
-          <div class="bag">
+          <div class="bag" id="move-to-cart">
             <i class="fa fa-light fa-cart-shopping"></i>
             <p>Bag (0)</p>
           </div>
@@ -563,51 +563,58 @@
 
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide">
+            <div class="swiper-slide" id="polo">
               <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Polos_rugbys"
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C4?$car203$"
                 alt=""
               />
               <p>Polos & Rugbys</p>
             </div>
+            <div class="swiper-slide" id="pants">
+              <img
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C5?$car203$"
+                alt=""
+              />
+              <p>Casual Pants</p>
+            </div>
             <div class="swiper-slide" id="tshirts">
               <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_tshirt"
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C2?$car203$"
                 alt=""
               />
               <p>T-Shirts</p>
             </div>
+            <div class="swiper-slide" id="hoodies">
+              <img
+              src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C8?$car203$"
+              alt=""
+              />
+              <p>Hoodies & Sweatshirts</p>
+            </div>
+            <div class="swiper-slide" id="jeans">
+              <img
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C3?$car203$"
+                alt=""
+              />
+              <p>Jeans</p>
+            </div>
+            <div class="swiper-slide" id="hoodies">
+              <img
+              src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C6?$car203$"
+              alt=""
+              />
+              <p>Sweaters</p>
+            </div>
             <div class="swiper-slide">
               <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Casual_shirts"
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C1?$car203$"
                 alt=""
               />
               <p>Casual Shirts</p>
             </div>
             <div class="swiper-slide">
               <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Graphic_Tees"
-                alt=""
-              />
-              <p>Graphic Tees</p>
-            </div>
-            <div class="swiper-slide" id="hoodies">
-              <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Sweatshirts"
-                alt=""
-              />
-              <p>Hoodies & Sweatshirts</p>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_DressShirts"
-                alt=""
-              />
-              <p>Dress Shirts</p>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://images.dxl.com/is/image/CasualMale/221011_DXL_PLP_CAROUSELS_4384_Workwear"
+                src="https://images.dxl.com/is/image/CasualMale/230201_DXL_HP_FEB_4605_C7?$car203$"
                 alt=""
               />
               <p>Workwear Shirts</p>
@@ -633,25 +640,37 @@
               name=""
               id="hoodies"
               value="Hoodies and Sweatshirts"
-            />Hoodies and Sweatshirts<br />
+            /> Hoodies and Sweatshirts <br />
             <input
               type="checkbox"
               name=""
-              id="dep_check"
+              id="polo"
               value="Polos & Rugbys"
-            />Polos & Rugbys<br />
+            /> Polos & Rugbys <br />
             <input
               type="checkbox"
               name=""
               id="tshirts"
               value="T-Shirts"
-            />T-Shirts<br />
+            /> T-Shirts<br />
             <input
               type="checkbox"
               name=""
-              id="dep_check"
+              id="tshirts"
               value="Graphic Tees"
-            />Graphic Tees<br />
+            /> Graphic Tees <br />
+            <input
+              type="checkbox"
+              name=""
+              id="pants"
+              value="Graphic Tees"
+            /> Casual Pants <br />
+            <input
+              type="checkbox"
+              name=""
+              id="jeans"
+              value="Graphic Tees"
+            /> Jeans <br />
           </div>
         </fieldset>
         <fieldset class="brands">
@@ -662,60 +681,144 @@
           <div class="brands_select">
             <input
               type="checkbox"
-              name=""
+              name="brand"
               id="brands_check"
-              value="Adidas"
-            />Adidas<br />
+              value="Harbor"
+            /> Harbor Bay <br />
             <input
               type="checkbox"
-              name=""
+              name="brand"
               id="brands_check"
-              value="Adidas"
-            />Adidas<br />
+              value="Ralph"
+            /> Ralph Lauren <br />
             <input
               type="checkbox"
-              name=""
+              name="brand"
               id="brands_check"
-              value="Adidas"
-            />Adidas<br />
+              value="Tommy"
+            /> Tommy Bahama <br />
             <input
               type="checkbox"
-              name=""
+              name="brand"
               id="brands_check"
-              value="Adidas"
-            />Adidas<br />
+              value="Robert"
+            /> Robert Graham <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Coastal"
+            /> Coastal <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Psycho"
+            /> Psycho Bunny <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Columbia"
+            /> Columbia <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="O'Neill"
+            /> O'Neill <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Oak"
+            /> Oak Hill <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Nautica"
+            /> Nautica <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Champion"
+            /> Champion <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Reebok"
+            /> Reebok <br />
+            <input
+              type="checkbox"
+              name="brand"
+              id="brands_check"
+              value="Joe"
+            /> Joe's Jeans <br />
           </div>
         </fieldset>
-        <fieldset class="graphic">
-          <div class="graphic_legend">
-            <legend><h4>Graphic</h4></legend>
+        <fieldset class="types">
+          <div class="types_legend">
+            <legend><h4> Types</h4></legend>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <div class="graphic_select">
+          <div class="types_select">
             <input
               type="checkbox"
-              name=""
-              id="graphic_check"
-              value="Adidas"
-            />Adidas<br />
+              name="types"
+              id="types_check"
+              value="V-Neck"
+            /> V-Neck <br />
             <input
               type="checkbox"
-              name=""
-              id="graphic_check"
-              value="Adidas"
-            />Adidas<br />
+              name="types"
+              id="types_check"
+              value="Jersey"
+            /> Jersey <br />
             <input
               type="checkbox"
-              name=""
-              id="graphic_check"
-              value="Adidas"
-            />Adidas<br />
+              name="types"
+              id="types_check"
+              value="Moisture-Wicking"
+            /> Moisture-Wicking <br />
             <input
               type="checkbox"
-              name=""
-              id="graphic_check"
-              value="Adidas"
-            />Adidas<br />
+              name="types"
+              id="types_check"
+              value="Pocket"
+            /> Pocket T-Shirt <br />
+            <input
+              type="checkbox"
+              name="types"
+              id="types_check"
+              value="Shorts"
+            /> Shorts <br />
+            <input
+              type="checkbox"
+              name="types"
+              id="types_check"
+              value="Graphic"
+            /> Graphic Tee <br />
+            <input
+              type="checkbox"
+              name="types"
+              id="types_check"
+              value="Jogger"
+            /> Jogger <br />
+            <input
+              type="checkbox"
+              name="types"
+              id="types_check"
+              value="Long"
+            /> Long Sleeves <br />
+            <input
+              type="checkbox"
+              name="types"
+              id="types_check"
+              value="Pullover"
+            /> Pullover <br />
           </div>
         </fieldset>
         <fieldset class="colors">
@@ -729,25 +832,25 @@
               name=""
               id="colors_check"
               value="Yellow"
-            />Yellow<br />
+            /> Yellow <br />
             <input
               type="checkbox"
               name=""
               id="colors_check"
               value="Blue"
-            />Blue<br />
+            /> Blue<br />
             <input
               type="checkbox"
               name=""
               id="colors_check"
               value="Red"
-            />Red<br />
+            /> Red<br />
             <input
               type="checkbox"
               name=""
               id="colors_check"
               value="Black"
-            />Black<br />
+            /> Black<br />
           </div>
         </fieldset>
       </div>
@@ -935,7 +1038,7 @@
     <script>
       new Swiper(".swiper", {
         direction: "horizontal",
-        loop: true,
+        loop: false,
         slidesPerView: 5,
         navigation: {
           nextEl: ".swiper-button-next",
@@ -1090,6 +1193,27 @@ document.querySelector(".order-status").addEventListener("click", () => {
     if(!logedUserName){
         sectionPopup.style.visibility = "visible"
     }
+    else{
+      location.href = "./order_status.html"
+    }
+})
+
+
+
+//logout to index page
+document.getElementById("logout-user-button").addEventListener("click", () => {
+  localStorage.clear();
+  location.href = "./index.html"
+})
+
+
+
+document.querySelector("#move-to-cart").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./cart.html"
+    }
 })
   </script>
 </html>
