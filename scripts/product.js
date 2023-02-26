@@ -252,42 +252,65 @@ let sortSelect = document.getElementById("sort");
 
 let currentCategory;
 
+
+
+
+
 tshirtBtn.forEach((element) => {
   element.addEventListener('click', () => {
+    if (element.checked) {
     let filterData = allProductsData.filter(el => el.category == "tshirt");
     currentCategory = filterData
     filterTable(filterData)
-
+  } else {
+    fetchProductsData(1);
+  }
   });
   
 })
 hoodiesBtn.forEach((element) => { 
   element.addEventListener('click', () => {
+    if (element.checked) {
     let filterData = allProductsData.filter(el => el.category == "hoodie");
     currentCategory = filterData
     filterTable(filterData)
+  } else {
+    fetchProductsData(1);
+  }
   });
 
 })
 pantsBtn.forEach((element) => {
   element.addEventListener("click", () => {
+    if (element.checked) {
     let filterData = allProductsData.filter(el => el.category == "pants_shorts");
     currentCategory = filterData
     filterTable(filterData)
+  } else {
+    fetchProductsData(1);
+  }
   });
 })
 poloBtn.forEach((element) => {
   element.addEventListener("click", () => {
+    if (element.checked) {
     let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("polo"));
     currentCategory = filterData
     filterTable(filterData)
+  } else {
+    fetchProductsData(1);
+  }
   });
 })
 jeansBtn.forEach((element) => {
   element.addEventListener("click", () => {
+    if (element.checked) {
     let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("jeans"));
     currentCategory = filterData
     filterTable(filterData)
+  } else {
+    fetchProductsData(1);
+  }
   });
 })
 
