@@ -3,7 +3,12 @@ const baseServerURL = `https://63f45eca3f99f5855dae29dc.mockapi.io`;
 let trackingUsername=localStorage.getItem("userName");
 console.log(trackingUsername)
 
+document.getElementById("loged-iser-name").textContent=trackingUsername;
+
 document.getElementById("userName").innerText=trackingUsername;
+
+let bagitemnumber=localStorage.getItem("cartItem")||[];
+document.getElementById("cart-item-count").textContent=bagitemnumber.length;
 
 let usersList;
 let user;
@@ -21,6 +26,7 @@ console.log(usersList)
   let text = messageDisplay(userobj)
   let displayel=document.getElementById("status");
       displayel.innerHTML=text;
+      // displayel.style.fontSize="100px"
   })
 
 
@@ -36,13 +42,13 @@ console.log(userobj)
     console.log(userobj.orderStatus)
     let message;
       if(userobj.orderStatus=="Dispatch Pending"){
-        message=`<h3>We have received your order for ${ordersString}. The Estimated Delivery Date for this order is ${userobj.estimatedDate}.</h3>`
+        message=`<p>We have received your order for ${ordersString}. The Estimated Delivery Date for this order is ${userobj.estimatedDate}.</p>`
       }else if(userobj.orderStatus=="Dispatch Initiated"){
-        message=`<h3>We have dispatched your order for ${ordersString}. The Estimated Delivery Date for this order is ${userobj.estimatedDate}.</h3>`
+        message=`<p>We have dispatched your order for ${ordersString}. The Estimated Delivery Date for this order is ${userobj.estimatedDate}.</p>`
       }else if(userobj.orderStatus=="Completed"){
-        message=`<h3>Thankyou for Shopping with us! We have successfully delivered your order for ${ordersString} on ${userobj.estimatedDate}.</h3>`
+        message=`<p>Thankyou for Shopping with us! We have successfully delivered your order for ${ordersString} on ${userobj.estimatedDate}.</p>`
       }else if(userobj.orderStatus=="Return/Exchange Requested"){
-        message=`<h3>Your request for Return/Exchange of ${ordersString} shall be processed shortly.</h3>`
+        message=`<p>Your request for Return/Exchange of ${ordersString} shall be processed shortly.</p>`
       }
 return message;
 }
@@ -67,3 +73,9 @@ function closeDrpedFilter(elemnt){
     abc.style.visibility = "hidden"
     abc.style.opacity = "0"
 }
+
+document.getElementById("logout-user-button").style.display="block";
+document.getElementById("logout-user-button").addEventListener("click", () => {
+  localStorage.clear();
+  location.href = "./index.html"
+})

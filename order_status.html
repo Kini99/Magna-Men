@@ -5,15 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Status</title>
-    <link rel="stylesheet" href="./styles/order_status.css">
+   
     <link rel="stylesheet" href="./styles/style.css">
+
+    <link
+    href="https://fonts.googleapis.com/css?family=Lato|Nanum+Gothic:700|Raleway&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
+    rel="stylesheet"
+  />
+  <!-- <link rel="stylesheet" href="./styles/login.css"> -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="./styles/order_status.css">
+
 </head>
 <body>
 
     
     <!-- header -->
 
-    <!-- **************************************** -->
+    
 
     <header>
         <div class="top-black-margin"></div>
@@ -45,14 +69,14 @@
               <i class="fa-regular fa-user"></i>
               <p>Hi <span id="loged-iser-name">User</span></p>
               <div class="login-signup-popup">
-                <p id="login-form-opener">Sign In / Sign Up</p>
+                <!-- <p id="login-form-opener">Sign In / Sign Up</p> -->
                 <p id="logout-user-button">Log Out</p>
-                <p id="order-status-opener">Order Status</p>
+                <!-- <p id="order-status-opener">Order Status</p> -->
               </div>
             </div>
-            <div class="bag">
+            <div class="bag" id="#move-to-cart">
               <i class="fa fa-light fa-cart-shopping"></i>
-              <p>Bag (0)</p>
+              <p>Bag (<span id="cart-item-count">0</span>) </p>
             </div>
           </div>
         </nav>
@@ -484,7 +508,7 @@
       <!-- filter section ends here  -->
     
     <!-- content -->
-    <div class="container">
+    <div class="containerTop">
         
         <div class="sidebar_profile">
             <h2>Hello, <span id="userName"></span> </h2>
@@ -499,7 +523,7 @@
             <p>Help & FAQ</p>
         </div>
         <div class="order-content">
-            <img src="./images/movingTruck-unscreen.gif" alt="" class="moving-truck">
+            <img src="./images/gif-unscreen truck house.gif" alt="" class="moving-truck">
             
             <div id="status"></div>
 </div>
@@ -634,4 +658,24 @@
 </body>
 </html>
 <script src="./scripts/order_status.js"></script>
-<!-- <script src="./scripts/script.js"></script> -->
+<script src="./scripts/script.js"></script>
+<script src="./scripts/login.js"></script>
+<script src="./scripts/description.js"></script>
+<script>
+  document
+      .querySelectorAll(".filter-container p, .filter-table tr *")
+      .forEach((ele) => {
+        ele.addEventListener("click", () => (location.href = "./product.html"));
+      });
+
+      document.querySelector(".search-bar").addEventListener("click", () => location.href = "./product.html")
+
+      document.querySelector("#move-to-cart").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./cart.html"
+    }
+})
+
+</script>

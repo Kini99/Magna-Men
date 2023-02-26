@@ -46,7 +46,7 @@ Content-Type: application/json
 
 
 ###GET request for products
-GET https://63f45eca3f99f5855dae29dc.mockapi.io/users/1
+GET https://63f45eca3f99f5855dae29dc.mockapi.io/products/91
 
 
 ###Update

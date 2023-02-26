@@ -10,8 +10,9 @@
     margin: 0;
 }
 
-.container {
+.containerTop {
     /* margin-top: 20px; */
+    width:100vw;
     padding: 20px;
     display: flex;
     justify-content: space-between; 
@@ -28,10 +29,11 @@
     border-radius: 4px;
 }
 
-.sidebar_profile h2 {
+.sidebar_profile h2, .sidebar_profile span {
     color:#152d47;
     /* text-align: left; */
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .sidebar_profile>p:hover {
@@ -40,31 +42,30 @@
     cursor: pointer;
 }
 
-#status{
-    /* padding: 20px 30px 20px 0; */
-    /* border: 1px solid; */
-    text-align: center;
-    /* margin-right: 300px; */
-    /* text-align: center; */
-    /* padding: 100px; */
-}
 .order-content{
     position: relative;
     /* border: 1px solid; */
     display: flex;
-    align-items: center;
+    justify-content: center;
+    /* align-items: top; */
     width: 80vw;
-    padding-right: 40px;
-    /* background-image: url("./images/movingTruck-unscreen.gif"); */
-
+    
 }
-.moving-truck{
+.order-content #status {
+    text-align: center;
+    width: 70%;
+    z-index: 100;
+}
+
+.order-content #status p{
+font-size: 20px;
+font-weight: bolder;
+margin-top: 40px;
+}
+.order-content .moving-truck{
     position: absolute;
-    right: 0;
-    /* left: 250px; */
-    width: 50vw;
-    /* height: 100%; */
+    top: 0;
+    width: 50%;
     object-fit: cover;
-    z-index: -1;
-    opacity: 0.3;
+    opacity: 0.4;
 }

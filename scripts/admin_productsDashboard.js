@@ -123,16 +123,21 @@ function display_products(data) {
   removeBtnArr = [...removeBtn]
   removeBtnArr.forEach((e) => {
     e.addEventListener("click", (event) => {
+let confirmation = confirm("The Item will be Deleted permanently.")
+if(confirmation){
+  let removeID = event.target.dataset.removeId
+  //   let product = data.editID
+  // console.log(removeID)
 
-      let removeID = event.target.dataset.removeId
-      //   let product = data.editID
-      // console.log(removeID)
-
-      fetch(`${baseServerURL}/products/${removeID}`, {
-        method: "DELETE"
-      })
-      fetchProductsData(1)
-      alert("Product Deleted Successfully!")
+  fetch(`${baseServerURL}/products/${removeID}`, {
+    method: "DELETE"
+  })
+  fetchProductsData(1)
+  alert("Product Deleted Successfully!")
+}else{
+  alert("Delete request cancelled.")
+}
+      
     })
   })
 }
