@@ -1,7 +1,4 @@
-//function getProductIdFromUrl() {
-  //const searchParams = new URLSearchParams(window.location.search);
- // return searchParams.get('productId');
-//}
+
 let productId=localStorage.getItem("cartId")
 //const productId = getProductIdFromUrl();
 const productUrl = `https://63f45eca3f99f5855dae29dc.mockapi.io/products/${productId}`;
@@ -133,8 +130,16 @@ sizeOptions.forEach(option => {
       // Add an event listener to the "Add to Cart" button
       const addToCartButton = document.getElementById('add-to-cart');
       let cartItem = JSON.parse(localStorage.getItem('cartItem')) || [];
+      console.log(cartItem);
       addToCartButton.addEventListener('click', () => {
         // Add the product to the cart
+        let akCheck = JSON.parse(localStorage.getItem("cartItem")) || [];
+        for(let i=0;i<akCheck.length;i++){
+          if(akCheck[i]["product"]["id"] == productId){
+            alert("Already in cart")
+            return;
+          }
+        }
         const selectedSize = document.querySelector('.size-option.selected').textContent;
         const quantity = parseInt(quantityInput.value);
         const cartItem = {
