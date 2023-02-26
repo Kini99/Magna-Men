@@ -50,7 +50,7 @@
         </div>
         <div class="bag" id="hover-bag">
           <i class="fa fa-light fa-cart-shopping"></i>
-          <p>Bag (<span id="total-bags-item">0</span>)</p>
+          <p>Bag <span id="total-bags-item"></span></p>
         </div>
       </div>
     </nav>
@@ -530,6 +530,16 @@ document
       });
 
       document.querySelector(".search-bar").addEventListener("click", () => location.href = "./product.html")
+
+
+
+      document.querySelector("#hover-bag").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./cart.html"
+    }
+})
 </script>
 
 </html>

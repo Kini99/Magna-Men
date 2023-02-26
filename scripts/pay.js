@@ -9,22 +9,10 @@ const cartItems = JSON.parse(localStorage.getItem('cartItem')) || [];
 let addressSection = document.getElementById("address-section");
 let paymentSection = document.getElementById("payment-section");
 
-addressSubmitButton.addEventListener('click', (event) => {
-  event.preventDefault();
-
-  //if (addressForm.checkValidity()) {
     paymentForm.style.display = 'block';
-    addressForm.querySelectorAll('input, textarea').forEach((element) => {
-      element.disabled = true;
-    });
-    addressSubmitButton.disabled = true;
-
-    // Populate the order summary
     
     console.log(cartItems)
 
-    let orderSummaryHtml = '<h2>Order Summary</h2>';
-    orderSummaryHtml += '<table>';
     
 let orderSummaryHtml = '<h2>Order Summary</h2>';
     orderSummaryHtml += '<table cellspacing="0">';
@@ -46,11 +34,6 @@ let orderSummaryHtml = '<h2>Order Summary</h2>';
 
     orderSummary.innerHTML = orderSummaryHtml;
 
-  //}
-
-
-
-
 
 
 
@@ -69,11 +52,10 @@ addressSubmitButton.addEventListener('submit', (event) => {
 paymentForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-    alert("Payment successful")
-   fetch('https://63f45eca3f99f5855dae29dc.mockapi.io/users')
-   .then(res=>{
+  fetch('https://63f45eca3f99f5855dae29dc.mockapi.io/users')
+  .then(res=>{
     return res.json()
-   })
+  })
    .then(data=>{
     let user=data.filter((el)=>el.fullname==userName)
     userobj=user[0]
@@ -114,6 +96,7 @@ console.log(obj)
     body: JSON.stringify(obj)
   })
 
-  
+  alert("Payment successful")
+  location.href = "./order_status.html"
    })
 });

@@ -135,7 +135,7 @@
               <p id="order-status-opener">Order Status</p>
             </div>
           </div>
-          <div class="bag">
+          <div class="bag" id="move-to-cart">
             <i class="fa fa-light fa-cart-shopping"></i>
             <p>Bag (0)</p>
           </div>
@@ -918,5 +918,25 @@
       });
 
       document.querySelector(".search-bar").addEventListener("click", () => location.href = "./product.html")
+
+
+      
+      
+
+
+
+
+
+
+      
+
+
+document.querySelector("#move-to-cart").addEventListener("click", () => {
+    if(!logedUserName){
+        sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./cart.html"
+    }
+})
   </script>
 </html>

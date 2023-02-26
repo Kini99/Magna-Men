@@ -173,7 +173,7 @@ checkoutButton.addEventListener('click', event => {
 
 
 
-document.getElementById("total-bags-item").textContent = cartItem.length;
+document.getElementById("total-bags-item").textContent = `(${cartItem.length})`;
 
 
 

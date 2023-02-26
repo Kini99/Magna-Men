@@ -72,7 +72,7 @@ quantityContainer.appendChild(quantityInput);
       </div>
       <div id="product-details-container">
         <h1>${product.name}</h1>
-        <p>Price: $${product.price} </p>
+        <p>Price: ₹ ${product.price} </p>
         <div id="color-buttons">
         <p>Color: </p>
           ${colorContainer.outerHTML}
@@ -167,7 +167,7 @@ function getCartItemCount() {
   const cartItemCount = document.getElementById('cart-item-count');
   const cartItem = JSON.parse(localStorage.getItem('cartItem')) || [];
   console.log(cartItem.length+1);
-  cartItemCount.innerHTML = cartItem.length
+  cartItemCount.innerHTML = `(${cartItem.length})`
 }
 
 
@@ -194,7 +194,7 @@ function showBagPopup() {
     cartItem.innerHTML = `
       <img src="${item.product.images[0]}" alt="${item.product.name}">
       <div class="name">${item.product.name}</div>
-      <div class="price">$${item.product.price.toFixed(2)}</div>
+      <div class="price">₹ ${item.product.price.toFixed(2)}</div>
       <button class="remove-item" data-id="${item.product.id}">Remove</button>
       <hr>
     `;
