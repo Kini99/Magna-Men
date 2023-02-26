@@ -2,51 +2,70 @@
 <html>
   <head>
     <title>Payment Form</title>
+    <link rel="stylesheet" href="./styles/pay.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Lato&family=Libre+Franklin&family=Rubik&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <link rel="stylesheet" href="./styles/pay.css">
   <body>
-    <div class="black_belt"></div>
-    <h1>Payment Form</h1>
-    <div class="address-container">
-      <div class="address-container">
-    <h2>Shipping Address</h2>
-    <form id="address-form">
-     
-      
-      <label for="address">Address:</label>
-      <textarea id="address" name="address" required></textarea>
-      <br>
-      <label for="city">City:</label>
-      <input type="text" id="city" name="city" required>
-      <br>
-      <label for="state">State:</label>
-      <input type="text" id="state" name="state" required>
-      <br>
-      <label for="zipcode">Zipcode:</label>
-      <input type="text" id="zipcode" name="zipcode" required>
-      <br>
-      <label for="phone">Phone:</label>
-      <input type="text" id="phone" name="phone" required>
-      <br>
-      <button type="submit" id="address-submit">Submit Address</button>
-    </form>
-  </div>
-  <div class="payment-summary-container">
-    <h2>Payment Details</h2>
-    <form id="payment-form">
-      <label for="card-number">Card Number:</label>
-      <input type="text" id="card-number" name="card-number" required>
-      <br>
-      <label for="expiry">Expiry Date:</label>
-      <input type="text" id="expiry" name="expiry" required>
-      <br>
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv" required>
-      <br>
-      <button type="submit" id="submit-payment">Submit Payment</button>
-    </form>
-    <div id="order-summary"></div>
-  </div>
+    <!-- black blet starts  -->
+    <div class="black_belt">
+      <img src="./images/Magnawhite.png" alt="" />
+      <p class="go-back-product">
+        <a href="./cart.html"
+          ><i class="fa fa-angles-left"></i> Shopping Bag</a
+        >
+      </p>
+    </div>
+    <!-- black ends -->
+
+<section class="address-form-section">
+      <div class="address-form-container" id="address-section">
+        <div class="address-container">
+          <h2>Shipping Address</h2>
+          <form id="address-form">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required />
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required />
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" id="zipcode" name="zipcode" required />
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required />
+            <input type="submit" id="address-submit" value="Submit Address" class="address-submit" />
+          </form>
+        </div>
+      </div> 
+      <div class="address-form-container" id="payment-section">
+        <div class="address-container">
+          <form id="payment-form">
+            <h2>Payment Details</h2>
+            <label for="card-number">Card Number:</label>
+            <input type="number" id="card-number" name="card-number" required />
+            <label for="expiry">Expiry Date:</label>
+            <input type="date" id="expiry" name="expiry" required />
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required />
+            <i class="fa-solid fa-angles-left"  id="back-address"></i>
+            <input type="submit" id="submit-payment" class="address-submit" value="Submit Payment" />
+          </form>
+        </div>
+      </div>
+      <div class="order-summary-container">
+        <div id="order-summary"></div>
+      </div>
+    </section> 
+
   </body>
   <script src="./scripts/pay.js"></script>
 </html>
