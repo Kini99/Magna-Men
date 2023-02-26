@@ -101,23 +101,29 @@ function getLoginDetails(res, data) {
 
 
 
-
-
 let logedUserName = localStorage.getItem("userName");
 
+
+
 if(logedUserName){
-    document.getElementById("loged-iser-name").textContent = logedUserName;
-    document.getElementById("login-form-opener").style.display = "none";
-    document.getElementById("logout-user-button").style.display = "block";
-    document.getElementById("order-status-opener").style.display = "none";
+  document.getElementById("loged-iser-name").textContent = logedUserName;
+  document.getElementById("login-form-opener").style.display = "none";
+  document.getElementById("logout-user-button").style.display = "block";
+  document.getElementById("order-status-opener").style.display = "none";
 }
 document.getElementById("logout-user-button").addEventListener("click", () => {
-    localStorage.clear();
-    location.reload();
+  localStorage.clear();
+  location.reload();
 })
+
 
 document.querySelector(".order-status").addEventListener("click", () => {
     if(!logedUserName){
         sectionPopup.style.visibility = "visible"
+    }else{
+      location.href = "./order_status.html"
     }
 })
+
+
+

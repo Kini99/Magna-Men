@@ -147,7 +147,9 @@ sizeOptions.forEach(option => {
         let cartItems = JSON.parse(localStorage.getItem('cartItem')) || [];
         cartItems.push(cartItem);
         localStorage.setItem('cartItem', JSON.stringify(cartItems));
-        window.location.href='#';
+        // window.location.href='#';
+        // location.reload()
+        getCartItemCount()
       });
   })
   .catch(error => {
@@ -157,18 +159,15 @@ sizeOptions.forEach(option => {
 }
 
 
-  function addProductToCart(cartItem) {
-    const cartItemCount = document.getElementById('cart-item-count');
-    cartItemCount.innerHTML = getCartItemCount();
-    alert("item added");
-  }
+getCartItemCount();
+function addProductToCart(cartItem) {
+  alert("item added");
+}
 function getCartItemCount() {
-  // Get cart items from local storage
+  const cartItemCount = document.getElementById('cart-item-count');
   const cartItem = JSON.parse(localStorage.getItem('cartItem')) || [];
-
-  // Return the number of items in the cart
   console.log(cartItem.length+1);
-  return cartItem.length+1;
+  cartItemCount.innerHTML = cartItem.length
 }
 
 

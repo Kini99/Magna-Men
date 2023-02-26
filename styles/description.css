@@ -9,6 +9,11 @@ body {
   
 }
 
+
+#hii-user-box span{
+  padding: 0;
+  }
+
 /* Style the product container */
 #product-container {
   
@@ -106,8 +111,11 @@ body {
   float: right;
   width: 55%;
   text-align: left;
-  
-}
+  }
+
+  #product-details-container h1{
+    text-align: left;
+  }
 #color-buttons{
   padding-top: 20px;
   padding-bottom: 20px;
@@ -202,7 +210,7 @@ span{
   color: black;
   border-radius: 50%;
   padding: 3px;
-  position: absolute;
+  /* position: absolute; */
   top: 2px;
   right: -12px;
   font-size: 12px;
@@ -225,8 +233,7 @@ text-align: center;
 
 
 
-
-
+/* 
 *{
 padding: 0;
 margin: 0;
@@ -312,7 +319,7 @@ gap: 10px;
 }
 .social-media-container img{
 width: 100%;
-}
+} */
 
 #des{
 position: absolute;

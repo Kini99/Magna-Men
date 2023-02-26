@@ -203,8 +203,12 @@ header .header-top-navigation .navigation-right div i{
     cursor: pointer;
     font-size: 30px;
 }
+
 #hii-user{
     position: relative;
+}
+#loged-iser-name{
+    font-size: 14px;
 }
 #hii-user .login-signup-popup{
     position: absolute;
