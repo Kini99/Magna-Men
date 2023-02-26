@@ -135,7 +135,7 @@ function display(data) {
 
 
       // location.href = ""
-    });
+   
 
 
     let offer = document.createElement("p");

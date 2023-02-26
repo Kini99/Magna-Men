@@ -11,7 +11,7 @@ paymentForm.style.display = 'none';
 addressSubmitButton.addEventListener('click', (event) => {
   event.preventDefault();
 
-  if (addressForm.checkValidity()) {
+  //if (addressForm.checkValidity()) {
     paymentForm.style.display = 'block';
     addressForm.querySelectorAll('input, textarea').forEach((element) => {
       element.disabled = true;
@@ -40,7 +40,7 @@ addressSubmitButton.addEventListener('click', (event) => {
     orderSummaryHtml += '</table>';
 
     orderSummary.innerHTML = orderSummaryHtml;
-  }
+  //}
 });
 
 submitPaymentButton.addEventListener('click', (event) => {
