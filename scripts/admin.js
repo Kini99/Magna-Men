@@ -317,7 +317,7 @@ ${mostActiveUser}
   }
   document.querySelectorAll(".delte-operation-user").forEach(user => {
     user.addEventListener("click", () => {
-      let confirmation = confirm("Are you sure you want to delet this users account ?");
+      let confirmation = confirm("Are you sure you want to delete this user's account ?");
       if(confirmation){
         fetch(`${baesUrl}/users/${user.dataset.deleteUserId}`, {
           method: "DELETE",

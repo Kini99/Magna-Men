@@ -25,33 +25,33 @@ function filterUsers(data) {
 
 let orderingUsers = [];
 
-let table = document.querySelector("tbody")
+let table = document.querySelector("#tbody1")
 function displayOrders(data) {
   table.innerHTML = null;
-
-  data.forEach((element) => {
-
-    if (element.orders.length > 0) {
-      orderingUsers.push(element);
+  
+  data.forEach((element1) => {
+    // console.log(element.orders.length);
+    // if (element.orders.length > 0) {
+      orderingUsers.push(element1);
 
       let tr = document.createElement("tr");
       tr.setAttribute("class", "trClass")
 
       let td1 = document.createElement("td");
-      td1.innerText = element.id;
+      td1.innerText = element1.id;
       let td2 = document.createElement("td");
-      td2.innerText = element.fullname;
+      td2.innerText = element1.fullname;
       let td3 = document.createElement("td");
       let mem = "";
 
-      for (let i = 0; i < element.orders.length - 1; i++) {
-        mem += element.orders[i].name + " , "
+      for (let i = 0; i < element1.orders.length - 1; i++) {
+        mem += element1.orders[i].name + " , "
       }
-      mem += element.orders[element.orders.length - 1].name;
+      mem += element1.orders[element1.orders.length - 1].name;
 
       td3.innerText = mem;
       let td4 = document.createElement("td");
-      td4.innerText = element.estimatedDate;
+      td4.innerText = element1.estimatedDate;
       td4.addEventListener("click", () => {
         let user = usersList.filter((el) => el.id == element.id)
         console.log(user)
@@ -61,30 +61,30 @@ function displayOrders(data) {
 
       let td5 = document.createElement("td");
       let sum = 0;
-      for (let i = 0; i < element.orders.length; i++) {
-        sum += +element.orders[i].price;
+      for (let i = 0; i < element1.orders.length; i++) {
+        sum += +element1.orders[i].price;
       }
       td5.innerText = "₹" + sum + "/-";
       let td6 = document.createElement("td");
-      td6.innerText = element.orderStatus;
-      if (element.orderStatus == "Completed") {
+      td6.innerText = element1.orderStatus;
+      if (element1.orderStatus == "Completed") {
         td6.style.color = "green";
-      } else if (element.orderStatus == "Dispatch Initiated") {
+      } else if (element1.orderStatus == "Dispatch Initiated") {
         td6.style.color = "blue";
-      } else if (element.orderStatus == "Dispatch Pending") {
+      } else if (element1.orderStatus == "Dispatch Pending") {
         td6.style.color = "red";
-      } else if (element.orderStatus == "Return/Exchange Requested") {
+      } else if (element1.orderStatus == "Return/Exchange Requested") {
         td6.style.color = "orange";
       }
       td6.addEventListener("click", () => {
-        let user = usersList.filter((el) => el.id == element.id)
+        let user = usersList.filter((el) => el.id == element1.id)
         console.log(user)
         document.querySelector(".popupSection").style.display = "flex";
         updatePopup(user)
       })
 
       let td7 = document.createElement("td");
-      td7.innerText = element.paymentMode;
+      td7.innerText = element1.paymentMode;
 
       // let td8 = document.createElement("td");
       // td8.innerText = "Update";
@@ -101,7 +101,7 @@ function displayOrders(data) {
       tr.append(td1, td2, td3, td4, td5, td6, td7);
       table.append(tr);
 
-    }
+    // }
   })
 
 }
@@ -214,7 +214,7 @@ allOrdersBtn.addEventListener('click', () => {
   requestedBtn.style.color = "#152d47";
 
 
-  filterTable(usersList)
+  filterTable1(usersList)
 });
 pendingBtn.addEventListener('click', () => {
   allOrdersBtn.style.backgroundColor = "white";
@@ -230,7 +230,7 @@ pendingBtn.addEventListener('click', () => {
 
   let filterData = usersList.filter(el => el.orderStatus == "Dispatch Pending");
   currentStatus = filterData
-  filterTable(filterData)
+  filterTable1(filterData)
 });
 initiatedBtn.addEventListener("click", () => {
   allOrdersBtn.style.backgroundColor = "white";
@@ -246,7 +246,7 @@ initiatedBtn.addEventListener("click", () => {
 
   let filterData = usersList.filter(el => el.orderStatus == "Dispatch Initiated");
   currentStatus = filterData
-  filterTable(filterData)
+  filterTable1(filterData)
 });
 allCompletedBtn.addEventListener("click", () => {
   allOrdersBtn.style.backgroundColor = "white";
@@ -262,7 +262,7 @@ allCompletedBtn.addEventListener("click", () => {
 
   let filterData = usersList.filter(el => el.orderStatus == "Completed");
   currentStatus = filterData
-  filterTable(filterData)
+  filterTable1(filterData)
 });
 requestedBtn.addEventListener("click", () => {
   allOrdersBtn.style.backgroundColor = "white";
@@ -278,7 +278,7 @@ requestedBtn.addEventListener("click", () => {
 
   let filterData = usersList.filter(el => el.orderStatus == "Return/Exchange Requested");
   currentStatus = filterData
-  filterTable(filterData)
+  filterTable1(filterData)
 });
 
 
@@ -319,7 +319,7 @@ requestedBtn.addEventListener("click", () => {
 //     return activeTotalPrice;
 // }
 
-function filterTable(filterData) {
+function filterTable1(filterData) {
   displayOrders(filterData);
 }
 
