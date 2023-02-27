@@ -1,5 +1,6 @@
 # foolish-meat-7669
-![Alt text](relative%20path/to/img.jpg?raw=true "Title")
+![android-chrome-192x192](https://user-images.githubusercontent.com/32242257/221483516-6cc76da0-e446-4c56-8b08-539eb8e6514a.png)
+
 
 https://magnamen.netlify.app/ is a clone of E-commerce website destinationxl.com. It is a platform for buying plus sized clothing items for men.
 
