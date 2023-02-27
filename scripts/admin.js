@@ -358,7 +358,7 @@ function getUserHtml(name, id, email, order){
   let userTotalOrder = order.length;
   let userTotalPrice = 0;
     order.forEach(ele => {
-      userTotalPrice += ele.price;
+      userTotalPrice += +ele.price;
     })
 
     return `
