@@ -199,7 +199,7 @@ function showBagPopup() {
     cartItem.innerHTML = `
       <img src="${item.product.images[0]}" alt="${item.product.name}">
       <div class="name">${item.product.name}</div>
-      <div class="price">₹ ${item.product.price.toFixed(2)}</div>
+      <div class="price">₹ ${item.product.price}</div>
       <button class="remove-item" data-id="${item.product.id}">Remove</button>
       <hr>
     `;

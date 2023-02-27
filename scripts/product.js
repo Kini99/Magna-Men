@@ -75,17 +75,6 @@ async function fetchProductsData(pageNumber) {
   }
 }
 
-// fetch(`${baseServerURL}/products`)
-//     .then((req) => {
-//       return req.json();
-//     })
-//     .then((response) => {
-//         console.log(response);
-//         display(response);
-//     })
-//     .catch((error) => { console.log(error);})
-
-let hemant=document.querySelector(".product_cards");
 
 
 function display(data) {
@@ -96,13 +85,9 @@ function display(data) {
     let card = document.createElement("div");
 
     card.setAttribute('data-product-id', product.id);
-    
-    //console.log(product.id)
-
+   
     card.className = "product_card_data";
-    //const cardElements = document.querySelector('.product_card_data');
-    //console.log(cardElements)
-
+    
     let img = document.createElement("img");
 
     img.src = el.images[0];
@@ -258,59 +243,59 @@ let currentCategory;
 
 tshirtBtn.forEach((element) => {
   element.addEventListener('click', () => {
-    if (element.checked) {
+    // if (element.click) {
     let filterData = allProductsData.filter(el => el.category == "tshirt");
     currentCategory = filterData
     filterTable(filterData)
-  } else {
-    fetchProductsData(1);
-  }
+  // } else {
+    // fetchProductsData(1);
+  // }
   });
   
 })
 hoodiesBtn.forEach((element) => { 
   element.addEventListener('click', () => {
-    if (element.checked) {
+    // if (element.checked) {
     let filterData = allProductsData.filter(el => el.category == "hoodie");
     currentCategory = filterData
     filterTable(filterData)
-  } else {
-    fetchProductsData(1);
-  }
+  // } else {
+    // fetchProductsData(1);
+  // }
   });
 
 })
 pantsBtn.forEach((element) => {
   element.addEventListener("click", () => {
-    if (element.checked) {
+    // if (element.checked) {
     let filterData = allProductsData.filter(el => el.category == "pants_shorts");
     currentCategory = filterData
     filterTable(filterData)
-  } else {
-    fetchProductsData(1);
-  }
+  // } else {
+    // fetchProductsData(1);
+  // }
   });
 })
 poloBtn.forEach((element) => {
   element.addEventListener("click", () => {
-    if (element.checked) {
+    // if (element.checked) {
     let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("polo"));
     currentCategory = filterData
     filterTable(filterData)
-  } else {
-    fetchProductsData(1);
-  }
+  // } else {
+    // fetchProductsData(1);
+  // }
   });
 })
 jeansBtn.forEach((element) => {
   element.addEventListener("click", () => {
-    if (element.checked) {
+    // if (element.checked) {
     let filterData = allProductsData.filter(el => el.name.toLowerCase().includes("jeans"));
     currentCategory = filterData
     filterTable(filterData)
-  } else {
-    fetchProductsData(1);
-  }
+  // } else {
+    // fetchProductsData(1);
+  // }
   });
 })
 
