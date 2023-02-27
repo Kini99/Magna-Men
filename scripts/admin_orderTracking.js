@@ -8,7 +8,7 @@ function fecthrequest(){
   .then(data => {
     // console.log(data)
     usersList = filterUsers(data)
-    // console.log(usersList)
+    console.log(usersList)
     displayOrders(usersList)
     // chartData(usersList)
   })
@@ -17,9 +17,10 @@ fecthrequest()
 
 function filterUsers(data) {
   let filteredUsers = data.filter((el) => {
-    return el.orders != undefined || el.orders.length != 0;
+    // return el.orders != undefined || el.orders.length != 0;
+    return el.orders.length>0;
   })
-  // console.log(filteredUsers)
+  console.log(filteredUsers)
   return filteredUsers
 }
 
