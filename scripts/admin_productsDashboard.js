@@ -108,7 +108,7 @@ function display_products(data) {
   // console.log(editBtnArr)
   editBtnArr.forEach((e) => {
     e.addEventListener("click", (event) => {
-      //  console.log(event.target.dataset.editId)
+       console.log(event.target.dataset.editId)
       let editID = event.target.dataset.editId
 
       fetch(`${baseServerURL}/products/${editID}`)
@@ -147,31 +147,31 @@ if(confirmation){
 function editPopup(data) {
   document.querySelector(".editProduct-popup-section").style.display = "flex";
 
-  let formel = document.querySelector("form");
+  let formel = document.querySelector("#edit-product");
   let obj = {};
   fetch(`${baseServerURL}/products/${data.id}`)
     .then(res => res.json())
     .then(data1 => {
-      document.getElementById("name").value = data1.name;
-      document.getElementById("image").value = data1.images[0];
-      document.getElementById("category").value = data1.category;
+      document.getElementById("name1").value = data1.name;
+      document.getElementById("image1").value = data1.images[0];
+      document.getElementById("category1").value = data1.category;
       if (data1.special == undefined) {
         data1.special = "NA";
       }
-      document.getElementById("tag").value = data1.special;
-      document.getElementById("price").value = data1.price;
+      document.getElementById("tag1").value = data1.special;
+      document.getElementById("price1").value = data1.price;
       obj.id = data1.id
     })
 
   formel.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    obj.name = document.getElementById("name").value;
-    obj.images = [document.getElementById("image").value];
-    obj.category = document.getElementById("category").value;
-    obj.special = document.getElementById("tag").value;
-    obj.price = document.getElementById("price").value;
-    // console.log(obj)
+    obj.name = document.getElementById("name1").value;
+    obj.images = [document.getElementById("image1").value];
+    obj.category = document.getElementById("category1").value;
+    obj.special = document.getElementById("tag1").value;
+    obj.price = document.getElementById("price1").value;
+    console.log(obj)
     editProduct(obj)
   })
 
@@ -228,44 +228,45 @@ function getButton(text, pageNumber) {
 
 //Filter and Sort functions
 
-let tshirtBtn = document.getElementById("tshirts");
-let hoodiesBtn = document.getElementById("hoodies");
-let pantsBtn = document.getElementById("pants");
-let sortSelect = document.getElementById("sortByPrice");
+let tshirtBtn = document.getElementById("tshirts1");
+let hoodiesBtn = document.getElementById("hoodies1");
+let pantsBtn = document.getElementById("pants1");
+let sortSelect = document.getElementById("sortByPrice1");
 
-let currentCategory;
+let currentCategory1;
 
 tshirtBtn.addEventListener('click', () => {
-  let filterData = allProductsData.filter(el => el.category == "tshirt");
-  currentCategory = filterData
-  filterTable(filterData)
+  console.log(allProductsData)
+  let filterData1 = allProductsData.filter(el => el.category == "tshirt");
+  currentCategory1 = filterData1
+  filterTable(filterData1)
 });
 hoodiesBtn.addEventListener('click', () => {
-  let filterData = allProductsData.filter(el => el.category == "hoodie");
-  currentCategory = filterData
-  filterTable(filterData)
+  let filterData1 = allProductsData.filter(el => el.category == "hoodie");
+  currentCategory1 = filterData1
+  filterTable(filterData1)
 });
 pantsBtn.addEventListener("click", () => {
-  let filterData = allProductsData.filter(el => el.category == "pants_shorts");
-  currentCategory = filterData
-  filterTable(filterData)
+  let filterData1 = allProductsData.filter(el => el.category == "pants_shorts");
+  currentCategory1 = filterData1
+  filterTable(filterData1)
 });
 
 sortSelect.addEventListener("change", (event) => {
   let sortedData;
-  // console.log(currentCategory)
+  // console.log(currentCategory1)
   let sortedAllProductData = allProductsData
 
-  if (currentCategory !== undefined) {
+  if (currentCategory1 !== undefined) {
     if (event.target.value == "default") {
-      sortedData = currentCategory
-      display_products(currentCategory)
+      sortedData = currentCategory1
+      display_products(currentCategory1)
       return
       // fetchProductsData(6)
     } else if (event.target.value == "High to Low") {
-      sortedData = currentCategory.sort((a, b) => b.price - a.price);
+      sortedData = currentCategory1.sort((a, b) => b.price - a.price);
     } else if (event.target.value == "Low to High") {
-      sortedData = currentCategory.sort((a, b) => a.price - b.price);
+      sortedData = currentCategory1.sort((a, b) => a.price - b.price);
     }
     display_products(sortedData);
   } else {
@@ -285,11 +286,11 @@ sortSelect.addEventListener("change", (event) => {
   }
 });
 
-function filterTable(filterData) {
-  // let n=filterData.length
-  // paginate(filterData,10,showPaginationFiltered(n,10))
-  console.log(filterData)
-  display_products(filterData);
+function filterTable(filterData1) {
+  // let n=filterData1.length
+  // paginate(filterData1,10,showPaginationFiltered(n,10))
+  console.log(filterData1)
+  display_products(filterData1);
   let pagination = document.getElementById("pagination");
   pagination.innerHTML = null;
 }
