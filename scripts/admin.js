@@ -334,7 +334,7 @@ ${mostActiveUser}
 function getActivePrice(data){
   let activeTotalPrice = 0;
     data.forEach(ele => {
-      activeTotalPrice += ele.price;
+      activeTotalPrice += +ele.price;
     })
     return activeTotalPrice;
 }
