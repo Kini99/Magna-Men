@@ -788,4 +788,16 @@ input#subscriber-email::placeholder {
   .filter-section{
     display: none;
   }
+  .swipper_container{
+    display: none;
+  }
+  .gifts-cards-section{
+    display: none;
+  }
+  
+}
+@media (max-width: 700px){
+  .imgAnimation{
+    display: none;
+  }
 }
