@@ -780,24 +780,22 @@ input#subscriber-email::placeholder {
   }
 }
 
-
-@media (max-width: 1000px){
-  header .header-top-navigation .search-bar{
+@media (max-width: 1000px) {
+  header .header-top-navigation .search-bar {
     display: none;
   }
-  .filter-section{
+  .filter-section {
     display: none;
   }
-  .swipper_container{
+  .swipper_container {
     display: none;
   }
-  .gifts-cards-section{
+  .gifts-cards-section {
     display: none;
   }
-  
 }
-@media (max-width: 700px){
-  .imgAnimation{
+@media (max-width: 700px) {
+  .imgAnimation {
     display: none;
   }
 }
