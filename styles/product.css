@@ -220,7 +220,7 @@ fieldset:hover{
 
 .product_cards{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat( auto-fit, minmax(270px, 1fr) );
     gap: 20px 10px;
     margin-top: 30px;
 
@@ -301,6 +301,13 @@ fieldset:hover{
   background-color: white;
   opacity: 0.5;
   display: none;
+}
+
+
+@media (max-width: 1000px){
+  .swipper_container{
+    display: none;
+  }
 }
 
 

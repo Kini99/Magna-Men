@@ -779,3 +779,13 @@ input#subscriber-email::placeholder {
     background-image: url("/images/slide1.png");
   }
 }
+
+
+@media (max-width: 1000px){
+  header .header-top-navigation .search-bar{
+    display: none;
+  }
+  .filter-section{
+    display: none;
+  }
+}
