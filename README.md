@@ -4,6 +4,12 @@
 
 https://magnamen.netlify.app/ is a clone of E-commerce website destinationxl.com. It is a platform for buying plus sized clothing items for men.
 
+Tech Stacks Used:
+- HTML
+- CSS
+- JavaScript
+- Netlify
+
 Following are various pages of this website:-
 1. Landing Page : https://magnamen.netlify.app/
 2. Products Page : https://magnamen.netlify.app/product.html
